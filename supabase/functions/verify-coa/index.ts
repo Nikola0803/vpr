@@ -2,7 +2,7 @@
 // The API key lives ONLY in Backend Secrets and is never exposed to the browser.
 
 const GEMINI_API_KEY = Deno.env.get('GEMINI_API_KEY');
-const GEMINI_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent';
+const GEMINI_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent';
 const MAX_BYTES = 12 * 1024 * 1024;
 
 const CORS = {
@@ -99,10 +99,11 @@ function normalizeReport(raw: Record<string, unknown>) {
 function describeGeminiError(status: number, body: string): string {
   if (status === 400) return 'The document could not be read by the verification engine. Try a cleaner scan.';
   if (status === 401 || status === 403) return 'The verifier AI key is not authorised. Please update the Gemini API key.';
+  if (status === 404) return 'The verification model was not found. The model name may need updating.';
   if (status === 429) return 'The verification engine is busy right now. Please try again in a moment.';
   if (status === 503) return 'The verification engine is temporarily unavailable. Please try again shortly.';
   if (/quota/i.test(body)) return 'The daily verification quota has been reached. Try again tomorrow.';
-  return 'The verification engine could not complete the analysis. Please try again shortly.';
+  return `The verification engine could not complete the analysis (status ${status}). Please try again shortly.`;
 }
 
 Deno.serve(async (req: Request) => {
