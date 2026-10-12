@@ -1,49 +1,9 @@
-// COA Verifier — server-side AI document forensics for Certificates of Analysis.
-//
-// The Anthropic (Claude) API key lives ONLY in Backend Secrets and is never
-// exposed to the browser. The client uploads a document as base64, this function
-// asks Claude to run a document-forensics pass, and returns a structured report.
-//
-// Honest scope: this is an assistive screening layer that flags tampering signals
-// (font/splice/metadata/template anomalies). It is NOT a legal guarantee of
-// authenticity.
+// COA Verifier — server-side AI document forensics using Gemini 1.5 Flash.
+// The API key lives ONLY in Backend Secrets and is never exposed to the browser.
 
-const ANTHROPIC_API_KEY = Deno.env.get('ANTHROPIC_API_KEY');
-const ANTHROPIC_URL = 'https://api.anthropic.com/v1/messages';
+const GEMINI_API_KEY = Deno.env.get('GEMINI_API_KEY');
+const GEMINI_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent';
 const MAX_BYTES = 12 * 1024 * 1024;
-
-// Try the operator-configured model first (if any), then fall back through the
-// current Claude vision models. This keeps the verifier online even if a model
-// id is renamed or the configured value goes stale.
-const MODEL_CANDIDATES: string[] = Array.from(
-  new Set(
-    [
-      Deno.env.get('ANTHROPIC_MODEL'),
-      'claude-sonnet-5-5',
-      'claude-sonnet-5',
-      'claude-opus-5-5',
-    ].filter((m): m is string => typeof m === 'string' && m.length > 0),
-  ),
-);
-
-function describeUpstreamFailure(status: number, detail: string): string {
-  if (status === 401 || status === 403) {
-    return 'The verifier AI key is not authorised. Please update the Anthropic API key and try again.';
-  }
-  if (status === 404) {
-    return 'The verifier AI model is unavailable right now. We are updating it — please try again shortly.';
-  }
-  if (/credit/i.test(detail)) {
-    return 'The verifier AI account is out of credit. Please top it up and try again.';
-  }
-  if (status === 429 || status === 529 || status === 503) {
-    return 'The verification engine is busy right now. Please try again in a moment.';
-  }
-  if (status === 413) {
-    return 'The document is too large for the engine. Try a smaller file.';
-  }
-  return 'The verification engine could not complete the analysis. Please try again shortly.';
-}
 
 const CORS = {
   'Access-Control-Allow-Origin': '*',
@@ -114,7 +74,6 @@ const VALID_VERDICT = new Set(['authentic', 'minor_concerns', 'suspicious', 'tam
 function normalizeReport(raw: Record<string, unknown>) {
   const verdict = VALID_VERDICT.has(String(raw.verdict)) ? String(raw.verdict) : 'inconclusive';
   const confidence = Math.max(0, Math.min(100, Math.round(Number(raw.confidence) || 0)));
-
   const checks = Array.isArray(raw.checks)
     ? (raw.checks as Record<string, unknown>[]).map((c) => ({
         id: String(c.id ?? ''),
@@ -123,11 +82,9 @@ function normalizeReport(raw: Record<string, unknown>) {
         detail: String(c.detail ?? ''),
       }))
     : [];
-
   const signals = Array.isArray(raw.signals)
     ? (raw.signals as unknown[]).map((s) => String(s)).filter(Boolean)
     : [];
-
   return {
     verdict,
     confidence,
@@ -139,11 +96,20 @@ function normalizeReport(raw: Record<string, unknown>) {
   };
 }
 
+function describeGeminiError(status: number, body: string): string {
+  if (status === 400) return 'The document could not be read by the verification engine. Try a cleaner scan.';
+  if (status === 401 || status === 403) return 'The verifier AI key is not authorised. Please update the Gemini API key.';
+  if (status === 429) return 'The verification engine is busy right now. Please try again in a moment.';
+  if (status === 503) return 'The verification engine is temporarily unavailable. Please try again shortly.';
+  if (/quota/i.test(body)) return 'The daily verification quota has been reached. Try again tomorrow.';
+  return 'The verification engine could not complete the analysis. Please try again shortly.';
+}
+
 Deno.serve(async (req: Request) => {
   if (req.method === 'OPTIONS') return new Response('ok', { headers: CORS });
   if (req.method !== 'POST') return json({ error: 'Method not allowed' }, 405);
 
-  if (!ANTHROPIC_API_KEY) {
+  if (!GEMINI_API_KEY) {
     return json(
       { error: 'engine_unconfigured', message: 'The verification engine is not configured yet. Please try again later.' },
       503,
@@ -171,74 +137,48 @@ Deno.serve(async (req: Request) => {
     return json({ error: 'too_large', message: 'The document is too large — 12MB maximum.' }, 413);
   }
 
-  const contentBlock =
-    mediaType === 'application/pdf'
-      ? { type: 'document', source: { type: 'base64', media_type: mediaType, data } }
-      : { type: 'image', source: { type: 'base64', media_type: mediaType, data } };
-
-  const buildBody = (model: string) =>
-    JSON.stringify({
-      model,
-      max_tokens: 2500,
-      system: SYSTEM_PROMPT,
-      messages: [
-        {
-          role: 'user',
-          content: [
-            contentBlock,
-            {
-              type: 'text',
-              text: `Analyse this Certificate of Analysis ("${fileName}") for signs of tampering or fabrication. Return ONLY the JSON object described in your instructions.`,
-            },
-          ],
-        },
+  const requestBody = {
+    systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
+    contents: [{
+      role: 'user',
+      parts: [
+        { inlineData: { mimeType: mediaType, data } },
+        { text: `Analyse this Certificate of Analysis ("${fileName}") for signs of tampering or fabrication. Return ONLY the JSON object described in your instructions.` },
       ],
-    });
+    }],
+    generationConfig: {
+      temperature: 0.1,
+      maxOutputTokens: 2500,
+      responseMimeType: 'application/json',
+    },
+  };
 
   try {
-    let aiRes: Response | null = null;
-    let lastStatus = 0;
-    let lastText = '';
+    const aiRes = await fetch(`${GEMINI_URL}?key=${GEMINI_API_KEY}`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(requestBody),
+    });
 
-    for (const model of MODEL_CANDIDATES) {
-      const attempt = await fetch(ANTHROPIC_URL, {
-        method: 'POST',
-        headers: {
-          'content-type': 'application/json',
-          'x-api-key': ANTHROPIC_API_KEY,
-          'anthropic-version': '2023-06-01',
-        },
-        body: buildBody(model),
-      });
+    const aiText = await aiRes.text();
 
-      if (attempt.ok) {
-        aiRes = attempt;
-        break;
-      }
-
-      lastStatus = attempt.status;
-      lastText = await attempt.text();
-      console.error('anthropic_error', model, attempt.status, lastText.slice(0, 500));
-
-      // A credential problem will not be fixed by trying another model.
-      if (attempt.status === 401 || attempt.status === 403) break;
-    }
-
-    if (!aiRes) {
+    if (!aiRes.ok) {
+      console.error('gemini_error', aiRes.status, aiText.slice(0, 500));
       return json(
-        {
-          error: 'engine_error',
-          upstreamStatus: lastStatus,
-          message: describeUpstreamFailure(lastStatus, lastText),
-        },
+        { error: 'engine_error', message: describeGeminiError(aiRes.status, aiText) },
         502,
       );
     }
 
-    const aiData = (await aiRes.json()) as { content?: { type: string; text?: string }[] };
-    const text = (aiData.content ?? [])
-      .filter((b) => b?.type === 'text')
-      .map((b) => b.text ?? '')
+    let aiData: { candidates?: { content?: { parts?: { text?: string }[] } }[] };
+    try {
+      aiData = JSON.parse(aiText);
+    } catch {
+      return json({ error: 'engine_error', message: 'The verification engine returned an unreadable result.' }, 502);
+    }
+
+    const text = (aiData.candidates?.[0]?.content?.parts ?? [])
+      .map((p) => p.text ?? '')
       .join('\n')
       .trim();
 

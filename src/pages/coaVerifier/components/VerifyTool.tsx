@@ -2,8 +2,8 @@ import { useEffect, useRef, useState, type DragEvent, type FormEvent } from 'rea
 import { verifyCoa, type CoaReport } from '@/pages/coaVerifier/api';
 import { verifierPromises } from '@/mocks/coaVerifier';
 import ReportView from '@/pages/coaVerifier/components/ReportView';
+import { supabase } from '@/lib/supabase';
 
-const SUBMIT_ADDR = 'https://readdy.ai/api/form/datr4nom252sfkho16ag';
 const ACCEPTED = ['application/pdf', 'image/jpeg', 'image/png', 'image/webp'];
 const MAX_BYTES = 12 * 1024 * 1024;
 
@@ -91,49 +91,26 @@ export default function VerifyTool() {
     setError('');
 
     const form = event.currentTarget;
-    const payload = new FormData(form);
-
-    // Honeypot — silently treat as a normal submission for bots, do nothing else.
-    const honeypot = String(payload.get('website_alt') || '').trim();
+    const email = String(new FormData(form).get('email') || '').trim().toLowerCase();
+    const honeypot = String(new FormData(form).get('website_alt') || '').trim();
     if (honeypot) return;
+
+    if (!email || !email.includes('@')) {
+      setError('Enter a valid email address.');
+      return;
+    }
 
     if (!file) {
       setFileError('Add a Certificate of Analysis to verify first.');
       return;
     }
 
-    payload.delete('website_alt');
-
-    const body = new URLSearchParams();
-    payload.forEach((value, key) => body.append(key, String(value)));
-
     setStatus('submitting');
     try {
-      const response = await fetch(SUBMIT_ADDR, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body,
-      });
-      const responseText = await response.text();
-      let parsed: any = null;
-      try {
-        parsed = JSON.parse(responseText);
-      } catch {
-        parsed = null;
-      }
+      // Capture email — upsert so repeat users don't create duplicates.
+      await supabase.from('coa_leads').upsert({ email }, { onConflict: 'email' });
 
-      const code = parsed?.code;
-      const serverMsg = parsed?.meta?.message || parsed?.message || parsed?.meta?.detail || responseText || '';
-      const failed =
-        !response.ok || code !== 'OK' || /spam/i.test(String(serverMsg)) || /form data is spam/i.test(responseText);
-
-      if (failed) {
-        setStatus('error');
-        setError(serverMsg || 'Something went wrong while unlocking. Please try again.');
-        return;
-      }
-
-      // Email captured — now run the forensic analysis.
+      // Run the forensic analysis.
       setStatus('analyzing');
       const base64 = await readAsBase64(file);
       const result = await verifyCoa({
@@ -218,7 +195,7 @@ export default function VerifyTool() {
                 </div>
               </div>
             ) : (
-              <form id="coa-verifier-form" data-readdy-form onSubmit={handleSubmit} className="space-y-5">
+              <form id="coa-verifier-form" onSubmit={handleSubmit} className="space-y-5">
                 {/* Dropzone */}
                 <div
                   onClick={() => inputRef.current?.click()}
