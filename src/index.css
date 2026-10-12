@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root {
+  background-color: #FFFFFF;
+  color: #0F172A;
+  font-family: 'Inter', 'Plus Jakarta Sans', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.glass {
+  background: #FFFFFF;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.glass-hover {
+  transition: all 275ms ease-out;
+}
+.glass-hover:hover {
+  transform: translateY(-1px);
+  border-color: rgba(13, 148, 136, 0.45);
+}
+
+.hp-field-9471 {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(15, 23, 42, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.045) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.radial-glow {
+  background: radial-gradient(circle at 50% 0%, rgba(20, 184, 166, 0.10), transparent 55%),
+              radial-gradient(circle at 82% 55%, rgba(13, 148, 136, 0.08), transparent 50%),
+              radial-gradient(circle at 8% 70%, rgba(16, 185, 129, 0.07), transparent 50%);
+}
+
+.text-gradient-cyan {
+  background: linear-gradient(90deg, #0F766E 0%, #0891B2 52%, #059669 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.medical-loader {
+  background: linear-gradient(90deg, rgba(226, 232, 240, 0.7) 0%, rgba(20, 184, 166, 0.18) 50%, rgba(226, 232, 240, 0.7) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 2s linear infinite;
+}
+
+button, a { cursor: pointer; }
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #F1F5F9; }
+::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: #94A3B8; }

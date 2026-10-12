@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Verified Peptide Reviews</title>
+    <script>
+      // SPA deep-link recovery for hosts that serve 404.html on unknown paths.
+      // Redirect back to the app root while preserving the original route in the
+      // query string, then the app restores it on load (see main.tsx).
+      (function () {
+        var l = window.location;
+        var path = l.pathname + l.search + l.hash;
+        l.replace('/?spa_redirect=' + encodeURIComponent(path));
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>

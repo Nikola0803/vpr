@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="refresh" content="0; url=/" />
+    <title>Verified Peptide Reviews</title>
+  </head>
+  <body>
+    <script>
+      // SPA deep-link fallback: preserve the requested path and hand control
+      // back to the single-page app so routes like /vendor/evlv-peptides
+      // resolve correctly on cold/shared links and refreshes.
+      (function () {
+        var path = window.location.pathname + window.location.search + window.location.hash;
+        window.location.replace('/index.html' === path ? '/' : path);
+      })();
+    </script>
+  </body>
+</html>
