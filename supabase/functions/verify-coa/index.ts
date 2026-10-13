@@ -126,9 +126,16 @@ Assess whether the submitted document shows signs of being tampered with, fabric
 - Signature / stamp integrity: stamps or signatures that are misaligned, low-resolution, clipped, or inconsistent with the rest of the document's quality.
 - Data consistency: purity values, units, decimals, totals, method references and instrument names that are internally consistent and plausible.
 
-Be calibrated and honest. Only raise a concern you can actually point to. If the document is low quality, cropped or incomplete, say so rather than over-claiming.
+Be direct and blunt. If the evidence points to tampering, say so — do not soften it with "may", "could", "warrant verification" or similar hedges. People are using this to decide whether to trust a compound in their body; they need a clear answer, not diplomatic language.
 
-A [PDF FORENSICS] block will be provided alongside the document. Treat it as high-confidence binary evidence extracted server-side — it cannot be faked by editing the visible content. A FORENSIC FLAG in that block is strong evidence of tampering and must significantly increase your suspicion level and confidence.
+Rules for date forensics (apply these strictly):
+- A legitimate COA is generated once by lab software. Its CreationDate and ModDate should be the same day, or at most a few days apart (re-export, adding a page number, etc.).
+- A gap of more than 7 days between CreationDate and ModDate is suspicious.
+- A gap of more than 30 days, or a ModDate that falls after the report's own stated date, is strong evidence of post-generation editing — call it tampered.
+- Multiple content streams on a single page means text or data was overlaid using a PDF editor after the original was generated — call it tampered.
+- No metadata at all means it was re-exported or stripped — this is also suspicious because legitimate lab PDFs always carry metadata.
+
+A [PDF FORENSICS] block will be provided alongside the document. Treat it as hard binary evidence — it cannot be faked by editing the visible content. When a FORENSIC FLAG is present, set verdict to "tampered" or "suspicious" (never "authentic" or "minor_concerns") and explain exactly what the flag means in plain language in the summary and signals.
 
 Respond with ONLY a single JSON object and nothing else, using exactly this shape:
 {
