@@ -1,8 +1,10 @@
-// COA Verifier — server-side AI document forensics using Gemini 1.5 Flash.
-// The API key lives ONLY in Backend Secrets and is never exposed to the browser.
+// COA Verifier — server-side AI forensics using Claude Haiku (cheapest with vision).
+// The API key lives ONLY in Edge Function Secrets and is never exposed to the browser.
 
-const GEMINI_API_KEY = Deno.env.get('GEMINI_API_KEY');
-const GEMINI_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent';
+const ANTHROPIC_API_KEY = Deno.env.get('ANTHROPIC_API_KEY');
+const ANTHROPIC_WORKSPACE_ID = Deno.env.get('ANTHROPIC_WORKSPACE_ID');
+const ANTHROPIC_URL = 'https://api.anthropic.com/v1/messages';
+const MODEL = 'claude-haiku-5-5';
 const MAX_BYTES = 12 * 1024 * 1024;
 
 const CORS = {
@@ -96,13 +98,13 @@ function normalizeReport(raw: Record<string, unknown>) {
   };
 }
 
-function describeGeminiError(status: number, body: string): string {
+function describeAnthropicError(status: number, body: string): string {
   if (status === 400) return 'The document could not be read by the verification engine. Try a cleaner scan.';
-  if (status === 401 || status === 403) return 'The verifier AI key is not authorised. Please update the Gemini API key.';
-  if (status === 404) return 'The verification model was not found. The model name may need updating.';
+  if (status === 401) return 'The verifier AI key is not authorised. Please update the API key.';
+  if (status === 403) return 'The verifier AI key does not have permission to run this analysis.';
   if (status === 429) return 'The verification engine is busy right now. Please try again in a moment.';
-  if (status === 503) return 'The verification engine is temporarily unavailable. Please try again shortly.';
-  if (/quota/i.test(body)) return 'The daily verification quota has been reached. Try again tomorrow.';
+  if (status === 529) return 'The verification engine is temporarily overloaded. Please try again shortly.';
+  if (/quota|credit/i.test(body)) return 'The verification account has reached its usage limit. Please check your plan.';
   return `The verification engine could not complete the analysis (status ${status}). Please try again shortly.`;
 }
 
@@ -110,7 +112,7 @@ Deno.serve(async (req: Request) => {
   if (req.method === 'OPTIONS') return new Response('ok', { headers: CORS });
   if (req.method !== 'POST') return json({ error: 'Method not allowed' }, 405);
 
-  if (!GEMINI_API_KEY) {
+  if (!ANTHROPIC_API_KEY) {
     return json(
       { error: 'engine_unconfigured', message: 'The verification engine is not configured yet. Please try again later.' },
       503,
@@ -138,48 +140,59 @@ Deno.serve(async (req: Request) => {
     return json({ error: 'too_large', message: 'The document is too large — 12MB maximum.' }, 413);
   }
 
+  // Claude uses different content block types for PDFs vs images.
+  const contentBlock = mediaType === 'application/pdf'
+    ? { type: 'document', source: { type: 'base64', media_type: mediaType, data } }
+    : { type: 'image', source: { type: 'base64', media_type: mediaType, data } };
+
   const requestBody = {
-    systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
-    contents: [{
-      role: 'user',
-      parts: [
-        { inlineData: { mimeType: mediaType, data } },
-        { text: `Analyse this Certificate of Analysis ("${fileName}") for signs of tampering or fabrication. Return ONLY the JSON object described in your instructions.` },
-      ],
-    }],
-    generationConfig: {
-      temperature: 0.1,
-      maxOutputTokens: 2500,
-      responseMimeType: 'application/json',
-    },
+    model: MODEL,
+    max_tokens: 2048,
+    temperature: 0.1,
+    system: SYSTEM_PROMPT,
+    messages: [
+      {
+        role: 'user',
+        content: [
+          contentBlock,
+          { type: 'text', text: `Analyse this Certificate of Analysis ("${fileName}") for signs of tampering or fabrication. Return ONLY the JSON object described in your instructions.` },
+        ],
+      },
+    ],
   };
 
   try {
-    const aiRes = await fetch(`${GEMINI_URL}?key=${GEMINI_API_KEY}`, {
+    const aiRes = await fetch(ANTHROPIC_URL, {
       method: 'POST',
-      headers: { 'content-type': 'application/json' },
+      headers: {
+        'x-api-key': ANTHROPIC_API_KEY,
+        'anthropic-version': '2023-06-01',
+        ...(ANTHROPIC_WORKSPACE_ID ? { 'anthropic-workspace-id': ANTHROPIC_WORKSPACE_ID } : {}),
+        'content-type': 'application/json',
+      },
       body: JSON.stringify(requestBody),
     });
 
     const aiText = await aiRes.text();
 
     if (!aiRes.ok) {
-      console.error('gemini_error', aiRes.status, aiText.slice(0, 500));
+      console.error('anthropic_error', aiRes.status, aiText.slice(0, 500));
       return json(
-        { error: 'engine_error', message: describeGeminiError(aiRes.status, aiText) },
+        { error: 'engine_error', message: describeAnthropicError(aiRes.status, aiText) },
         502,
       );
     }
 
-    let aiData: { candidates?: { content?: { parts?: { text?: string }[] } }[] };
+    let aiData: { content?: { type: string; text?: string }[] };
     try {
       aiData = JSON.parse(aiText);
     } catch {
       return json({ error: 'engine_error', message: 'The verification engine returned an unreadable result.' }, 502);
     }
 
-    const text = (aiData.candidates?.[0]?.content?.parts ?? [])
-      .map((p) => p.text ?? '')
+    const text = (aiData.content ?? [])
+      .filter((c) => c.type === 'text')
+      .map((c) => c.text ?? '')
       .join('\n')
       .trim();
 
