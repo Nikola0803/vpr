@@ -15,6 +15,105 @@ const CORS = {
 
 const ALLOWED_MEDIA = new Set(['application/pdf', 'image/jpeg', 'image/png', 'image/webp']);
 
+function parsePdfDate(raw: string): string {
+  const m = raw.match(/D:(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})/);
+  return m ? `${m[1]}-${m[2]}-${m[3]} ${m[4]}:${m[5]}:${m[6]}` : raw;
+}
+
+async function extractPdfForensics(base64Data: string): Promise<string> {
+  try {
+    const binary = atob(base64Data);
+    const bytes = new Uint8Array(binary.length);
+    for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+
+    let creationDate = '';
+    let modDate = '';
+    let producer = '';
+
+    // Search raw bytes for ASCII metadata fields (works on uncompressed sections)
+    const rawText = new TextDecoder('latin1').decode(bytes);
+    const m1 = rawText.match(/\/CreationDate\s*\(([^)]+)\)/);
+    const m2 = rawText.match(/\/ModDate\s*\(([^)]+)\)/);
+    const m3 = rawText.match(/\/Producer\s*\(([^)]+)\)/);
+    if (m1) creationDate = m1[1];
+    if (m2) modDate = m2[1];
+    if (m3) producer = m3[1];
+
+    // Try decompressing FlateDecode streams to find metadata stored compressed
+    if (!creationDate || !modDate) {
+      let pos = 0;
+      while (pos < bytes.length - 10) {
+        // Find 'stream' keyword
+        let streamStart = -1;
+        for (let i = pos; i < bytes.length - 8; i++) {
+          if (bytes[i] === 115 && bytes[i+1] === 116 && bytes[i+2] === 114 &&
+              bytes[i+3] === 101 && bytes[i+4] === 97 && bytes[i+5] === 109) {
+            if (bytes[i+6] === 10) { streamStart = i + 7; pos = i + 1; break; }
+            if (bytes[i+6] === 13 && bytes[i+7] === 10) { streamStart = i + 8; pos = i + 1; break; }
+          }
+        }
+        if (streamStart === -1) break;
+
+        // Find 'endstream'
+        let endStream = -1;
+        for (let i = streamStart; i < bytes.length - 9; i++) {
+          if (bytes[i]===101&&bytes[i+1]===110&&bytes[i+2]===100&&bytes[i+3]===115&&
+              bytes[i+4]===116&&bytes[i+5]===114&&bytes[i+6]===101&&bytes[i+7]===97&&bytes[i+8]===109) {
+            endStream = i; break;
+          }
+        }
+        if (endStream === -1) break;
+
+        const streamData = bytes.slice(streamStart, endStream);
+        try {
+          const ds = new DecompressionStream('deflate');
+          const writer = ds.writable.getWriter();
+          const reader = ds.readable.getReader();
+          const chunks: Uint8Array[] = [];
+          await Promise.all([
+            writer.write(streamData).then(() => writer.close()),
+            (async () => { while (true) { const { done, value } = await reader.read(); if (done) break; if (value) chunks.push(value); } })(),
+          ]);
+          const total = chunks.reduce((a, c) => a + c.length, 0);
+          const dec = new Uint8Array(total);
+          let off = 0; for (const c of chunks) { dec.set(c, off); off += c.length; }
+          const t = new TextDecoder('latin1').decode(dec);
+          if (!creationDate) { const mm = t.match(/\/CreationDate\s*\(([^)]+)\)/); if (mm) creationDate = mm[1]; }
+          if (!modDate) { const mm = t.match(/\/ModDate\s*\(([^)]+)\)/); if (mm) modDate = mm[1]; }
+          if (!producer) { const mm = t.match(/\/Producer\s*\(([^)]+)\)/); if (mm) producer = mm[1]; }
+          if (creationDate && modDate) break;
+        } catch { /* not deflate */ }
+
+        pos = endStream + 9;
+      }
+    }
+
+    const lines: string[] = [];
+    if (creationDate) lines.push(`Created: ${parsePdfDate(creationDate)}`);
+    if (modDate) lines.push(`Last modified: ${parsePdfDate(modDate)}`);
+    if (producer) lines.push(`Producer tool: ${producer}`);
+
+    if (creationDate && modDate && creationDate !== modDate) {
+      lines.push('FORENSIC FLAG: CreationDate ≠ ModDate — the PDF was edited after it was originally generated.');
+    }
+
+    // Multiple content streams per page = overlaid edits
+    const contentsMatches = [...rawText.matchAll(/\/Contents\s*\[([^\]]+)\]/g)];
+    for (const cm of contentsMatches) {
+      const refs = (cm[1].match(/\d+ 0 R/g) || []).length;
+      if (refs > 1) {
+        lines.push(`FORENSIC FLAG: Page has ${refs} separate content streams — text or values were likely overlaid using a PDF editor.`);
+      }
+    }
+
+    if (!creationDate && !modDate) lines.push('No metadata found — may have been stripped to hide edit history.');
+
+    return '[PDF FORENSICS]\n' + lines.join('\n');
+  } catch {
+    return '[PDF FORENSICS: extraction error]';
+  }
+}
+
 const SYSTEM_PROMPT = `You are "COA Verifier", a forensic document analyst specialising in Certificates of Analysis (COAs) and HPLC lab reports used in the research-chemical industry.
 
 Assess whether the submitted document shows signs of being tampered with, fabricated or digitally altered. Examine it the way a document-forensics examiner would:
@@ -28,6 +127,8 @@ Assess whether the submitted document shows signs of being tampered with, fabric
 - Data consistency: purity values, units, decimals, totals, method references and instrument names that are internally consistent and plausible.
 
 Be calibrated and honest. Only raise a concern you can actually point to. If the document is low quality, cropped or incomplete, say so rather than over-claiming.
+
+A [PDF FORENSICS] block will be provided alongside the document. Treat it as high-confidence binary evidence extracted server-side — it cannot be faked by editing the visible content. A FORENSIC FLAG in that block is strong evidence of tampering and must significantly increase your suspicion level and confidence.
 
 Respond with ONLY a single JSON object and nothing else, using exactly this shape:
 {
@@ -45,7 +146,9 @@ Respond with ONLY a single JSON object and nothing else, using exactly this shap
     { "id": "data", "label": "Data consistency (values & units)", "status": "...", "detail": "..." }
   ],
   "signals": ["<specific observation>", "..."],
-  "recommendation": "<what the reviewer should do next>"
+  "recommendation": "<what the reviewer should do next>",
+  "company": "<name of the issuing lab or company, or null>",
+  "product": "<compound or product name, or null>"
 }
 Always include all seven checks. Use "na" only when the document genuinely lacks that element.`;
 
@@ -95,6 +198,8 @@ function normalizeReport(raw: Record<string, unknown>) {
     checks,
     signals,
     recommendation: String(raw.recommendation ?? ''),
+    company: raw.company != null && String(raw.company) !== 'null' ? String(raw.company) : null,
+    product: raw.product != null && String(raw.product) !== 'null' ? String(raw.product) : null,
   };
 }
 
@@ -145,6 +250,8 @@ Deno.serve(async (req: Request) => {
     ? { type: 'document', source: { type: 'base64', media_type: mediaType, data } }
     : { type: 'image', source: { type: 'base64', media_type: mediaType, data } };
 
+  const forensics = mediaType === 'application/pdf' ? await extractPdfForensics(data) : '';
+
   const requestBody = {
     model: MODEL,
     max_tokens: 8000,
@@ -154,6 +261,7 @@ Deno.serve(async (req: Request) => {
         role: 'user',
         content: [
           contentBlock,
+          ...(forensics ? [{ type: 'text', text: forensics }] : []),
           { type: 'text', text: `Analyse this Certificate of Analysis ("${fileName}") for signs of tampering or fabrication. Return ONLY the JSON object described in your instructions.` },
         ],
       },

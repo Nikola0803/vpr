@@ -7,6 +7,7 @@ import VerifyTool from '@/pages/coaVerifier/components/VerifyTool';
 import WhatWeDetect from '@/pages/coaVerifier/components/WhatWeDetect';
 import HowItWorks from '@/pages/coaVerifier/components/HowItWorks';
 import VerifierFaq from '@/pages/coaVerifier/components/VerifierFaq';
+import ShameWall from '@/pages/coaVerifier/components/ShameWall';
 
 export default function CoaVerifier() {
   return (
@@ -14,6 +15,7 @@ export default function CoaVerifier() {
       <Navbar />
       <VerifierHero />
       <VerifyTool />
+      <ShameWall />
       <WhatWeDetect />
       <HowItWorks />
       <RuoCompliance />

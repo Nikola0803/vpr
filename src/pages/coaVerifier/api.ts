@@ -19,6 +19,8 @@ export interface CoaReport {
   checks: CoaCheck[];
   signals: string[];
   recommendation: string;
+  company?: string | null;
+  product?: string | null;
 }
 
 export interface VerifyInput {

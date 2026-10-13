@@ -120,6 +120,15 @@ export default function VerifyTool() {
       });
       setReport(result);
       setStatus('done');
+      if (result.verdict === 'tampered' || result.verdict === 'suspicious') {
+        supabase.from('fake_coas').insert({
+          company: result.company ?? null,
+          product: result.product ?? null,
+          verdict: result.verdict,
+          confidence: result.confidence,
+          headline: result.headline,
+        }).then(() => {}).catch(() => {});
+      }
     } catch (e) {
       setStatus('error');
       setError(e instanceof Error ? e.message : 'Something went wrong. Please try again.');
