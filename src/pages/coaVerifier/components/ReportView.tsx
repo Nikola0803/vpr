@@ -106,6 +106,10 @@ export default function ReportView({
         </div>
 
         {report.summary && <p className="mt-5 text-sm text-slate-700 leading-relaxed">{report.summary}</p>}
+
+        {report.recommendation && (
+          <p className="mt-3 text-xs text-slate-500 italic leading-relaxed">{report.recommendation}</p>
+        )}
       </div>
 
       {/* Binary evidence — hard facts from PDF binary, not AI opinion */}
@@ -137,55 +141,28 @@ export default function ReportView({
         </div>
       )}
 
-      {/* Forensic checks */}
+      {/* Forensic checks — compact; detail only on warn/fail */}
       {report.checks.length > 0 && (
-        <div className="glass rounded-2xl p-6">
-          <div className="text-sm font-semibold text-slate-900 mb-4 flex items-center gap-2">
-            <i className="ri-file-search-line text-cyan-600"></i>Forensic breakdown
+        <div className="glass rounded-2xl p-5">
+          <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3 flex items-center gap-2">
+            <i className="ri-file-search-line text-cyan-600"></i>Forensic checks
           </div>
-          <div className="space-y-3">
+          <div className="space-y-2">
             {report.checks.map((c) => {
               const s = statusConfig[c.status] ?? statusConfig.na;
+              const showDetail = (c.status === 'warn' || c.status === 'fail') && c.detail;
               return (
-                <div key={c.id || c.label} className="flex items-start gap-3">
-                  <span className={`w-7 h-7 shrink-0 rounded-md border flex items-center justify-center ${s.tone}`}>
-                    <i className={`${s.icon} text-sm`}></i>
+                <div key={c.id || c.label} className="flex items-start gap-2.5">
+                  <span className={`w-6 h-6 shrink-0 rounded border flex items-center justify-center ${s.tone}`}>
+                    <i className={`${s.icon} text-xs`}></i>
                   </span>
-                  <div className="min-w-0">
-                    <div className="text-sm font-semibold text-slate-900">{c.label}</div>
-                    {c.detail && <p className="mt-0.5 text-xs text-slate-600 leading-relaxed">{c.detail}</p>}
+                  <div className="min-w-0 pt-0.5">
+                    <span className="text-sm text-slate-800">{c.label}</span>
+                    {showDetail && <p className="text-xs text-slate-500 leading-snug mt-0.5">{c.detail}</p>}
                   </div>
                 </div>
               );
             })}
-          </div>
-        </div>
-      )}
-
-      {/* Signals */}
-      {report.signals.length > 0 && (
-        <div className="glass rounded-2xl p-6">
-          <div className="text-sm font-semibold text-slate-900 mb-4 flex items-center gap-2">
-            <i className="ri-radar-line text-cyan-600"></i>Signals detected
-          </div>
-          <ul className="space-y-2.5">
-            {report.signals.map((sig, i) => (
-              <li key={i} className="flex items-start gap-2.5 text-sm text-slate-700">
-                <i className="ri-arrow-right-s-fill text-cyan-600 mt-0.5"></i>
-                <span className="leading-relaxed">{sig}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-
-      {/* Recommendation */}
-      {report.recommendation && (
-        <div className="rounded-2xl border border-cyan-200 bg-cyan-50/70 p-5 flex items-start gap-3">
-          <i className="ri-lightbulb-flash-line text-cyan-700 text-lg mt-0.5"></i>
-          <div>
-            <div className="text-sm font-semibold text-cyan-900">What we recommend next</div>
-            <p className="mt-1 text-sm text-cyan-900/80 leading-relaxed">{report.recommendation}</p>
           </div>
         </div>
       )}
