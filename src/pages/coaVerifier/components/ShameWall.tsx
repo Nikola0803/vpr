@@ -35,7 +35,7 @@ export default function ShameWall() {
   }
 
   const redditText = (r: FakeCoa) =>
-    `Fake COA caught by COA Verifier — ${r.company ?? 'Unknown company'}${r.product ? ` (${r.product})` : ''}: "${r.headline ?? r.verdict}" — https://vpr-five.vercel.app/verify`;
+    `Fake COA caught by COA Verifier — ${r.company ?? 'Unknown company'}${r.product ? ` (${r.product})` : ''}: "${r.headline ?? r.verdict}" — https://www.verifiedpeptidereviews.com/verify`;
 
   return (
     <section className="py-16 border-t border-slate-200">
