@@ -21,6 +21,7 @@ export interface CoaReport {
   recommendation: string;
   company?: string | null;
   product?: string | null;
+  forensicFlags?: string[];
 }
 
 export interface VerifyInput {
@@ -46,10 +47,10 @@ export async function verifyCoa(input: VerifyInput): Promise<CoaReport> {
     throw new Error(message);
   }
 
-  const payload = res.data as { error?: string; message?: string; report?: CoaReport } | null;
+  const payload = res.data as { error?: string; message?: string; report?: CoaReport; forensicFlags?: string[] } | null;
   if (!payload || payload.error || !payload.report) {
     throw new Error(payload?.message || 'The verification engine returned an unexpected result. Please try again.');
   }
 
-  return payload.report;
+  return { ...payload.report, forensicFlags: payload.forensicFlags ?? [] };
 }

@@ -108,7 +108,7 @@ async function extractPdfForensics(base64Data: string): Promise<string> {
 
     if (!creationDate && !modDate) lines.push('FORENSIC FLAG: No creation or modification metadata found. Legitimate lab report software always embeds this. Absence strongly suggests the PDF was re-exported or metadata was stripped to hide editing history.');
 
-    return '[PDF FORENSICS]\n' + lines.join('\n');
+    return '[PDF FORENSICS]\n' + lines.join('\n') + '\n[END]';
   } catch {
     return '[PDF FORENSICS: extraction error]';
   }
@@ -251,6 +251,10 @@ Deno.serve(async (req: Request) => {
     : { type: 'image', source: { type: 'base64', media_type: mediaType, data } };
 
   const forensics = mediaType === 'application/pdf' ? await extractPdfForensics(data) : '';
+  const forensicFlags = forensics
+    .split('\n')
+    .filter((l) => l.startsWith('FORENSIC FLAG:'))
+    .map((l) => l.replace('FORENSIC FLAG: ', '').trim());
 
   const requestBody = {
     model: MODEL,
@@ -312,7 +316,7 @@ Deno.serve(async (req: Request) => {
       );
     }
 
-    return json({ ok: true, report: normalizeReport(parsed), analyzedAt: new Date().toISOString() });
+    return json({ ok: true, report: normalizeReport(parsed), forensicFlags, analyzedAt: new Date().toISOString() });
   } catch (e) {
     console.error('verify_coa_failure', e);
     return json(

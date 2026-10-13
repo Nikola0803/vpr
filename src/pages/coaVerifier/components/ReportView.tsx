@@ -89,6 +89,35 @@ export default function ReportView({
         {report.summary && <p className="mt-5 text-sm text-slate-700 leading-relaxed">{report.summary}</p>}
       </div>
 
+      {/* Binary evidence — hard facts from PDF binary, not AI opinion */}
+      {report.forensicFlags && report.forensicFlags.length > 0 && (
+        <div className="rounded-2xl border border-rose-300 bg-rose-50 p-5">
+          <div className="flex items-center gap-2 mb-3">
+            <i className="ri-bug-2-fill text-rose-600 text-base"></i>
+            <span className="text-sm font-bold text-rose-800 uppercase tracking-wide">Binary evidence — cannot be faked</span>
+          </div>
+          <ul className="space-y-2">
+            {report.forensicFlags.map((flag, i) => {
+              const label = flag.includes('ModDate') || flag.includes('ModDate') || flag.match(/edited after/i)
+                ? 'DATE MISMATCH'
+                : flag.match(/content stream/i)
+                ? 'OVERLAY LAYERS'
+                : flag.match(/metadata/i)
+                ? 'METADATA STRIPPED'
+                : 'FLAG';
+              return (
+                <li key={i} className="flex items-start gap-2.5">
+                  <span className="shrink-0 mt-0.5 text-[10px] font-black bg-rose-600 text-white px-1.5 py-0.5 rounded tracking-widest">
+                    {label}
+                  </span>
+                  <span className="text-sm text-rose-900 leading-snug">{flag}</span>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      )}
+
       {/* Forensic checks */}
       {report.checks.length > 0 && (
         <div className="glass rounded-2xl p-6">
