@@ -147,7 +147,8 @@ Deno.serve(async (req: Request) => {
 
   const requestBody = {
     model: MODEL,
-    max_tokens: 2048,
+    max_tokens: 4096,
+    thinking: { type: 'enabled', budget_tokens: 1024 },
     system: SYSTEM_PROMPT,
     messages: [
       {
