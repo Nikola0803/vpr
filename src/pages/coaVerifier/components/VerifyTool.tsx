@@ -120,7 +120,7 @@ export default function VerifyTool() {
       });
       setReport(result);
       setStatus('done');
-      if (result.verdict === 'tampered' || result.verdict === 'suspicious') {
+      if (result.verdict === 'tampered') {
         supabase.from('fake_coas').insert({
           company: result.company ?? null,
           product: result.product ?? null,

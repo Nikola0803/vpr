@@ -147,7 +147,7 @@ Respond with ONLY a single JSON object and nothing else, using exactly this shap
   ],
   "signals": ["<specific observation>", "..."],
   "recommendation": "<what the reviewer should do next>",
-  "company": "<name of the issuing lab or company, or null>",
+  "company": "<name of the VENDOR or BRAND selling this product — NOT the testing lab that issued the report — or null if unclear>",
   "product": "<compound or product name, or null>"
 }
 Always include all seven checks. Use "na" only when the document genuinely lacks that element.`;

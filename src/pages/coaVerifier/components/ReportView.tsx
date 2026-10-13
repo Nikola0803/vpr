@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import type { CoaReport, CheckStatus, Verdict } from '@/pages/coaVerifier/api';
+import { supabase } from '@/lib/supabase';
 
 const verdictConfig: Record<
   Verdict,
@@ -58,6 +60,23 @@ export default function ReportView({
   onReset: () => void;
 }) {
   const v = verdictConfig[report.verdict];
+  const [reportOpen, setReportOpen] = useState(false);
+  const [reportCompany, setReportCompany] = useState(report.company ?? '');
+  const [reportProduct, setReportProduct] = useState(report.product ?? '');
+  const [reportDone, setReportDone] = useState(false);
+
+  const submitReport = () => {
+    if (!reportCompany.trim()) return;
+    supabase.from('fake_coas').insert({
+      company: reportCompany.trim(),
+      product: reportProduct.trim() || null,
+      verdict: report.verdict,
+      confidence: report.confidence,
+      headline: report.headline,
+      user_reported: true,
+    }).then(() => {}).catch(() => {});
+    setReportDone(true);
+  };
 
   return (
     <div className="space-y-5">
@@ -180,6 +199,60 @@ export default function ReportView({
           <i className="ri-restart-line"></i>Verify another document
         </button>
       </div>
+
+      {/* Report as fake — available on any non-authentic result */}
+      {report.verdict !== 'authentic' && (
+        <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+          {reportDone ? (
+            <div className="flex items-center gap-2 text-sm text-emerald-700 font-semibold">
+              <i className="ri-checkbox-circle-fill"></i> Reported — thanks for helping the community.
+            </div>
+          ) : reportOpen ? (
+            <div className="space-y-3">
+              <div className="text-sm font-semibold text-slate-800">Who is selling this product?</div>
+              <input
+                type="text"
+                placeholder="Vendor / brand name (e.g. Align Biosciences)"
+                value={reportCompany}
+                onChange={(e) => setReportCompany(e.target.value)}
+                className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 outline-none focus:border-rose-400 focus:ring-2 focus:ring-rose-400/20"
+              />
+              <input
+                type="text"
+                placeholder="Product name (optional)"
+                value={reportProduct}
+                onChange={(e) => setReportProduct(e.target.value)}
+                className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 outline-none focus:border-rose-400 focus:ring-2 focus:ring-rose-400/20"
+              />
+              <div className="flex gap-2">
+                <button
+                  type="button"
+                  onClick={submitReport}
+                  disabled={!reportCompany.trim()}
+                  className="px-4 py-2 rounded-md text-sm font-semibold text-white bg-rose-600 hover:bg-rose-700 disabled:opacity-50 transition-colors"
+                >
+                  Add to shame wall
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setReportOpen(false)}
+                  className="px-4 py-2 rounded-md text-sm font-semibold text-slate-600 hover:text-slate-800"
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          ) : (
+            <button
+              type="button"
+              onClick={() => setReportOpen(true)}
+              className="flex items-center gap-2 text-sm font-semibold text-rose-600 hover:text-rose-700"
+            >
+              <i className="ri-spy-line"></i> Report this as a fake COA
+            </button>
+          )}
+        </div>
+      )}
 
       <p className="text-[11px] text-slate-400 leading-relaxed">
         COA Verifier is an assistive screening layer, not a legal certification. A clean result means no tampering
