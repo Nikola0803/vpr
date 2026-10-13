@@ -148,7 +148,6 @@ Deno.serve(async (req: Request) => {
   const requestBody = {
     model: MODEL,
     max_tokens: 2048,
-    temperature: 0.1,
     system: SYSTEM_PROMPT,
     messages: [
       {
