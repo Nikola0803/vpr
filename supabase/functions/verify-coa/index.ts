@@ -106,7 +106,7 @@ async function extractPdfForensics(base64Data: string): Promise<string> {
       }
     }
 
-    if (!creationDate && !modDate) lines.push('No metadata found — may have been stripped to hide edit history.');
+    if (!creationDate && !modDate) lines.push('FORENSIC FLAG: No creation or modification metadata found. Legitimate lab report software always embeds this. Absence strongly suggests the PDF was re-exported or metadata was stripped to hide editing history.');
 
     return '[PDF FORENSICS]\n' + lines.join('\n');
   } catch {
