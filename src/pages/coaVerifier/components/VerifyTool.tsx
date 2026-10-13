@@ -107,8 +107,8 @@ export default function VerifyTool() {
 
     setStatus('submitting');
     try {
-      // Capture email — upsert so repeat users don't create duplicates.
-      await supabase.from('coa_leads').upsert({ email }, { onConflict: 'email' });
+      // Capture email — fire-and-forget, never block the analysis.
+      supabase.from('coa_leads').insert({ email }).then(() => {}).catch(() => {});
 
       // Run the forensic analysis.
       setStatus('analyzing');
