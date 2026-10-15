@@ -455,6 +455,9 @@ const seeds: VendorSeed[] = [
     registered: 'Jan 2025',
     flags: ['coa', 'lab'],
     response: 91,
+    logo: '/zoonetics-logo.webp',
+    logoDark: false,
+    logoBg: 'bg-white',
     about:
       'Zoonetics is a US-based supplier of research-grade peptides for veterinary science and canine research. The catalogue is built around compounds most cited in peer-reviewed K9 studies: BPC-157, TB-500, GHK-Cu and Thymosin Alpha-1. Every production lot is tested by an independent third-party laboratory with certificates of analysis published openly. Products are labelled strictly for research use only and ship domestically.',
   },
