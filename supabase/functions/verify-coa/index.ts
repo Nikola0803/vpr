@@ -93,8 +93,12 @@ async function extractPdfForensics(base64Data: string): Promise<string> {
     if (modDate) lines.push(`Last modified: ${parsePdfDate(modDate)}`);
     if (producer) lines.push(`Producer tool: ${producer}`);
 
-    if (creationDate && modDate && creationDate !== modDate) {
+    const isBrowserPdf = /skia|pdfium|chromium|chrome|wkhtmltopdf|headless/i.test(producer);
+    if (creationDate && modDate && creationDate !== modDate && !isBrowserPdf) {
       lines.push('FORENSIC FLAG: CreationDate ≠ ModDate — the PDF was edited after it was originally generated.');
+    }
+    if (isBrowserPdf) {
+      lines.push('Note: Browser-generated PDF (Skia/PDF or similar) — date forensics not applicable; focus on content.')
     }
 
     // Multiple content streams per page = overlaid edits
@@ -129,22 +133,24 @@ Assess whether the submitted document shows signs of being tampered with, fabric
 Be direct and blunt. If the evidence points to tampering, say so — do not soften it with "may", "could", "warrant verification" or similar hedges. People are using this to decide whether to trust a compound in their body; they need a clear answer, not diplomatic language.
 
 Rules for date forensics (apply these strictly):
-- A legitimate COA is generated once by lab software. Its CreationDate and ModDate should be the same day, or at most a few days apart (re-export, adding a page number, etc.).
-- A gap of more than 7 days between CreationDate and ModDate is suspicious.
-- A gap of more than 30 days, or a ModDate that falls after the report's own stated date, is strong evidence of post-generation editing — call it tampered.
-- Multiple content streams on a single page means text or data was overlaid using a PDF editor after the original was generated — call it tampered.
-- No metadata at all means it was re-exported or stripped — this is also suspicious because legitimate lab PDFs always carry metadata.
+- Only compare CreationDate vs ModDate. Do NOT compare PDF dates against the analysis date written inside the document — labs often generate the PDF days or weeks after the analysis.
+- If the Producer is a browser engine (Skia/PDF, pdfium, Chrome, wkhtmltopdf, Headless Chrome, PDFium): this means the lab portal generates PDFs via browser print. CreationDate = ModDate = download time is completely normal. Do NOT flag these on date gaps alone — focus only on content/visual forensics.
+- If the Producer is native lab software (LabWare, LIMS, Adobe Acrobat, etc.): CreationDate and ModDate should match or be within a few days. A gap over 30 days is suspicious; over 60 days is tampered.
+- Multiple content streams on a single page means text or data was overlaid using a PDF editor — call it tampered.
+- No metadata at all: suspicious, but not tampered on its own.
 
 A [PDF FORENSICS] block will be provided alongside the document. Treat it as hard binary evidence — it cannot be faked by editing the visible content. When a FORENSIC FLAG is present, set verdict to "tampered" or "suspicious" (never "authentic" or "minor_concerns") and explain exactly what the flag means in plain language in the summary and signals.
 
-Respond with ONLY a single JSON object and nothing else, using exactly this shape:
+Keep everything short. One sentence per field. No hedging, no repetition.
+
+Respond with ONLY a single JSON object:
 {
   "verdict": "authentic" | "minor_concerns" | "suspicious" | "tampered" | "inconclusive",
   "confidence": <integer 0-100>,
-  "headline": "<one short sentence verdict>",
-  "summary": "<2-4 sentence plain-language explanation>",
+  "headline": "<one sentence — state the verdict plainly>",
+  "summary": "<2 sentences max — lead with the strongest finding>",
   "checks": [
-    { "id": "structure", "label": "Template & structure integrity", "status": "pass" | "warn" | "fail" | "na", "detail": "<what you observed>" },
+    { "id": "structure", "label": "Template & structure integrity", "status": "pass" | "warn" | "fail" | "na", "detail": "<one short phrase — what you saw, nothing else>" },
     { "id": "typography", "label": "Typography & font consistency", "status": "...", "detail": "..." },
     { "id": "artifacts", "label": "Digital editing artifacts", "status": "...", "detail": "..." },
     { "id": "metadata", "label": "Metadata & timestamp coherence", "status": "...", "detail": "..." },
@@ -152,10 +158,10 @@ Respond with ONLY a single JSON object and nothing else, using exactly this shap
     { "id": "signature", "label": "Signature / stamp integrity", "status": "...", "detail": "..." },
     { "id": "data", "label": "Data consistency (values & units)", "status": "...", "detail": "..." }
   ],
-  "signals": ["<specific observation>", "..."],
-  "recommendation": "<what the reviewer should do next>",
-  "company": "<name of the VENDOR or BRAND selling this product — NOT the testing lab that issued the report — or null if unclear>",
-  "product": "<compound or product name, or null>"
+  "signals": ["<one short fact>", "<one short fact>"],
+  "recommendation": "<one sentence — what to do next>",
+  "company": "<VENDOR or BRAND selling this product — not the lab — or null>",
+  "product": "<compound name, or null>"
 }
 Always include all seven checks. Use "na" only when the document genuinely lacks that element.`;
 

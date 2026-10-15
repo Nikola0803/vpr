@@ -252,7 +252,10 @@ export default function VerifyTool() {
                         Drop your Certificate of Analysis here
                       </div>
                       <div className="text-xs text-slate-500">
-                        or <span className="text-teal-700 font-semibold">browse files</span> · PDF, JPG, PNG, WEBP · 12MB max
+                        or <span className="text-teal-700 font-semibold">browse files</span> · 12MB max
+                      </div>
+                      <div className="mt-2 text-[11px] text-amber-700 bg-amber-50 border border-amber-200 rounded px-2 py-1 inline-block">
+                        Upload the original PDF for full binary forensics — image scans skip metadata analysis
                       </div>
                     </div>
                   )}
