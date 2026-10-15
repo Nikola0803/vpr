@@ -33,7 +33,7 @@ export const tiers: Tier[] = [
     id: 'starter',
     name: 'Starter',
     popular: false,
-    monthly: 250,
+    monthly: 149,
     yearly: 99,
     desc: 'A low-commitment way to start collecting and displaying compliant reviews for one store.',
     features: [
@@ -53,7 +53,7 @@ export const tiers: Tier[] = [
     id: 'growth',
     name: 'Growth',
     popular: true,
-    monthly: 500,
+    monthly: 299,
     yearly: 199,
     desc: 'Everything you need to collect, verify, and display compliant reviews for one store.',
     features: [
@@ -75,7 +75,7 @@ export const tiers: Tier[] = [
     id: 'professional',
     name: 'Professional',
     popular: false,
-    monthly: 750,
+    monthly: 499,
     yearly: 299,
     desc: 'For vendors running multiple stores who want white-label branding and priority support.',
     features: [
@@ -164,7 +164,7 @@ export const pricingFaqs = [
   },
   {
     q: 'How much do I save on the yearly plan?',
-    a: 'Yearly billing takes roughly 60% off the monthly price, the equivalent of paying for about five months. The exact saving is shown on every plan when you flip the toggle to yearly, and it is billed once per year.',
+    a: 'Yearly billing saves up to 40% versus monthly, and the exact saving is shown on every plan when you flip the toggle. Billing is charged once per year as a single payment.',
   },
   {
     q: 'Can I switch plans at any time?',

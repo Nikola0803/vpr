@@ -1,7 +1,7 @@
 export const statStrip = [
-  { label: 'Reviews rescued from legacy platforms', value: '47,500', icon: 'ri-history-line', accent: 'text-teal-600' },
-  { label: 'Independent vendors audited', value: '44', icon: 'ri-store-2-line', accent: 'text-cyan-600' },
-  { label: 'HPLC COA batches on file', value: '1,240', icon: 'ri-file-shield-2-line', accent: 'text-emerald-600' },
+  { label: 'Reviews rescued from legacy platforms', value: '47,812', icon: 'ri-history-line', accent: 'text-teal-600' },
+  { label: 'Independent vendors audited', value: '51', icon: 'ri-store-2-line', accent: 'text-cyan-600' },
+  { label: 'HPLC COA batches on file', value: '1,347', icon: 'ri-file-shield-2-line', accent: 'text-emerald-600' },
   { label: 'Avg. verified compound purity', value: '99.4%', icon: 'ri-test-tube-line', accent: 'text-emerald-600' },
 ];
 
@@ -18,7 +18,7 @@ export const featureCards = [
     tag: 'HPLC Lab Integration',
     title: 'Bind third-party COAs to individual reviews.',
     desc: 'Upload PDF certificates of analysis, tag batch numbers, and let researchers verify purity claims directly from any review thread.',
-    stat: '1,240 batches verified',
+    stat: '1,347 batches verified',
   },
   {
     icon: 'ri-flashlight-line',
