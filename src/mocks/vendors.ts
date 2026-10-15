@@ -211,25 +211,23 @@ const seeds: VendorSeed[] = [
   {
     slug: 'my-secret-vitality',
     name: 'My Secret Vitality',
-    rank: 2,
     init: 'MV',
     domain: 'mysecretvitality.com',
     country: 'United States',
     region: 'USA Domestic',
-    score: 4.9,
-    reviews: 333,
-    ship: 2.7,
+    score: 3.2,
+    reviews: 14,
+    ship: 4.1,
     compounds: ['Tirzepatide', 'Semaglutide', 'BPC-157', 'NAD+', 'GHK-Cu'],
     registered: 'Mar 2024',
-    flags: ['coa', 'lab', 'qr'],
-    response: 93,
+    flags: [],
+    verified: false,
+    response: 61,
     logo: 'https://storage.helloreaddy.io/project_files/854b3747-006c-42e1-abd2-bcba4d069e28/3d74ee67-cd16-41ef-b1e8-651df1e4843d_compressed_logo-transparent.webp',
     logoDark: false,
     logoBg: 'bg-emerald-100',
     about:
-      'My Secret Vitality is a US-based research supplier built around a calm, documentation-first approach to high-purity, research-use-only compounds. The catalogue centres on Tirzepatide, Semaglutide, BPC-157, NAD+ and GHK-Cu. Every production lot is tested by an independent third-party laboratory, with certificates of analysis published openly and a scannable QR code tied to each vial\'s batch report. Orders ship domestically and are labelled strictly for research use only. The vendor is an audited, verified merchant on this platform.',
-    aiSummary:
-      'Considering {count} reviews, researchers describe My Secret Vitality as a dependable US-domestic source with a calm, documentation-first approach. Reviewers frequently note that orders arrive clearly marked for research use only, with the matching certificate of analysis published before checkout and easy to check against an independent panel. Many are especially happy that the QR code printed on each vial resolves straight to the correct batch report.\n\nResearchers also highlight the steady purity from lot to lot across their most-requested lines such as Tirzepatide, BPC-157 and NAD+, alongside tidy, well-protected packaging. Support is repeatedly praised for answering batch questions the same day and sharing the full analytical packet on request. Overall, the open documentation and clear labelling make My Secret Vitality a reliable choice for ongoing research supply.',
+      'My Secret Vitality is a US-based supplier of research compounds. The vendor does not currently hold verified certification on this platform. Independent review verification is ongoing.',
   },
   {
     slug: 'ion-peptide',
@@ -440,6 +438,25 @@ const seeds: VendorSeed[] = [
     logoDark: true,
     about:
       'Aera Peptides is a Canada-based supplier of research peptides shipping across North America. The catalogue centres on Tirzepatide, BPC-157, MOTS-C and Retatrutide. Batches are verified by an independent third-party laboratory with certificates of analysis published for buyers to review, and the company is steadily building out its public review history. The vendor is an audited, verified merchant on this platform.',
+  },
+
+  // ---- K9 / Veterinary -------------------------------------------------------
+  {
+    slug: 'zoonetics',
+    name: 'Zoonetics',
+    init: 'ZN',
+    domain: 'zoonetics.co',
+    country: 'United States',
+    region: 'USA Domestic',
+    score: 4.8,
+    reviews: 31,
+    ship: 3.1,
+    compounds: ['BPC-157', 'TB-500', 'GHK-Cu', 'Thymosin Alpha-1'],
+    registered: 'Jan 2025',
+    flags: ['coa', 'lab'],
+    response: 91,
+    about:
+      'Zoonetics is a US-based supplier of research-grade peptides for veterinary science and canine research. The catalogue is built around compounds most cited in peer-reviewed K9 studies: BPC-157, TB-500, GHK-Cu and Thymosin Alpha-1. Every production lot is tested by an independent third-party laboratory with certificates of analysis published openly. Products are labelled strictly for research use only and ship domestically.',
   },
 ];
 
