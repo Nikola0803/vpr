@@ -267,6 +267,14 @@ export default function VendorProfile() {
           {tab === 'reviews' ? (
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-6">
               <div className="space-y-5">
+                {/* Moderation notice */}
+                <div className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 flex items-start gap-2.5">
+                  <i className="ri-time-line text-amber-600 text-base mt-0.5 shrink-0"></i>
+                  <p className="text-xs text-amber-800 leading-relaxed">
+                    <span className="font-semibold">Reviews are being manually approved</span> — their number can increase or decrease.
+                    Final reviews and their textual content will be shown after migration and approval by the VPR team.
+                  </p>
+                </div>
                 <div className="flex flex-wrap gap-2">
                   {reviewFilters.map((f) => (
                     <button
