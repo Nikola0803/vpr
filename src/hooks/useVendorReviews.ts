@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
 import type { VendorReview } from '@/mocks/vendorReviews';
+import { vendorReviewsBySlug as mockReviews } from '@/mocks/vendorReviews';
 
 interface VendorReviewRow {
   id: number;
@@ -83,7 +84,9 @@ export function useVendorReviews(vendorSlug: string) {
         .eq('status', 'published')
         .order('created_at', { ascending: false });
       if (err) throw err;
-      setReviews((data as VendorReviewRow[] | null ?? []).map(mapReviewRow));
+      const rows = (data as VendorReviewRow[] | null ?? []).map(mapReviewRow);
+      // Fall back to seeded mock data while the live DB is being migrated.
+      setReviews(rows.length > 0 ? rows : (mockReviews[vendorSlug] ?? []));
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Could not load reviews');
     } finally {
