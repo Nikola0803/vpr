@@ -71,15 +71,7 @@ export default function Dashboard() {
                 {portalName}
               </h1>
               <div className="mt-2 flex flex-wrap items-center gap-3 text-xs">
-                <span className="flex items-center gap-1.5 text-emerald-600 font-mono">
-                  <i className="ri-shield-check-fill"></i>Verified Merchant
-                </span>
-                <span className="text-slate-400">·</span>
                 <span className="text-slate-600 font-mono">{portalDomain}</span>
-                <span className="text-slate-400">·</span>
-                <span className="text-cyan-700 font-mono px-2 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/25">
-                  Growth Plan
-                </span>
               </div>
             </div>
             <div className="flex items-center gap-3">
@@ -130,10 +122,10 @@ export default function Dashboard() {
             <div className="glass rounded-2xl p-5 mt-5">
               <div className="text-[11px] font-mono uppercase tracking-wider text-slate-500 mb-2">Invite Quota</div>
               <div className="h-2 rounded-full bg-slate-100 overflow-hidden">
-                <div className="h-full rounded-full bg-gradient-to-r from-cyan-500 to-teal-500" style={{ width: '65%' }}></div>
+                <div className="h-full rounded-full bg-slate-200" style={{ width: '0%' }}></div>
               </div>
-              <div className="mt-2 text-xs text-slate-600">
-                <span className="text-slate-900 font-mono">1,942</span> / 3,000 used
+              <div className="mt-2 text-xs text-slate-500 italic">
+                Available after store connection
               </div>
               <button className="mt-4 w-full whitespace-nowrap text-xs font-semibold px-3 py-2.5 rounded-md border border-cyan-500/30 text-cyan-700 hover:bg-cyan-500/10 transition-all">
                 Buy Overage Pack
@@ -144,6 +136,14 @@ export default function Dashboard() {
           </aside>
 
           <div>
+            {/* Demo data notice */}
+            <div className="mb-6 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 flex items-start gap-3">
+              <i className="ri-test-tube-line text-amber-600 text-base mt-0.5 shrink-0"></i>
+              <p className="text-xs text-amber-800 leading-relaxed">
+                <span className="font-semibold">This is a preview dashboard.</span> All metrics, charts, and data shown below are sample figures — not your real account data. Connect your store and complete onboarding to start seeing live numbers.
+              </p>
+            </div>
+
             <div className="mb-6">
               <h2 className="font-display font-bold text-slate-900 text-2xl tracking-tight">{meta.title}</h2>
               <p className="mt-1 text-sm text-slate-600">{meta.desc}</p>
