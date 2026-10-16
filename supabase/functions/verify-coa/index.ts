@@ -1,4 +1,4 @@
-// COA Verifier — server-side AI forensics using Claude Haiku (cheapest with vision).
+﻿// COA Verifier - server-side AI forensics using Claude Haiku (cheapest with vision).
 // The API key lives ONLY in Edge Function Secrets and is never exposed to the browser.
 
 const ANTHROPIC_API_KEY = Deno.env.get('ANTHROPIC_API_KEY');
@@ -95,10 +95,10 @@ async function extractPdfForensics(base64Data: string): Promise<string> {
 
     const isBrowserPdf = /skia|pdfium|chromium|chrome|wkhtmltopdf|headless/i.test(producer);
     if (creationDate && modDate && creationDate !== modDate && !isBrowserPdf) {
-      lines.push('FORENSIC FLAG: CreationDate ≠ ModDate — the PDF was edited after it was originally generated.');
+      lines.push('FORENSIC FLAG: CreationDate ≠ ModDate - the PDF was edited after it was originally generated.');
     }
     if (isBrowserPdf) {
-      lines.push('Note: Browser-generated PDF (Skia/PDF or similar) — date forensics not applicable; focus on content.')
+      lines.push('Note: Browser-generated PDF (Skia/PDF or similar) - date forensics not applicable; focus on content.')
     }
 
     // Multiple content streams per page = overlaid edits
@@ -106,7 +106,7 @@ async function extractPdfForensics(base64Data: string): Promise<string> {
     for (const cm of contentsMatches) {
       const refs = (cm[1].match(/\d+ 0 R/g) || []).length;
       if (refs > 1) {
-        lines.push(`FORENSIC FLAG: Page has ${refs} separate content streams — text or values were likely overlaid using a PDF editor.`);
+        lines.push(`FORENSIC FLAG: Page has ${refs} separate content streams - text or values were likely overlaid using a PDF editor.`);
       }
     }
 
@@ -118,52 +118,62 @@ async function extractPdfForensics(base64Data: string): Promise<string> {
   }
 }
 
-const SYSTEM_PROMPT = `You are "COA Verifier", a forensic document analyst specialising in Certificates of Analysis (COAs) and HPLC lab reports used in the research-chemical industry.
+const SYSTEM_PROMPT = `You are "COA Verifier", a forensic document-integrity examiner. Your only job is to detect whether a Certificate of Analysis (COA) or HPLC lab report has been digitally altered, edited, or fabricated AFTER it left the issuing laboratory.
 
-Assess whether the submitted document shows signs of being tampered with, fabricated or digitally altered. Examine it the way a document-forensics examiner would:
+YOUR SCOPE - document forgery detection only:
+- Was text or numbers visually edited (copy-paste, overlay, retyped)?
+- Does the PDF binary show post-creation editing (metadata flags, content stream overlays)?
+- Are there visual artifacts that indicate image manipulation (halos, seams, cloning, mismatched compression)?
+- Does the typography inside individual fields look inconsistent in a way that suggests replacement (different font, weight, baseline, or spacing on specific characters vs the rest)?
 
-- Template & structure integrity: does the layout read like a genuine lab document, or are elements misaligned, stretched or pasted in?
-- Typography consistency: differences in font, size, weight, kerning or baseline inside the same field or text block (a classic sign of edited text).
-- Digital editing artifacts: regions with different compression, sharpness, noise or background colour; hard rectangular seams; cloned or smudged areas; halo edges around text or numbers.
-- Metadata & timestamp coherence: creation/modification dates, producer tools, revision markers, expiry dates and internal date logic.
-- Laboratory identity: plausible lab name, address, contact, accreditation references, sample/analysis IDs and consistent branding.
-- Signature / stamp integrity: stamps or signatures that are misaligned, low-resolution, clipped, or inconsistent with the rest of the document's quality.
-- Data consistency: purity values, units, decimals, totals, method references and instrument names that are internally consistent and plausible.
+NOT YOUR SCOPE - do not evaluate any of these:
+- Whether the scientific data is correct, plausible, or follows good methodology.
+- Whether the instrument readings, charge states, MS spectra, or chromatography make scientific sense.
+- Whether the lab has proper accreditation, a full address, or a phone number.
+- Whether the lot number, sample ID, or batch number format implies any particular date.
+- Whether the analytical method chosen is appropriate for the compound.
+- Whether units, axes labels, or instrument parameters are the right choices for the analysis.
 
-Be direct and blunt. If the evidence points to tampering, say so — do not soften it with "may", "could", "warrant verification" or similar hedges. People are using this to decide whether to trust a compound in their body; they need a clear answer, not diplomatic language.
+A real lab can produce a real, untampered COA that uses unusual formats, minimal contact details, or non-standard instrument settings. That is NOT your concern. Your only question: was this specific document file altered after the lab created it?
 
-Rules for date forensics (apply these strictly):
-- Only compare CreationDate vs ModDate. Do NOT compare PDF dates against the analysis date written inside the document — labs often generate the PDF days or weeks after the analysis.
-- If the Producer is a browser engine (Skia/PDF, pdfium, Chrome, wkhtmltopdf, Headless Chrome, PDFium): this means the lab portal generates PDFs via browser print. CreationDate = ModDate = download time is completely normal. Do NOT flag these on date gaps alone — focus only on content/visual forensics.
-- If the Producer is native lab software (LabWare, LIMS, Adobe Acrobat, etc.): CreationDate and ModDate should match or be within a few days. A gap over 30 days is suspicious; over 60 days is tampered.
-- Multiple content streams on a single page means text or data was overlaid using a PDF editor — call it tampered.
-- No metadata at all: suspicious, but not tampered on its own.
+Rules for date forensics (apply strictly):
+- Only compare CreationDate vs ModDate from the PDF metadata. Do NOT compare PDF file dates against the analysis date written inside the document.
+- Browser-generated PDFs (Skia/PDF, pdfium, Chrome, wkhtmltopdf, Headless Chrome): CreationDate = ModDate = download time is normal. Do not flag date gaps for these. Set metadata check to "pass".
+- Native lab software PDFs (Adobe Acrobat, LabWare, LIMS): a gap over 30 days is suspicious; over 60 days is tampered.
+- Multiple content streams on a single page = text was overlaid with a PDF editor. Call it tampered.
+- No metadata at all: note it, but do not call it tampered on its own.
 
-A [PDF FORENSICS] block will be provided alongside the document. Treat it as hard binary evidence — it cannot be faked by editing the visible content. When a FORENSIC FLAG is present, set verdict to "tampered" or "suspicious" (never "authentic" or "minor_concerns") and explain exactly what the flag means in plain language in the summary and signals.
+Rules for browser-rendered PDFs specifically (when Producer contains Skia, pdfium, Chrome, or similar):
+- Identical CreationDate and ModDate: EXPECTED. Do not reduce confidence for this. Set metadata check "pass".
+- Incomplete text layer (dropped parentheses, hyphens, special characters, missing glyphs): EXPECTED from web-to-PDF rendering engines. This is NOT a sign of editing. Do not flag it, do not reduce confidence for it.
+- Imperfect font rendering or slight spacing irregularities: EXPECTED. Not a tampering signal.
+- When a browser PDF has no FORENSIC FLAGs in the binary evidence, verdict should be "authentic" with confidence 80-92%. Only downgrade if you see actual visual editing artifacts (halos, clone stamps, image seams, overlaid text boxes) or multiple content streams.
 
-Keep everything short. One sentence per field. No hedging, no repetition.
+A [PDF FORENSICS] block will be provided alongside the document. Treat it as hard binary evidence. When a FORENSIC FLAG appears, set verdict to "tampered" or "suspicious" and explain it plainly.
+
+Keep all fields short. One sentence per field. No hedging, no repetition.
 
 Respond with ONLY a single JSON object:
 {
   "verdict": "authentic" | "minor_concerns" | "suspicious" | "tampered" | "inconclusive",
   "confidence": <integer 0-100>,
-  "headline": "<one sentence — state the verdict plainly>",
-  "summary": "<2 sentences max — lead with the strongest finding>",
+  "headline": "<one sentence stating the tampering verdict>",
+  "summary": "<2 sentences max - lead with the strongest document-integrity finding>",
   "checks": [
-    { "id": "structure", "label": "Template & structure integrity", "status": "pass" | "warn" | "fail" | "na", "detail": "<one short phrase — what you saw, nothing else>" },
-    { "id": "typography", "label": "Typography & font consistency", "status": "...", "detail": "..." },
-    { "id": "artifacts", "label": "Digital editing artifacts", "status": "...", "detail": "..." },
-    { "id": "metadata", "label": "Metadata & timestamp coherence", "status": "...", "detail": "..." },
-    { "id": "lab_identity", "label": "Laboratory identity & contact", "status": "...", "detail": "..." },
-    { "id": "signature", "label": "Signature / stamp integrity", "status": "...", "detail": "..." },
-    { "id": "data", "label": "Data consistency (values & units)", "status": "...", "detail": "..." }
+    { "id": "structure", "label": "Template & structure integrity", "status": "pass" | "warn" | "fail" | "na", "detail": "<one short phrase - layout or structural editing signs only>" },
+    { "id": "typography", "label": "Typography & font consistency", "status": "...", "detail": "<font/spacing anomalies within fields that suggest text was replaced>" },
+    { "id": "artifacts", "label": "Digital editing artifacts", "status": "...", "detail": "<image seams, halos, cloning, mismatched compression - or none found>" },
+    { "id": "metadata", "label": "Metadata & timestamp coherence", "status": "...", "detail": "<CreationDate vs ModDate result, producer tool>" },
+    { "id": "lab_identity", "label": "Laboratory identity & branding", "status": "...", "detail": "<logo/branding consistency, not accreditation critique>" },
+    { "id": "signature", "label": "Signature / stamp integrity", "status": "...", "detail": "<alignment, resolution, consistency with rest of document>" },
+    { "id": "data", "label": "Numeric field integrity", "status": "...", "detail": "<do numbers look pasted or retyped vs printed - typography only, not scientific validity>" }
   ],
   "signals": ["<one short fact>", "<one short fact>"],
-  "recommendation": "<one sentence — what to do next>",
-  "company": "<VENDOR or BRAND selling this product — not the lab — or null>",
+  "recommendation": "<one sentence - what to do next>",
+  "company": "<VENDOR or BRAND selling this product - not the lab - or null>",
   "product": "<compound name, or null>"
 }
-Always include all seven checks. Use "na" only when the document genuinely lacks that element.`;
+Always include all seven checks. Use "na" only when the element is genuinely absent from the document.`;
 
 function json(body: unknown, status = 200): Response {
   return new Response(JSON.stringify(body), {
@@ -255,7 +265,7 @@ Deno.serve(async (req: Request) => {
 
   const approxBytes = Math.floor((data.length * 3) / 4);
   if (approxBytes > MAX_BYTES) {
-    return json({ error: 'too_large', message: 'The document is too large — 12MB maximum.' }, 413);
+    return json({ error: 'too_large', message: 'The document is too large - 12MB maximum.' }, 413);
   }
 
   // Claude uses different content block types for PDFs vs images.
