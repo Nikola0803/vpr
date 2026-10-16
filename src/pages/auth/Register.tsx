@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { FormEvent } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import AuthShell from '@/pages/auth/components/AuthShell';
 import RoleSelect from '@/pages/auth/components/RoleSelect';
 import { useAuth } from '@/context/AuthContext';
@@ -10,7 +10,6 @@ const inputClass =
   'w-full rounded-md bg-slate-100 border border-slate-200 px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/40 transition-all';
 
 export default function Register() {
-  const navigate = useNavigate();
   const { signUp } = useAuth();
   const [role, setRole] = useState<Role>('vendor');
   const [name, setName] = useState('');
@@ -18,8 +17,8 @@ export default function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-
   const [loading, setLoading] = useState(false);
+  const [confirmed, setConfirmed] = useState(false);
 
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -43,13 +42,57 @@ export default function Register() {
     setLoading(true);
     try {
       await signUp({ name: name.trim(), email: email.trim().toLowerCase(), password, role, company: company.trim() });
-      navigate(role === 'vendor' ? '/claim' : '/vendors');
+      setConfirmed(true);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Registration failed. Please try again.');
     } finally {
       setLoading(false);
     }
   };
+
+  if (confirmed) {
+    return (
+      <AuthShell
+        eyebrow="Account created"
+        title="Check your inbox"
+        subtitle=""
+        footer={
+          <>
+            Wrong address?{' '}
+            <button onClick={() => setConfirmed(false)} className="text-cyan-700 hover:text-cyan-800 font-medium">
+              Go back
+            </button>
+          </>
+        }
+      >
+        <div className="space-y-5">
+          <div className="flex flex-col items-center gap-4 py-4">
+            <div className="w-16 h-16 rounded-2xl bg-teal-50 border border-teal-200 flex items-center justify-center">
+              <i className="ri-mail-check-line text-3xl text-teal-600"></i>
+            </div>
+            <div className="text-center">
+              <p className="text-sm text-slate-700 leading-relaxed">
+                We sent a verification link to <span className="font-semibold text-slate-900">{email}</span>.
+              </p>
+              <p className="mt-2 text-sm text-slate-600">
+                Click the link in that email to activate your account. Once verified, you will be logged in automatically.
+              </p>
+            </div>
+          </div>
+          <div className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-xs text-amber-800 leading-relaxed">
+            <i className="ri-spam-2-line mr-1.5"></i>
+            If you don't see it within a minute, check your spam or junk folder.
+          </div>
+          <Link
+            to="/signin"
+            className="block w-full text-center whitespace-nowrap px-5 py-3 rounded-md text-sm font-semibold text-slate-700 border border-slate-200 hover:border-teal-400 hover:bg-teal-50 transition-all"
+          >
+            Back to sign in
+          </Link>
+        </div>
+      </AuthShell>
+    );
+  }
 
   return (
     <AuthShell
