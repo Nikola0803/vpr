@@ -7,15 +7,12 @@ import VerifyTool from '@/pages/coaVerifier/components/VerifyTool';
 import WhatWeDetect from '@/pages/coaVerifier/components/WhatWeDetect';
 import HowItWorks from '@/pages/coaVerifier/components/HowItWorks';
 import VerifierFaq from '@/pages/coaVerifier/components/VerifierFaq';
-import ShameWall from '@/pages/coaVerifier/components/ShameWall';
-
 export default function CoaVerifier() {
   return (
     <div className="min-h-screen bg-white text-slate-800 font-sans">
       <Navbar />
       <VerifierHero />
       <VerifyTool />
-      <ShameWall />
       <WhatWeDetect />
       <HowItWorks />
       <RuoCompliance />
