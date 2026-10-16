@@ -18,6 +18,7 @@ import Dashboard from "@/pages/dashboard/page";
 import RateReview from "@/pages/rate/page";
 import ReviewModeration from "@/pages/admin/page";
 import CoaVerifier from "@/pages/coaVerifier/page";
+import ScamAlerts from "@/pages/scamAlerts/page";
 
 const routes: RouteObject[] = [
   {
@@ -51,6 +52,10 @@ const routes: RouteObject[] = [
   {
     path: "/coa-verifier",
     element: <CoaVerifier />,
+  },
+  {
+    path: "/scam-alerts",
+    element: <ScamAlerts />,
   },
   {
     path: "/certification",

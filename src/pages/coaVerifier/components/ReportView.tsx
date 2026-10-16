@@ -67,13 +67,13 @@ export default function ReportView({
 
   const submitReport = () => {
     if (!reportCompany.trim()) return;
-    supabase.from('fake_coas').insert({
-      company: reportCompany.trim(),
-      product: reportProduct.trim() || null,
-      verdict: report.verdict,
+    supabase.from('flagged_coas').insert({
+      file_name: report.product ? `${report.product} COA` : 'Submitted COA',
+      compound: reportProduct.trim() || report.product || null,
+      vendor_name: reportCompany.trim(),
+      verdict: report.verdict as 'suspicious' | 'tampered',
       confidence: report.confidence,
-      headline: report.headline,
-      user_reported: true,
+      status: 'pending',
     }).then(() => {}).catch(() => {});
     setReportDone(true);
   };

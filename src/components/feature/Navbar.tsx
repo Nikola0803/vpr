@@ -13,6 +13,8 @@ const baseLinks = [
   { to: '/pricing', label: 'Pricing' },
 ];
 
+const SCAM_ALERT_LINK = { to: '/scam-alerts', label: 'Scam Alerts' };
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -66,6 +68,17 @@ export default function Navbar() {
               {l.label}
             </Link>
           ))}
+          <Link
+            to={SCAM_ALERT_LINK.to}
+            className={`flex items-center gap-1.5 px-3.5 py-2 text-sm font-semibold rounded-full transition-all whitespace-nowrap ${
+              pathname === SCAM_ALERT_LINK.to
+                ? 'bg-red-100 text-red-700'
+                : 'bg-red-50 text-red-600 hover:bg-red-100'
+            }`}
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
+            {SCAM_ALERT_LINK.label}
+          </Link>
         </nav>
 
         <div className="hidden lg:flex items-center gap-2">
@@ -185,6 +198,14 @@ export default function Navbar() {
               {l.label}
             </Link>
           ))}
+          <Link
+            to={SCAM_ALERT_LINK.to}
+            onClick={() => setOpen(false)}
+            className="flex items-center gap-2 px-3 py-2 text-sm font-semibold text-red-600 bg-red-50 hover:bg-red-100 rounded-md"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
+            {SCAM_ALERT_LINK.label}
+          </Link>
           <Link
             to={primary.to}
             onClick={() => setOpen(false)}
