@@ -5,15 +5,12 @@ import Logo from '@/components/feature/Logo';
 
 const baseLinks = [
   { to: '/vendors', label: 'Directory' },
-  { to: '/certification', label: 'Certification' },
   { to: '/coa-verifier', label: 'COA Verifier' },
-  { to: '/migration', label: 'Review Migration' },
-  { to: '/seo', label: 'SEO' },
   { to: '/blog', label: 'Blog' },
   { to: '/pricing', label: 'Pricing' },
 ];
 
-const SCAM_ALERT_LINK = { to: '/scam-alerts', label: 'Scam Alerts' };
+const SCAM_ALERT_LINK = { to: '/peptide-scams', label: 'Peptide Scams' };
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);

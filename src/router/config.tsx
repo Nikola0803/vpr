@@ -1,4 +1,5 @@
 import type { RouteObject } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import NotFound from "@/pages/NotFound";
 import Home from "@/pages/home/page";
 import Vendors from "@/pages/vendors/page";
@@ -54,8 +55,12 @@ const routes: RouteObject[] = [
     element: <CoaVerifier />,
   },
   {
-    path: "/scam-alerts",
+    path: "/peptide-scams",
     element: <ScamAlerts />,
+  },
+  {
+    path: "/scam-alerts",
+    element: <Navigate to="/peptide-scams" replace />,
   },
   {
     path: "/certification",

@@ -12,18 +12,15 @@ export default function Footer() {
         { label: 'SEO & Search Visibility', to: '/seo' },
         { label: 'Review Migration', to: '/migration' },
         { label: 'Claim Vendor Portal', to: '/claim' },
-        { label: 'Dashboard', to: '/dashboard' },
       ],
     },
     {
-      title: 'Trust Layer',
+      title: 'Trust & Safety',
       links: [
-        { label: 'Certification Standard', to: '/certification' },
+        { label: 'Peptide Scams Registry', to: '/peptide-scams' },
         { label: 'COA Verifier', to: '/coa-verifier' },
-        { label: 'Verify a Seal', to: '/certification#verify' },
+        { label: 'Certification Standard', to: '/certification' },
         { label: 'How Verification Works', to: '/verification' },
-        { label: 'HPLC COA Vault', to: '/vendors' },
-        { label: 'Cryptographic Ledger', to: '/' },
         { label: 'Review Guidelines', to: '/review-guidelines' },
       ],
     },
@@ -32,18 +29,7 @@ export default function Footer() {
       links: [
         { label: 'Blog & Guides', to: '/blog' },
         { label: 'Review Migration', to: '/migration' },
-        { label: 'Custom & Headless Setup', to: '/migration#integrations' },
-        { label: 'WordPress Plugin', to: '/migration#integrations' },
-        { label: 'Third-Party Platforms', to: '/migration#integrations' },
-      ],
-    },
-    {
-      title: 'Company',
-      links: [
-        { label: 'About', to: '/' },
-        { label: 'Contact Support', to: '/' },
-        { label: 'Terms of Service', to: '/' },
-        { label: 'Privacy Policy', to: '/' },
+        { label: 'Write a Review', to: '/write-review' },
       ],
     },
   ];
@@ -70,7 +56,7 @@ export default function Footer() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           <div className="lg:col-span-2">
             <Logo />
             <p className="mt-5 text-sm text-slate-600 leading-relaxed max-w-sm">
