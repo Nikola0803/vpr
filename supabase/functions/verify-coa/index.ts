@@ -141,7 +141,7 @@ Rules for date forensics (apply strictly):
 - Browser-generated PDFs (Skia/PDF, pdfium, Chrome, wkhtmltopdf, Headless Chrome): CreationDate = ModDate = download time is normal. Do not flag date gaps for these. Set metadata check to "pass".
 - Native lab software PDFs (Adobe Acrobat, LabWare, LIMS): a gap over 30 days is suspicious; over 60 days is tampered.
 - Multiple content streams on a single page = text was overlaid with a PDF editor. Call it tampered.
-- No metadata at all: note it, but do not call it tampered on its own.
+- No metadata at all: set verdict "suspicious", confidence floor 75. Professional lab software (Adobe Acrobat, LabWare, any LIMS) always embeds metadata. Absence is consistent with re-export after editing to erase history. State this clearly in the headline.
 
 Rules for browser-rendered PDFs specifically (when Producer contains Skia, pdfium, Chrome, or similar):
 - Identical CreationDate and ModDate: EXPECTED. Do not reduce confidence for this. Set metadata check "pass".
