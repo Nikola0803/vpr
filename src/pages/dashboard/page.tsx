@@ -136,14 +136,6 @@ export default function Dashboard() {
           </aside>
 
           <div>
-            {/* Demo data notice */}
-            <div className="mb-6 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 flex items-start gap-3">
-              <i className="ri-test-tube-line text-amber-600 text-base mt-0.5 shrink-0"></i>
-              <p className="text-xs text-amber-800 leading-relaxed">
-                <span className="font-semibold">This is a preview dashboard.</span> All metrics, charts, and data shown below are sample figures — not your real account data. Connect your store and complete onboarding to start seeing live numbers.
-              </p>
-            </div>
-
             <div className="mb-6">
               <h2 className="font-display font-bold text-slate-900 text-2xl tracking-tight">{meta.title}</h2>
               <p className="mt-1 text-sm text-slate-600">{meta.desc}</p>
