@@ -1,5 +1,18 @@
 import { useState } from 'react';
-import { widgetTypes, widgetThemes } from '@/mocks/dashboard';
+
+const widgetTypes = [
+  { id: 'float', name: 'Floating Trust Badge', desc: 'Fixed corner badge, always visible.', icon: 'ri-pushpin-2-line' },
+  { id: 'inline', name: 'Inline Grid Carousel', desc: 'Embedded review grid on product pages.', icon: 'ri-layout-grid-line' },
+  { id: 'sidebar', name: 'Sidebar Micro-Card', desc: 'Compact score card for sidebars.', icon: 'ri-layout-right-line' },
+  { id: 'checkout', name: 'Checkout Trust Bar', desc: 'Thin verified strip above checkout CTA.', icon: 'ri-shopping-bag-3-line' },
+];
+
+const widgetThemes = [
+  { id: 'obsidian', name: 'Obsidian', bg: '#07090E', fg: '#FFFFFF', accent: '#0EA5E9' },
+  { id: 'graphite', name: 'Graphite', bg: '#141B2D', fg: '#E2E8F0', accent: '#14B8A6' },
+  { id: 'ivory', name: 'Ivory', bg: '#F8FAFC', fg: '#0F172A', accent: '#0EA5E9' },
+  { id: 'mint', name: 'Clinical Mint', bg: '#ECFDF5', fg: '#064E3B', accent: '#10B981' },
+];
 
 export default function EmbedStudio() {
   const [type, setType] = useState('inline');

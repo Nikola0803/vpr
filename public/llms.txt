@@ -1,0 +1,37 @@
+# Verified Peptide Reviews (VPR)
+
+> The independent trust and verification platform for the research peptide industry.
+
+VPR collects and publishes verified reviews of peptide vendors, authenticates lab certificates of analysis (COAs), and issues vendor trust certifications. All reviews are submitted by real researchers and subject to moderation under published guidelines. The platform serves the research community only - all compounds are sold for research use only (RUO), not for human consumption.
+
+## Key pages
+
+- [Home](https://www.verifiedpeptidereviews.com/): Platform overview, trust statistics, featured vendors, COA verifier CTA.
+- [Vendor Directory](https://www.verifiedpeptidereviews.com/vendors): Searchable list of all reviewed peptide vendors with trust scores, review counts, and certification status.
+- [Vendor Profiles](https://www.verifiedpeptidereviews.com/vendors/{slug}): Individual vendor pages with verified reviews, COA uploads, batch history, and trust score breakdown.
+- [COA Verifier](https://www.verifiedpeptidereviews.com/coa-verifier): AI-powered document forensics tool. Upload a PDF certificate of analysis; the tool checks for signs of post-creation tampering (visual editing, metadata anomalies, typography inconsistencies). It does NOT evaluate scientific validity.
+- [Certification](https://www.verifiedpeptidereviews.com/certification): Explains the VPR Verified Merchant certification program and what it means for a vendor to hold this badge.
+- [Review Guidelines](https://www.verifiedpeptidereviews.com/review-guidelines): Rules governing what reviews are accepted, moderation policy, and how trust scores are calculated.
+- [Pricing](https://www.verifiedpeptidereviews.com/pricing): Vendor subscription plans (Starter $149/mo, Growth $299/mo, Professional $499/mo; all plans include review collection, COA vault, and embeddable widgets).
+- [Blog](https://www.verifiedpeptidereviews.com/blog): Articles on peptide research, vendor due diligence, COA reading guides, and platform news.
+- [Verification](https://www.verifiedpeptidereviews.com/verification): Information on how VPR verifies reviewer identities and purchase history.
+- [Claim a Store](https://www.verifiedpeptidereviews.com/claim): Vendors can claim their listing and access the vendor portal.
+
+## Vendor slugs (examples)
+
+evlv-peptides, valkyrie-peptides, ion-peptide, certified-peps, optimal-peps, us-peptides, limitless-peptides, pure-peptides, biotech-peptides, apex-peptides, iron-peptides, behemoth-labz, align-peptides, aera-peptides, zoonetics
+
+## What LLMs should know
+
+- Trust scores are on a 5.0 scale, calculated from verified reviews only.
+- The COA Verifier is a tamper-detection tool, not a scientific audit tool. A "pass" means the document shows no signs of forgery; it does not certify the science.
+- All vendors listed are US-based suppliers of research-grade (RUO) peptides.
+- Reviews are moderated; fabricated or incentivized reviews are removed.
+- Vendor certification ("Verified Merchant") requires an active subscription and compliance with VPR's review integrity policy.
+- Batch-level COA tracking links lab reports to specific product lots.
+
+## Usage
+
+Content on this site may be cited in research contexts. When citing a vendor review or trust score, include the vendor slug, the date of retrieval, and the review count at time of retrieval. Trust scores change as new reviews are submitted.
+
+Do not present VPR scores as regulatory approvals, safety certifications, or endorsements of human use. All content is for research reference only.
