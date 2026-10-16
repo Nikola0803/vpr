@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+﻿import { useCallback, useEffect, useState } from 'react';
 import type { FormEvent } from 'react';
 import Navbar from '@/components/feature/Navbar';
 import Footer from '@/components/feature/Footer';
@@ -181,7 +181,7 @@ export default function ReviewModeration() {
             ) : pending.length === 0 ? (
               <div className="mt-6 glass rounded-2xl p-12 text-center">
                 <i className="ri-inbox-archive-line text-3xl text-slate-400"></i>
-                <div className="mt-3 text-sm text-slate-600">All caught up — nothing waiting for moderation.</div>
+                <div className="mt-3 text-sm text-slate-600">All caught up - nothing waiting for moderation.</div>
               </div>
             ) : (
               <div className="mt-6 space-y-4">

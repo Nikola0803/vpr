@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import Navbar from '@/components/feature/Navbar';
 import Footer from '@/components/feature/Footer';
@@ -24,7 +24,7 @@ const sections: Record<string, { title: string; desc: string }> = {
   overview: { title: 'Executive Overview', desc: 'Your trust performance at a glance across the last 30 days.' },
   invites: { title: 'Automated Invitation Engine', desc: 'Import orders, connect storefronts, and scale your review collection.' },
   embeds: { title: 'Embed Code Generator Studio', desc: 'Build conversion-boosting widgets and copy production-ready snippets.' },
-  badge: { title: 'Featured Rating Badge', desc: 'One snippet, unique to your brand — your live score and stars, ready to paste anywhere.' },
+  badge: { title: 'Featured Rating Badge', desc: 'One snippet, unique to your brand - your live score and stars, ready to paste anywhere.' },
   coa: { title: 'HPLC Lab Management Vault', desc: 'Upload lab certificates, assign batches, and link them to reviews.' },
 };
 

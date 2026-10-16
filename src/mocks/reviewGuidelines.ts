@@ -1,8 +1,8 @@
-export const guidelinesHero = {
+﻿export const guidelinesHero = {
   eyebrow: 'Review Integrity Policy',
   title: 'Anyone can post.',
   titleAccent: 'Order-backed reviews get verified.',
-  lead: 'Every review is screened and moderated before it publishes. You do not need an order to have your say — but a matched, confirmed order is the only way to earn the Verified Buyer badge.',
+  lead: 'Every review is screened and moderated before it publishes. You do not need an order to have your say - but a matched, confirmed order is the only way to earn the Verified Buyer badge.',
   primaryCta: 'See how orders are verified',
   secondaryCta: 'Write a review',
 };
@@ -11,7 +11,7 @@ export const guidelinesStats = [
   {
     icon: 'ri-user-line',
     value: 'Open',
-    label: 'Any researcher can submit a review — no order reference required',
+    label: 'Any researcher can submit a review - no order reference required',
   },
   {
     icon: 'ri-verified-badge-line',
@@ -34,7 +34,7 @@ export const oneRule = {
   eyebrow: 'Two tiers of review',
   title: 'Anyone can post.',
   titleAccent: 'Order-backed reviews get verified.',
-  lead: 'We host two kinds of reviews side by side. Unverified reviews are open to every researcher and clearly labeled. Verified Buyer reviews are locked to a matched, confirmed order — those are the ones you can fully trust.',
+  lead: 'We host two kinds of reviews side by side. Unverified reviews are open to every researcher and clearly labeled. Verified Buyer reviews are locked to a matched, confirmed order - those are the ones you can fully trust.',
   tiers: [
     {
       id: 'unverified',
@@ -42,7 +42,7 @@ export const oneRule = {
       title: 'Open to every researcher',
       icon: 'ri-user-line',
       points: [
-        'No order reference required — anyone can submit',
+        'No order reference required - anyone can submit',
         'Clearly labeled "Unverified" wherever it appears',
         'Still screened for Research Use Only language',
         'Still moderated by a human before it publishes',
@@ -63,7 +63,7 @@ export const oneRule = {
   ],
   punchLead: 'Open to all. Verified by proof.',
   punch:
-    'Anyone gets a voice. But only a matched order earns the Verified Buyer badge — and the badge is what the whole directory trusts.',
+    'Anyone gets a voice. But only a matched order earns the Verified Buyer badge - and the badge is what the whole directory trusts.',
 };
 
 export const verificationSteps = [
@@ -75,7 +75,7 @@ export const verificationSteps = [
   {
     icon: 'ri-user-follow-line',
     title: 'Buyer confirmed',
-    desc: 'The submitter must be the account that placed the order — no third parties, no proxies, no hired hands.',
+    desc: 'The submitter must be the account that placed the order - no third parties, no proxies, no hired hands.',
   },
   {
     icon: 'ri-calendar-check-line',
@@ -98,7 +98,7 @@ export const rejectionRules = [
   {
     icon: 'ri-spy-line',
     title: 'Faked verified badges',
-    desc: 'Competitors and vendors cannot fake a Verified Buyer review — an unverifiable claim is rejected.',
+    desc: 'Competitors and vendors cannot fake a Verified Buyer review - an unverifiable claim is rejected.',
   },
   {
     icon: 'ri-hand-coin-line',
@@ -129,18 +129,18 @@ export const guidelinesFaq = [
   },
   {
     q: 'Can a vendor buy a pile of five-star reviews?',
-    a: 'They can try, but they can never buy Verified Buyer ones — those are locked to real, confirmed orders. Purchased praise loses the badge and, paired with moderation, is typically rejected outright.',
+    a: 'They can try, but they can never buy Verified Buyer ones - those are locked to real, confirmed orders. Purchased praise loses the badge and, paired with moderation, is typically rejected outright.',
   },
   {
     q: 'What if my honest review is negative?',
-    a: 'Post it. You can write a review whether or not you have an order. If you do attach an order reference, it publishes with the Verified Buyer badge — good or bad, exactly the same way. Verified buyers always get their say.',
+    a: 'Post it. You can write a review whether or not you have an order. If you do attach an order reference, it publishes with the Verified Buyer badge - good or bad, exactly the same way. Verified buyers always get their say.',
   },
   {
     q: 'Do I really need proof of purchase to leave a review?',
-    a: 'No. You can post a review without an order reference — it will be clearly labeled unverified. If you do have an order, adding the reference earns the Verified Buyer badge and carries far more weight with readers.',
+    a: 'No. You can post a review without an order reference - it will be clearly labeled unverified. If you do have an order, adding the reference earns the Verified Buyer badge and carries far more weight with readers.',
   },
   {
     q: 'Why two tiers at all?',
-    a: 'Because an order-backed review is the most trustworthy kind there is. Anyone can weigh in, but the Verified Buyer badge is reserved for reviews we can prove — and that is what makes those numbers real.',
+    a: 'Because an order-backed review is the most trustworthy kind there is. Anyone can weigh in, but the Verified Buyer badge is reserved for reviews we can prove - and that is what makes those numbers real.',
   },
 ];

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type DragEvent, type FormEvent } from 'react';
+﻿import { useEffect, useRef, useState, type DragEvent, type FormEvent } from 'react';
 import { verifyCoa, type CoaReport } from '@/pages/coaVerifier/api';
 import { verifierPromises } from '@/mocks/coaVerifier';
 import ReportView from '@/pages/coaVerifier/components/ReportView';
@@ -59,11 +59,11 @@ export default function VerifyTool() {
     setFileError('');
     if (!f) return;
     if (!ACCEPTED.includes(f.type)) {
-      setFileError('Unsupported file type — upload a PDF, JPG, PNG or WEBP.');
+      setFileError('Unsupported file type - upload a PDF, JPG, PNG or WEBP.');
       return;
     }
     if (f.size > MAX_BYTES) {
-      setFileError('That file is too large — 12MB maximum.');
+      setFileError('That file is too large - 12MB maximum.');
       return;
     }
     setFile(f);
@@ -107,7 +107,7 @@ export default function VerifyTool() {
 
     setStatus('submitting');
     try {
-      // Capture email — fire-and-forget, never block the analysis.
+      // Capture email - fire-and-forget, never block the analysis.
       supabase.from('coa_leads').insert({ email }).then(() => {}).catch(() => {});
 
       // Run the forensic analysis.
@@ -139,7 +139,7 @@ export default function VerifyTool() {
           </h2>
           <p className="mt-5 text-slate-600 leading-relaxed">
             Drop in any Certificate of Analysis and our AI examiner inspects it for the fingerprints of tampering. One
-            email unlocks unlimited checks — no card, no cost.
+            email unlocks unlimited checks - no card, no cost.
           </p>
 
           <div className="mt-8 space-y-4">
@@ -154,7 +154,7 @@ export default function VerifyTool() {
           </div>
         </div>
 
-        {/* RIGHT — TOOL */}
+        {/* RIGHT - TOOL */}
         <div className="lg:col-span-7">
           <div className="glass rounded-2xl p-6 md:p-8">
             {status === 'done' && report && file ? (
@@ -246,7 +246,7 @@ export default function VerifyTool() {
                         or <span className="text-teal-700 font-semibold">browse files</span> · 12MB max
                       </div>
                       <div className="mt-2 text-[11px] text-amber-700 bg-amber-50 border border-amber-200 rounded px-2 py-1 inline-block">
-                        Upload the original PDF for full binary forensics — image scans skip metadata analysis
+                        Upload the original PDF for full binary forensics - image scans skip metadata analysis
                       </div>
                     </div>
                   )}
@@ -271,7 +271,7 @@ export default function VerifyTool() {
                   />
                   <span className="mt-1.5 block text-[11px] text-slate-400 leading-relaxed">
                     Unlocks unlimited free checks. We send the occasional note about new verification tools and
-                    industry trust news — one-click unsubscribe, never sold or shared.
+                    industry trust news - one-click unsubscribe, never sold or shared.
                   </span>
                 </label>
 

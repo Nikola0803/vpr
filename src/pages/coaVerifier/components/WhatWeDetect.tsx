@@ -1,4 +1,4 @@
-import { detectChecks } from '@/mocks/coaVerifier';
+﻿import { detectChecks } from '@/mocks/coaVerifier';
 
 export default function WhatWeDetect() {
   return (
@@ -13,7 +13,7 @@ export default function WhatWeDetect() {
           </h2>
           <p className="mt-5 text-slate-600 leading-relaxed">
             Fabricated lab documents almost always leave a trace. Our engine runs the same seven forensic passes an
-            experienced examiner would — then explains every finding in plain language.
+            experienced examiner would - then explains every finding in plain language.
           </p>
         </div>
 

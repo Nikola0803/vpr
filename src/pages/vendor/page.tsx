@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+﻿import { useEffect, useMemo, useState } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import Navbar from '@/components/feature/Navbar';
 import Footer from '@/components/feature/Footer';
@@ -62,7 +62,7 @@ export default function VendorProfile() {
   const startIndex = (safePage - 1) * REVIEWS_PER_PAGE;
   const paged = filtered.slice(startIndex, startIndex + REVIEWS_PER_PAGE);
 
-  // Hidden or unknown vendors are not publicly viewable — send visitors back to the directory.
+  // Hidden or unknown vendors are not publicly viewable - send visitors back to the directory.
   if (slug && vendor.slug !== slug) {
     return <Navigate to="/vendors" replace />;
   }
@@ -223,7 +223,7 @@ export default function VendorProfile() {
               </div>
               {vendor.planTier === 'free' && (
                 <div className="rounded-lg bg-amber-50 border border-amber-200 px-3 py-2.5 text-[11px] text-amber-800 leading-relaxed">
-                  <i className="ri-information-line mr-1"></i>Free listing — basic profile data only.
+                  <i className="ri-information-line mr-1"></i>Free listing - basic profile data only.
                 </div>
               )}
             </div>
@@ -271,7 +271,7 @@ export default function VendorProfile() {
                 <div className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 flex items-start gap-2.5">
                   <i className="ri-time-line text-amber-600 text-base mt-0.5 shrink-0"></i>
                   <p className="text-xs text-amber-800 leading-relaxed">
-                    <span className="font-semibold">Reviews are being manually approved</span> — their number can increase or decrease.
+                    <span className="font-semibold">Reviews are being manually approved</span> - their number can increase or decrease.
                     Final reviews and their textual content will be shown after migration and approval by the VPR team.
                   </p>
                 </div>

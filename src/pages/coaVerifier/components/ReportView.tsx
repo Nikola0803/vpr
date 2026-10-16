@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import type { CoaReport, CheckStatus, Verdict } from '@/pages/coaVerifier/api';
 import { supabase } from '@/lib/supabase';
 
@@ -112,12 +112,12 @@ export default function ReportView({
         )}
       </div>
 
-      {/* Binary evidence — hard facts from PDF binary, not AI opinion */}
+      {/* Binary evidence - hard facts from PDF binary, not AI opinion */}
       {report.forensicFlags && report.forensicFlags.length > 0 && (
         <div className="rounded-2xl border border-rose-300 bg-rose-50 p-5">
           <div className="flex items-center gap-2 mb-3">
             <i className="ri-bug-2-fill text-rose-600 text-base"></i>
-            <span className="text-sm font-bold text-rose-800 uppercase tracking-wide">Binary evidence — cannot be faked</span>
+            <span className="text-sm font-bold text-rose-800 uppercase tracking-wide">Binary evidence - cannot be faked</span>
           </div>
           <ul className="space-y-2">
             {report.forensicFlags.map((flag, i) => {
@@ -141,7 +141,7 @@ export default function ReportView({
         </div>
       )}
 
-      {/* Forensic checks — compact; detail only on warn/fail */}
+      {/* Forensic checks - compact; detail only on warn/fail */}
       {report.checks.length > 0 && (
         <div className="glass rounded-2xl p-5">
           <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3 flex items-center gap-2">
@@ -177,12 +177,12 @@ export default function ReportView({
         </button>
       </div>
 
-      {/* Report as fake — available on any non-authentic result */}
+      {/* Report as fake - available on any non-authentic result */}
       {report.verdict !== 'authentic' && (
         <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
           {reportDone ? (
             <div className="flex items-center gap-2 text-sm text-emerald-700 font-semibold">
-              <i className="ri-checkbox-circle-fill"></i> Reported — thanks for helping the community.
+              <i className="ri-checkbox-circle-fill"></i> Reported - thanks for helping the community.
             </div>
           ) : reportOpen ? (
             <div className="space-y-3">
@@ -233,7 +233,7 @@ export default function ReportView({
 
       <p className="text-[11px] text-slate-400 leading-relaxed">
         COA Verifier is an assistive screening layer, not a legal certification. A clean result means no tampering
-        signals were spotted in this pass — it is not a guarantee of authenticity.
+        signals were spotted in this pass - it is not a guarantee of authenticity.
       </p>
     </div>
   );

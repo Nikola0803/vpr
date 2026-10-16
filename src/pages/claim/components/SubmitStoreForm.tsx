@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from 'react';
+﻿import { useState, type FormEvent } from 'react';
 
 const SUBMIT_ADDR = 'https://readdy.ai/api/form/dap6gm0d8872q3cdc37g';
 const FORM_ID = 'vendor-store-submission';
@@ -83,7 +83,7 @@ export default function SubmitStoreForm() {
         </div>
         <h2 className="mt-6 font-display font-extrabold text-slate-900 text-2xl">Store submitted</h2>
         <p className="mt-3 text-sm text-slate-500 max-w-md mx-auto leading-relaxed">
-          Thanks — our curation team will review your store and, if it clears, publish your listing. Basic listings are
+          Thanks - our curation team will review your store and, if it clears, publish your listing. Basic listings are
           free and include up to 10 verified reviews.
         </p>
         <button
@@ -235,7 +235,7 @@ export default function SubmitStoreForm() {
           <p className="mt-2 text-xs text-slate-400">Maximum 500 characters</p>
         </div>
 
-        {/* Anti-spam honeypot — hidden via a non-inline stylesheet rule */}
+        {/* Anti-spam honeypot - hidden via a non-inline stylesheet rule */}
         <input
           type="text"
           name="company_alt"

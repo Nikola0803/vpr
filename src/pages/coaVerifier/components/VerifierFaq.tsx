@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { verifierFaqs } from '@/mocks/coaVerifier';
 
 export default function VerifierFaq() {
@@ -13,7 +13,7 @@ export default function VerifierFaq() {
             COA Verifier, answered.
           </h2>
           <p className="mt-5 text-slate-600 leading-relaxed">
-            Everything you need to know before you upload a certificate — including exactly what this tool can and cannot
+            Everything you need to know before you upload a certificate - including exactly what this tool can and cannot
             promise.
           </p>
         </div>

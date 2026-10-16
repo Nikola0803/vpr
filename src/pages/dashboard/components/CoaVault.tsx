@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+﻿import { useRef, useState } from 'react';
 import { supabase } from '@/lib/supabase';
 import { useCoaBatches, getCoaFileUrl, type CoaBatch } from '@/hooks/useCoaBatches';
 
@@ -223,10 +223,10 @@ export default function CoaVault({ vendorSlug }: Props) {
                   <tr key={b.id} className={`${i % 2 === 1 ? 'bg-slate-50' : ''} hover:bg-cyan-500/[0.03] transition-colors`}>
                     <td className="px-4 py-3 text-xs font-mono text-cyan-700">{b.batch_no}</td>
                     <td className="px-4 py-3 text-sm text-slate-900">{b.compound}</td>
-                    <td className="px-4 py-3 text-sm font-mono text-emerald-600">{b.purity || '—'}</td>
-                    <td className="px-4 py-3 text-xs text-slate-700">{b.lab || '—'}</td>
+                    <td className="px-4 py-3 text-sm font-mono text-emerald-600">{b.purity || '-'}</td>
+                    <td className="px-4 py-3 text-xs text-slate-700">{b.lab || '-'}</td>
                     <td className="px-4 py-3 text-xs font-mono text-slate-700">{b.linked_reviews}</td>
-                    <td className="px-4 py-3 text-xs text-slate-600 whitespace-nowrap">{b.batch_date || '—'}</td>
+                    <td className="px-4 py-3 text-xs text-slate-600 whitespace-nowrap">{b.batch_date || '-'}</td>
                     <td className="px-4 py-3">
                       <span
                         className={`text-[10px] font-mono px-2 py-1 rounded-md border whitespace-nowrap ${

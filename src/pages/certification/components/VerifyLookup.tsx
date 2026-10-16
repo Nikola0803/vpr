@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+﻿import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { Certification } from '@/mocks/certifications';
 import { gradeMeta } from '@/mocks/certifications';
@@ -148,9 +148,9 @@ export default function VerifyLookup({ certifications, loading }: Props) {
                 </div>
 
                 <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
-                  <Field label="Issuing laboratory" value={result.coa_lab ?? '—'} icon="ri-flask-line" />
-                  <Field label="Verified batch" value={result.coa_batch_no ?? '—'} icon="ri-qr-code-line" />
-                  <Field label="Compound" value={result.coa_compound ?? '—'} icon="ri-test-tube-line" />
+                  <Field label="Issuing laboratory" value={result.coa_lab ?? '-'} icon="ri-flask-line" />
+                  <Field label="Verified batch" value={result.coa_batch_no ?? '-'} icon="ri-qr-code-line" />
+                  <Field label="Compound" value={result.coa_compound ?? '-'} icon="ri-test-tube-line" />
                   <Field label="Issued" value={formatCertDate(result.issued_at)} icon="ri-calendar-check-line" />
                   <Field label="Last reviewed" value={formatCertDate(result.last_reviewed_at)} icon="ri-refresh-line" />
                   <Field label="Valid until" value={formatCertDate(result.expires_at)} icon="ri-shield-check-line" />

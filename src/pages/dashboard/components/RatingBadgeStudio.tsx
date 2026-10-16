@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { vendors } from '@/mocks/vendors';
 import RatingBadgePreview, { type BadgeConfig, ratingLabel, VPR_LOGO } from '@/pages/dashboard/components/RatingBadgePreview';
 
@@ -18,9 +18,9 @@ const ACCENT_PRESETS: { name: string; value: string }[] = [
 ];
 
 const LAYOUTS: { id: BadgeConfig['layout']; label: string; icon: string; desc: string }[] = [
-  { id: 'stacked', label: 'Card', icon: 'ri-layout-top-2-line', desc: 'Full card — footer, product page, about page.' },
-  { id: 'inline', label: 'Inline bar', icon: 'ri-separator', desc: 'Horizontal strip — checkout header, email template.' },
-  { id: 'compact', label: 'Pill', icon: 'ri-price-tag-line', desc: 'Micro pill — nav bar, sidebar widget, tiny slot.' },
+  { id: 'stacked', label: 'Card', icon: 'ri-layout-top-2-line', desc: 'Full card - footer, product page, about page.' },
+  { id: 'inline', label: 'Inline bar', icon: 'ri-separator', desc: 'Horizontal strip - checkout header, email template.' },
+  { id: 'compact', label: 'Pill', icon: 'ri-price-tag-line', desc: 'Micro pill - nav bar, sidebar widget, tiny slot.' },
 ];
 
 const RADII: { id: BadgeConfig['radius']; label: string }[] = [
@@ -98,7 +98,7 @@ export default function RatingBadgeStudio({ vendorSlug }: RatingBadgeStudioProps
           <div className="flex items-center gap-2.5">
             <i className="ri-information-line text-amber-600 text-base"></i>
             <span className="text-sm font-semibold text-amber-900">
-              About the script tag — and why it still matters for your SEO
+              About the script tag - and why it still matters for your SEO
             </span>
           </div>
           {showScriptNote
@@ -108,7 +108,7 @@ export default function RatingBadgeStudio({ vendorSlug }: RatingBadgeStudioProps
         {showScriptNote && (
           <div className="mt-3 text-xs text-amber-900 leading-relaxed space-y-2.5 border-t border-amber-200 pt-3">
             <p>
-              <strong>Is the JS live right now?</strong> No — the CDN URL is a placeholder. That script doesn&apos;t exist as a
+              <strong>Is the JS live right now?</strong> No - the CDN URL is a placeholder. That script doesn&apos;t exist as a
               deployed file yet. If someone pastes the snippet today, the{' '}
               <code className="px-1 rounded bg-amber-100 font-mono">&#60;div&#62;</code> renders as an empty element and the script
               fetches nothing.
@@ -117,7 +117,7 @@ export default function RatingBadgeStudio({ vendorSlug }: RatingBadgeStudioProps
               <strong>But here&apos;s why the data-attribute structure matters now:</strong> The snippet carries your{' '}
               <code className="px-1 rounded bg-amber-100 font-mono">data-href</code> back to your vendor profile on{' '}
               <strong>verifiedpeptidereviews.com</strong>. Googlebot reads data attributes. Every site that pastes this is
-              essentially planting a link pointing back to VPR — even before the JS is live. That&apos;s a real backlink
+              essentially planting a link pointing back to VPR - even before the JS is live. That&apos;s a real backlink
               distribution strategy: vendor badges historically generate hundreds of follow-links to the issuer (think Trustpilot,
               G2, Clutch). Once the CDN script goes live, the badge auto-renders on those pages without anyone touching the
               snippet again.
@@ -126,17 +126,17 @@ export default function RatingBadgeStudio({ vendorSlug }: RatingBadgeStudioProps
               <strong>What you actually need to deploy this properly:</strong>
             </p>
             <ul className="list-disc list-inside space-y-1 ml-1">
-              <li>A short JS loader on a CDN (Cloudflare R2, Vercel, or Bunny CDN — a few hours of work)</li>
+              <li>A short JS loader on a CDN (Cloudflare R2, Vercel, or Bunny CDN - a few hours of work)</li>
               <li>The loader reads the data attributes off the div and renders the badge HTML in-place</li>
               <li>It pings your API to fetch the live score so it stays fresh</li>
               <li>
-                The <code className="px-1 rounded bg-amber-100 font-mono">data-href</code> becomes a rendered anchor — a real
+                The <code className="px-1 rounded bg-amber-100 font-mono">data-href</code> becomes a rendered anchor - a real
                 crawlable link pointing back to VPR with your brand anchor text
               </li>
             </ul>
             <p>
               Right now the snippet is a pixel-perfect spec that any frontend dev can implement in an afternoon. The badge
-              generator here is fully functional for generating the correct snippet per brand — the only missing piece is the CDN
+              generator here is fully functional for generating the correct snippet per brand - the only missing piece is the CDN
               loader file.
             </p>
           </div>
@@ -144,7 +144,7 @@ export default function RatingBadgeStudio({ vendorSlug }: RatingBadgeStudioProps
       </div>
 
       <div className="grid grid-cols-1 xl:grid-cols-[1fr_380px] gap-6">
-        {/* LEFT — CONTROLS */}
+        {/* LEFT - CONTROLS */}
         <div className="glass rounded-2xl p-6 space-y-6">
           <div>
             <div className="text-sm font-semibold text-slate-900 flex items-center gap-2 mb-1">
@@ -179,8 +179,8 @@ export default function RatingBadgeStudio({ vendorSlug }: RatingBadgeStudioProps
               {cfg.mode === 'auto'
                 ? "Auto matches the visitor's system preference via prefers-color-scheme."
                 : cfg.mode === 'dark'
-                  ? 'Dark badge — paste on a light-background storefront.'
-                  : 'Light badge — paste on a dark-background storefront.'}
+                  ? 'Dark badge - paste on a light-background storefront.'
+                  : 'Light badge - paste on a dark-background storefront.'}
             </p>
           </Section>
 
@@ -301,7 +301,7 @@ export default function RatingBadgeStudio({ vendorSlug }: RatingBadgeStudioProps
           </Section>
         </div>
 
-        {/* RIGHT — PREVIEW + SNIPPET */}
+        {/* RIGHT - PREVIEW + SNIPPET */}
         <div className="space-y-5">
           <div className="glass rounded-2xl p-6">
             <div className="text-[11px] font-mono uppercase tracking-wider text-slate-500 mb-4">Live preview</div>
@@ -347,19 +347,19 @@ export default function RatingBadgeStudio({ vendorSlug }: RatingBadgeStudioProps
             <div className="space-y-2.5 text-xs text-slate-600 leading-relaxed">
               <div className="flex gap-2">
                 <i className="ri-links-line text-teal-600 shrink-0 mt-0.5"></i>
-                <span>Every paste is a <strong className="text-slate-800">backlink to VPR</strong> — anchor text reads &ldquo;{ratingLabel(vendor.score)} · {vendor.score.toFixed(1)} / 5 · {vendor.reviews.toLocaleString()} reviews&rdquo;</span>
+                <span>Every paste is a <strong className="text-slate-800">backlink to VPR</strong> - anchor text reads &ldquo;{ratingLabel(vendor.score)} · {vendor.score.toFixed(1)} / 5 · {vendor.reviews.toLocaleString()} reviews&rdquo;</span>
               </div>
               <div className="flex gap-2">
                 <i className="ri-search-eye-line text-teal-600 shrink-0 mt-0.5"></i>
-                <span>The rendered anchor contains <code className="font-mono bg-slate-100 px-1 rounded">verifiedpeptidereviews.com</code> — Googlebot crawls it like any normal link</span>
+                <span>The rendered anchor contains <code className="font-mono bg-slate-100 px-1 rounded">verifiedpeptidereviews.com</code> - Googlebot crawls it like any normal link</span>
               </div>
               <div className="flex gap-2">
                 <i className="ri-global-line text-teal-600 shrink-0 mt-0.5"></i>
-                <span>Each vendor&apos;s snippet links to <strong className="text-slate-800">their own profile page</strong> — distributed, keyword-varied anchor text across many domains</span>
+                <span>Each vendor&apos;s snippet links to <strong className="text-slate-800">their own profile page</strong> - distributed, keyword-varied anchor text across many domains</span>
               </div>
               <div className="flex gap-2">
                 <i className="ri-image-line text-teal-600 shrink-0 mt-0.5"></i>
-                <span>The rendered logo ships with <strong className="text-slate-800">keyword alt text</strong> (&ldquo;VerifiedPeptideReviews verified badge logo&rdquo;) — free image-search ranking from every paste</span>
+                <span>The rendered logo ships with <strong className="text-slate-800">keyword alt text</strong> (&ldquo;VerifiedPeptideReviews verified badge logo&rdquo;) - free image-search ranking from every paste</span>
               </div>
             </div>
           </div>

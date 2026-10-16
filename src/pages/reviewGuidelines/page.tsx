@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+﻿import { Link } from 'react-router-dom';
 import Navbar from '@/components/feature/Navbar';
 import Footer from '@/components/feature/Footer';
 import RuoCompliance from '@/components/feature/RuoCompliance';
@@ -30,7 +30,7 @@ export default function ReviewGuidelines() {
                 Everyone gets a voice. Proof gets the badge.
               </h2>
               <p className="mt-5 text-slate-700">
-                Got a verified order behind you? Your honest take earns the Verified Buyer badge — five stars or one. No
+                Got a verified order behind you? Your honest take earns the Verified Buyer badge - five stars or one. No
                 order? You can still post, clearly labeled unverified. Either way, a human moderates every review before
                 it goes live.
               </p>

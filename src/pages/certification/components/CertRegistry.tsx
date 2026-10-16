@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+﻿import { Link } from 'react-router-dom';
 import type { Certification } from '@/mocks/certifications';
 import { gradeMeta } from '@/mocks/certifications';
 import { formatCertDate, certStatusLabel } from '@/hooks/useCertifications';
@@ -95,8 +95,8 @@ export default function CertRegistry({ certifications, loading, error, onRetry }
                 <div className="mt-1 text-[11px] font-mono text-slate-500">{c.cert_id}</div>
 
                 <div className="mt-4 space-y-2 text-xs">
-                  <Row label="Laboratory" value={c.coa_lab ?? '—'} icon="ri-flask-line" />
-                  <Row label="Batch" value={c.coa_batch_no ?? '—'} icon="ri-qr-code-line" />
+                  <Row label="Laboratory" value={c.coa_lab ?? '-'} icon="ri-flask-line" />
+                  <Row label="Batch" value={c.coa_batch_no ?? '-'} icon="ri-qr-code-line" />
                   <Row label="Last reviewed" value={formatCertDate(c.last_reviewed_at)} icon="ri-refresh-line" />
                 </div>
 

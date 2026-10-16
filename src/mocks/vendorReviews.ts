@@ -1,4 +1,4 @@
-export interface VendorReview {
+﻿export interface VendorReview {
   id: string;
   author: string;
   order: string;
@@ -1409,7 +1409,7 @@ export const vendorReviewsBySlug: Record<string, VendorReview[]> = {
       hasLab: true,
       body: 'Clean product and correctly labelled for research use. Shipping took four days, within estimate. Would have been five stars but I had to chase the tracking number.',
       date: '1 month ago',
-      reply: 'Thanks for the note. We fixed the tracking email trigger — it should fire automatically now.',
+      reply: 'Thanks for the note. We fixed the tracking email trigger - it should fire automatically now.',
       replyBy: 'Zoonetics Ops',
     },
     {

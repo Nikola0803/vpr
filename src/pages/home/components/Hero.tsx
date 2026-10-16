@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PromotionPanel from '@/pages/home/components/PromotionPanel';
 import { compounds, visibleFeaturedVendors } from '@/mocks/home';
@@ -36,7 +36,7 @@ export default function Hero() {
             </h1>
 
             <p className="mt-6 text-base md:text-lg text-slate-500 leading-relaxed">
-              Every review is moderated before it publishes. No order needed to have your say — attach one and you earn
+              Every review is moderated before it publishes. No order needed to have your say - attach one and you earn
               the Verified Buyer badge, the reviews people actually trust.
             </p>
 

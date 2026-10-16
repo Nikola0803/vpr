@@ -1,4 +1,4 @@
-import { rejectionRules } from '@/mocks/reviewGuidelines';
+﻿import { rejectionRules } from '@/mocks/reviewGuidelines';
 
 export default function RejectionRules() {
   return (
@@ -12,7 +12,7 @@ export default function RejectionRules() {
             What never makes it through.
           </h2>
           <p className="mt-5 text-slate-600">
-            Every submission is moderated by a human before it publishes. These specific cases fail on sight — no partial
+            Every submission is moderated by a human before it publishes. These specific cases fail on sight - no partial
             credit, no exceptions.
           </p>
         </div>

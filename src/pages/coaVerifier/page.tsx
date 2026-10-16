@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+﻿import { Link } from 'react-router-dom';
 import Navbar from '@/components/feature/Navbar';
 import Footer from '@/components/feature/Footer';
 import RuoCompliance from '@/components/feature/RuoCompliance';
@@ -29,7 +29,7 @@ export default function CoaVerifier() {
                 Never trust a certificate you have not checked.
               </h2>
               <p className="mt-5 text-slate-700">
-                Run any COA through COA Verifier in seconds — or list your own tamper-free documents in the verified
+                Run any COA through COA Verifier in seconds - or list your own tamper-free documents in the verified
                 directory.
               </p>
               <div className="mt-8 flex flex-col sm:flex-row justify-center gap-3">

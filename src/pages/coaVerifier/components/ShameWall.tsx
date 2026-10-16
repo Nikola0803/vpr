@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
 
 interface FakeCoa {
@@ -35,7 +35,7 @@ export default function ShameWall() {
   }
 
   const redditText = (r: FakeCoa) =>
-    `Fake COA caught by COA Verifier — ${r.company ?? 'Unknown company'}${r.product ? ` (${r.product})` : ''}: "${r.headline ?? r.verdict}" — https://www.verifiedpeptidereviews.com/verify`;
+    `Fake COA caught by COA Verifier - ${r.company ?? 'Unknown company'}${r.product ? ` (${r.product})` : ''}: "${r.headline ?? r.verdict}" - https://www.verifiedpeptidereviews.com/verify`;
 
   return (
     <section className="py-16 border-t border-slate-200">
@@ -77,7 +77,7 @@ export default function ShameWall() {
                     {r.company ?? <span className="text-slate-400 font-normal">Unknown</span>}
                   </td>
                   <td className="px-4 py-3 text-slate-600">
-                    {r.product ?? <span className="text-slate-400">—</span>}
+                    {r.product ?? <span className="text-slate-400">-</span>}
                   </td>
                   <td className="px-4 py-3 text-slate-600 max-w-xs truncate" title={r.headline ?? ''}>
                     {r.headline ?? r.verdict}
@@ -86,7 +86,7 @@ export default function ShameWall() {
                     {r.confidence != null ? (
                       <span className="font-mono text-rose-600 font-semibold">{r.confidence}%</span>
                     ) : (
-                      <span className="text-slate-400">—</span>
+                      <span className="text-slate-400">-</span>
                     )}
                   </td>
                   <td className="px-4 py-3 text-slate-400 text-xs font-mono whitespace-nowrap">

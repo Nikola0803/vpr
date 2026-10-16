@@ -1,4 +1,4 @@
-import { verificationSteps } from '@/mocks/reviewGuidelines';
+﻿import { verificationSteps } from '@/mocks/reviewGuidelines';
 
 export default function VerificationSteps() {
   return (
@@ -13,7 +13,7 @@ export default function VerificationSteps() {
           </h2>
           <p className="mt-5 text-slate-600">
             Unverified reviews skip straight to moderation. To carry the Verified Buyer badge, a review clears all four
-            of these gates — fail one, and the badge is refused.
+            of these gates - fail one, and the badge is refused.
           </p>
         </div>
 

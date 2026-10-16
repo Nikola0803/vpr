@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+﻿import { Link } from 'react-router-dom';
 
 const sources = ['Storefront', 'Google', 'Trustpilot', 'Reddit', 'Forums', 'This platform'];
 
@@ -22,8 +22,8 @@ export default function ReviewProvenance() {
                   </span>
                 </div>
                 <p className="mt-2 text-sm text-slate-600 leading-relaxed max-w-3xl">
-                  These reviews are gathered from every platform this company sells and is discussed on — its own
-                  storefront, Google, Trustpilot, Reddit and industry forums — then merged into a single, trustworthy
+                  These reviews are gathered from every platform this company sells and is discussed on - its own
+                  storefront, Google, Trustpilot, Reddit and industry forums - then merged into a single, trustworthy
                   record by our review-migration engine. Each entry is matched to one real, unique buyer, so no customer
                   is ever counted twice and nothing synthetic ever makes it through.
                 </p>

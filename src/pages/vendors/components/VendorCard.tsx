@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+﻿import { Link, useNavigate } from 'react-router-dom';
 import type { Vendor } from '@/mocks/vendors';
 import type { Certification } from '@/mocks/certifications';
 import VendorLogo from '@/components/feature/VendorLogo';
@@ -99,7 +99,7 @@ export default function VendorCard({ vendor: v, selected, onToggle, cert }: Prop
         {v.reviews.toLocaleString()} verified reviews
       </div>
 
-      {/* Outcome story — mirrors the homepage: more buyers / conversions / trust */}
+      {/* Outcome story - mirrors the homepage: more buyers / conversions / trust */}
       <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-slate-500">
         <span className="flex items-center gap-1">
           <i className="ri-user-add-line text-teal-600"></i>

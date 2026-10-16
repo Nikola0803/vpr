@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+﻿import { useMemo, useState } from 'react';
 import { Link, useParams, useSearchParams } from 'react-router-dom';
 import Navbar from '@/components/feature/Navbar';
 import CompanyPicker from '@/pages/rate/components/CompanyPicker';
@@ -160,7 +160,7 @@ export default function RateReview() {
           </h1>
           <p className="mt-3 text-sm text-slate-500 leading-relaxed">
             Pick the company you&apos;re reviewing and share your experience. Submissions are screened and held for
-            moderation before they go live. Add an order reference to earn the Verified Buyer badge — it&apos;s optional.
+            moderation before they go live. Add an order reference to earn the Verified Buyer badge - it&apos;s optional.
           </p>
         </div>
 
@@ -220,7 +220,7 @@ export default function RateReview() {
               <h2 className="mt-6 font-display font-extrabold text-slate-900 text-2xl">Review Submitted for Moderation</h2>
               <p className="mt-3 text-sm text-slate-500 max-w-md mx-auto">
                 Thanks for reviewing <span className="font-semibold text-slate-700">{vendor.name}</span>. Your submission has
-                been sealed with a verification hash and is now queued for review — it will appear publicly once approved.
+                been sealed with a verification hash and is now queued for review - it will appear publicly once approved.
               </p>
               <div className="mt-6 inline-block text-left rounded-xl bg-slate-50 border border-slate-200 p-5">
                 <div className="text-[10px] font-mono uppercase tracking-wider text-slate-500 mb-2">Cryptographic Proof</div>
@@ -437,10 +437,10 @@ export default function RateReview() {
                 <input
                   value={orderRef}
                   onChange={(e) => setOrderRef(e.target.value)}
-                  placeholder="e.g. #EV-12904 — leave blank to post unverified"
+                  placeholder="e.g. #EV-12904 - leave blank to post unverified"
                   className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-sm font-mono text-slate-900 placeholder:text-slate-400 outline-none focus:border-teal-400"
                 />
-                <p className="mt-2 text-xs text-slate-400">No order? No problem — you can still post. Adding a reference earns the Verified Buyer badge.</p>
+                <p className="mt-2 text-xs text-slate-400">No order? No problem - you can still post. Adding a reference earns the Verified Buyer badge.</p>
               </div>
 
               <div className="mt-5 rounded-xl border border-slate-200 p-5">
@@ -448,7 +448,7 @@ export default function RateReview() {
                 <input
                   value={displayName}
                   onChange={(e) => setDisplayName(e.target.value)}
-                  placeholder="Shown as &quot;A*** M.&quot; — leave blank to stay anonymous"
+                  placeholder="Shown as &quot;A*** M.&quot; - leave blank to stay anonymous"
                   className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 outline-none focus:border-teal-400"
                 />
               </div>

@@ -1,4 +1,4 @@
-// ---------------------------------------------------------------------------
+﻿// ---------------------------------------------------------------------------
 // VENDOR DIRECTORY DATA
 //
 // Logo slots:
@@ -9,7 +9,7 @@
 //     logo: 'https://your-cdn.example.com/vendor-logos/ion-peptide.webp',
 //     logoDark: true, // set true when the logo art is light/white on transparent
 //
-//   Nothing else needs to change — the card, the profile page and the compare
+//   Nothing else needs to change - the card, the profile page and the compare
 //   drawer all pick it up automatically.
 // ---------------------------------------------------------------------------
 

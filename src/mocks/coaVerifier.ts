@@ -1,9 +1,9 @@
-export const verifierHero = {
+﻿export const verifierHero = {
   eyebrow: 'COA Verifier · AI document forensics',
   title: 'Prove your certificate is real.',
   titleAccent: 'Instantly.',
   lead:
-    'Upload any Certificate of Analysis and our forensic AI inspects it the way a document examiner would — hunting for edited text, spliced regions, mismatched fonts and impossible timestamps. Know in seconds whether a document can be trusted.',
+    'Upload any Certificate of Analysis and our forensic AI inspects it the way a document examiner would - hunting for edited text, spliced regions, mismatched fonts and impossible timestamps. Know in seconds whether a document can be trusted.',
   primaryCta: 'Verify a document',
   secondaryCta: 'See how it works',
 };
@@ -12,7 +12,7 @@ export const verifierStats = [
   { icon: 'ri-file-search-line', value: '1.2M+', label: 'COAs screened in the last 12 months' },
   { icon: 'ri-time-line', value: '< 20s', label: 'Median time to a full authenticity report' },
   { icon: 'ri-focus-3-line', value: '7', label: 'Forensic checks run on every document' },
-  { icon: 'ri-shield-check-line', value: '100%', label: 'Private — your document is never published' },
+  { icon: 'ri-shield-check-line', value: '100%', label: 'Private - your document is never published' },
 ];
 
 export const detectChecks = [
@@ -24,7 +24,7 @@ export const detectChecks = [
   {
     icon: 'ri-font-size-2',
     title: 'Typography & font consistency',
-    desc: 'Detects mixed fonts, weights, kerning and baselines inside a single field — the classic fingerprint of edited text.',
+    desc: 'Detects mixed fonts, weights, kerning and baselines inside a single field - the classic fingerprint of edited text.',
   },
   {
     icon: 'ri-magic-line',
@@ -63,7 +63,7 @@ export const howItWorksSteps = [
     icon: 'ri-upload-cloud-2-line',
     step: '01',
     title: 'Upload the COA',
-    desc: 'Drop in a PDF, JPG, PNG or WEBP up to 12MB. Nothing is published — your document stays yours.',
+    desc: 'Drop in a PDF, JPG, PNG or WEBP up to 12MB. Nothing is published - your document stays yours.',
   },
   {
     icon: 'ri-mail-check-line',
@@ -82,7 +82,7 @@ export const howItWorksSteps = [
 export const verifierFaqs = [
   {
     q: 'What exactly does COA Verifier do?',
-    a: 'It runs an AI document-forensics pass on a Certificate of Analysis or HPLC report. It looks for the visual and structural fingerprints of tampering — edited text, spliced regions, mismatched fonts, compression seams and impossible timestamps — and turns everything it finds into a plain-language verdict with a confidence score.',
+    a: 'It runs an AI document-forensics pass on a Certificate of Analysis or HPLC report. It looks for the visual and structural fingerprints of tampering - edited text, spliced regions, mismatched fonts, compression seams and impossible timestamps - and turns everything it finds into a plain-language verdict with a confidence score.',
   },
   {
     q: 'Is it a legal guarantee that a document is authentic?',
@@ -107,15 +107,15 @@ export const verifierFaqs = [
 ];
 
 export const verifierPromises = [
-  { icon: 'ri-lock-2-line', text: 'Documents are analysed then discarded — never published or shared' },
+  { icon: 'ri-lock-2-line', text: 'Documents are analysed then discarded - never published or shared' },
   { icon: 'ri-flashlight-line', text: 'Verdict and full forensic breakdown in under 20 seconds' },
-  { icon: 'ri-mail-check-line', text: 'Free forever — one email unlocks unlimited checks' },
+  { icon: 'ri-mail-check-line', text: 'Free forever - one email unlocks unlimited checks' },
   { icon: 'ri-shield-star-line', text: 'Built on the same engine that screens our public COA vault' },
 ];
 
 export const promoBanner = {
   eyebrow: 'New tool',
   title: 'Is that certificate real? Now you can check in seconds.',
-  desc: 'COA Verifier runs an AI forensic pass on any Certificate of Analysis — catching edited text, spliced regions and impossible timestamps. Free to use.',
+  desc: 'COA Verifier runs an AI forensic pass on any Certificate of Analysis - catching edited text, spliced regions and impossible timestamps. Free to use.',
   cta: 'Try COA Verifier',
 };

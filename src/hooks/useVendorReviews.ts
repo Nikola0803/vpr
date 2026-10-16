@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+﻿import { useCallback, useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
 import type { VendorReview } from '@/mocks/vendorReviews';
 import { vendorReviewsBySlug as mockReviews } from '@/mocks/vendorReviews';
@@ -49,7 +49,7 @@ export function mapReviewRow(row: VendorReviewRow): VendorReview {
   return {
     id: String(row.id),
     author: row.author,
-    order: row.order_ref || '—',
+    order: row.order_ref || '-',
     hash: row.proof_hash,
     ts: fullTimestamp(row.created_at),
     rating: row.rating,
