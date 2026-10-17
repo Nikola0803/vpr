@@ -35,7 +35,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="relative mt-24 border-t border-teal-100 bg-teal-50">
+    <footer className="relative border-t border-teal-100 bg-teal-50">
       <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-16">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-5 pb-10 mb-10 border-b border-teal-100">
           <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5">

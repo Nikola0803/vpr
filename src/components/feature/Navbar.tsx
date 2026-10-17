@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
 import Logo from '@/components/feature/Logo';
 
@@ -10,13 +10,18 @@ const baseLinks = [
   { to: '/pricing', label: 'Pricing' },
 ];
 
-const SCAM_ALERT_LINK = { to: '/peptide-scams', label: 'Peptide Scams' };
+const SCAM_LINKS = [
+  { to: '/peptide-scams?tab=coas',    label: 'Fake COAs',    dot: 'bg-red-500',    active: 'bg-red-100 text-red-700',    idle: 'bg-red-50 text-red-600 hover:bg-red-100' },
+  { to: '/peptide-scams?tab=vendors', label: 'Scam Vendors', dot: 'bg-orange-500', active: 'bg-orange-100 text-orange-700', idle: 'bg-orange-50 text-orange-600 hover:bg-orange-100' },
+];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [menu, setMenu] = useState(false);
   const { pathname } = useLocation();
+  const [searchParams] = useSearchParams();
+  const currentTab = searchParams.get('tab');
   const { user, signOut } = useAuth();
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -65,17 +70,19 @@ export default function Navbar() {
               {l.label}
             </Link>
           ))}
-          <Link
-            to={SCAM_ALERT_LINK.to}
-            className={`flex items-center gap-1.5 px-3.5 py-2 text-sm font-semibold rounded-full transition-all whitespace-nowrap ${
-              pathname === SCAM_ALERT_LINK.to
-                ? 'bg-red-100 text-red-700'
-                : 'bg-red-50 text-red-600 hover:bg-red-100'
-            }`}
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
-            {SCAM_ALERT_LINK.label}
-          </Link>
+          {SCAM_LINKS.map(s => {
+            const isActive = pathname === '/peptide-scams' && (
+              s.to.includes('coas') ? currentTab === 'coas' : currentTab === 'vendors' || !currentTab
+            );
+            return (
+              <Link key={s.to} to={s.to}
+                className={`flex items-center gap-1.5 px-3 py-2 text-xs font-bold rounded-full transition-all whitespace-nowrap ${isActive ? s.active : s.idle}`}
+              >
+                <span className={`w-1.5 h-1.5 rounded-full ${s.dot} animate-pulse`}></span>
+                {s.label}
+              </Link>
+            );
+          })}
         </nav>
 
         <div className="hidden lg:flex items-center gap-2">
@@ -195,14 +202,14 @@ export default function Navbar() {
               {l.label}
             </Link>
           ))}
-          <Link
-            to={SCAM_ALERT_LINK.to}
-            onClick={() => setOpen(false)}
-            className="flex items-center gap-2 px-3 py-2 text-sm font-semibold text-red-600 bg-red-50 hover:bg-red-100 rounded-md"
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
-            {SCAM_ALERT_LINK.label}
-          </Link>
+          {SCAM_LINKS.map(s => (
+            <Link key={s.to} to={s.to} onClick={() => setOpen(false)}
+              className={`flex items-center gap-2 px-3 py-2 text-sm font-semibold rounded-md ${s.idle}`}
+            >
+              <span className={`w-1.5 h-1.5 rounded-full ${s.dot} animate-pulse`}></span>
+              {s.label}
+            </Link>
+          ))}
           <Link
             to={primary.to}
             onClick={() => setOpen(false)}
