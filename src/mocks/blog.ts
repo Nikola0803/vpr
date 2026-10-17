@@ -1,4 +1,4 @@
-export interface BlogSection {
+﻿export interface BlogSection {
   heading: string;
   body: string;
 }
@@ -457,7 +457,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'how-to-verify-a-peptide-coa',
     title: 'How to Verify a Peptide COA: The Complete Step-by-Step Guide',
     excerpt:
-      'Most researchers glance at the purity number and move on. This guide walks you through every field on a certificate of analysis — lot matching, lab identity, method, chromatogram, and sterility — so you know exactly what you are looking at.',
+      'Most researchers glance at the purity number and move on. This guide walks you through every field on a certificate of analysis, lot matching, lab identity, method, chromatogram, and sterility, so you know exactly what you are looking at.',
     metaDescription:
       'Learn how to verify a peptide COA step by step. Check lot numbers, confirm the lab, read the chromatogram, and spot a fake certificate before you order.',
     isoDate: '2026-10-10',
@@ -473,35 +473,35 @@ export const blogPosts: BlogPost[] = [
     sections: [
       {
         heading: 'Why verifying a COA is not optional',
-        body: 'A certificate of analysis is the only document that tells you whether the compound inside a vial matches the label. Without a verified COA, you are trusting a vendor\'s word with no independent proof. Given how many peptide certificates are recycled, fabricated, or simply wrong, treating COA verification as a routine step — not an afterthought — is the baseline for any serious researcher. You can also <a href="/coa-verifier">upload a COA to our AI-powered verifier</a> for an instant forensic check before you spend money.',
+        body: 'A certificate of analysis is the only document that tells you whether the compound inside a vial matches the label. Without a verified COA, you are trusting a vendor\'s word with no independent proof. Given how many peptide certificates are recycled, fabricated, or simply wrong, treating COA verification as a routine step, not an afterthought, is the baseline for any serious researcher. You can also <a href="/coa-verifier">upload a COA to our AI-powered verifier</a> for an instant forensic check before you spend money.',
       },
       {
-        heading: 'Step 1 — Match the lot number on your vial',
+        heading: 'Step 1, Match the lot number on your vial',
         body: 'Every vial from a legitimate manufacturer carries a lot or batch number printed on the label. The first thing you do with any COA is confirm that the lot number on the document matches the lot number on your vial exactly. A COA for a different lot tells you nothing about your product. If the vendor cannot produce a report for the specific lot you are receiving, that is a hard stop. Read more in our guide on <a href="/blog/verify-peptide-coa-batch">matching a COA to the batch you actually received</a>.',
       },
       {
-        heading: 'Step 2 — Confirm the testing laboratory is independent',
+        heading: 'Step 2, Confirm the testing laboratory is independent',
         body: 'The COA must name the lab that ran the analysis, not just the vendor who commissioned it. A legitimate lab is a third-party organisation with a verifiable address and contact details. In-house COAs, where the vendor is also the lab, remove the only check on vendor honesty. Laboratories running HPLC or LC-MS analysis on peptides will often have a web presence and an accreditation number you can look up. If the lab named on the report returns no results online, treat it as fabricated.',
       },
       {
-        heading: 'Step 3 — Check the analytical method',
+        heading: 'Step 3, Check the analytical method',
         body: 'The method section tells you how purity was measured. High-performance liquid chromatography (HPLC) is the minimum standard for purity. Liquid chromatography with mass spectrometry (LC-MS) additionally confirms molecular identity, which is more powerful because it distinguishes a real compound from a structurally similar one. A COA that states only a purity percentage without naming any method tells you nothing about how that number was arrived at. See our full comparison of <a href="/blog/hplc-vs-lcms-peptide-testing">HPLC vs LC-MS for peptide testing</a>.',
       },
       {
-        heading: 'Step 4 — Read the chromatogram, not just the purity number',
-        body: 'A real HPLC report includes a chromatogram — a graph of detector response over time. A clean peptide of claimed high purity shows a single dominant peak at a consistent retention time, with little else on the trace. If the stated purity is 98% but the chromatogram has multiple significant peaks or shoulders, the numbers and the graph are contradicting each other. Believe the graph. Our deeper tutorial on <a href="/blog/reading-an-hplc-coa-report">reading an HPLC COA report</a> covers every element of the chromatogram in plain English.',
+        heading: 'Step 4, Read the chromatogram, not just the purity number',
+        body: 'A real HPLC report includes a chromatogram, a graph of detector response over time. A clean peptide of claimed high purity shows a single dominant peak at a consistent retention time, with little else on the trace. If the stated purity is 98% but the chromatogram has multiple significant peaks or shoulders, the numbers and the graph are contradicting each other. Believe the graph. Our deeper tutorial on <a href="/blog/reading-an-hplc-coa-report">reading an HPLC COA report</a> covers every element of the chromatogram in plain English.',
       },
       {
-        heading: 'Step 5 — Check sterility and endotoxin when they matter',
+        heading: 'Step 5, Check sterility and endotoxin when they matter',
         body: 'A purity figure alone does not mean a product is safe to handle. For peptides intended for anything beyond dry storage, the COA should also cover sterility (absence of microbial contamination), endotoxin levels (bacterial cell-wall fragments that cause pyrogenic reactions), and sometimes heavy-metal limits. Many overseas suppliers produce COAs that show a purity number and nothing else. That omission is a signal about how thoroughly the product was actually tested.',
       },
       {
-        heading: 'Step 6 — Check the date and look for reused reports',
+        heading: 'Step 6, Check the date and look for reused reports',
         body: 'A legitimate COA records the date of analysis. A report dated years before the product you received, or a report with no date at all, cannot confirm the batch in your hands. One of the most common fraud patterns is a single old report recycled across every listing on a store, sometimes with the lot number edited. Check whether the date is plausible for the batch you ordered and whether the same PDF appears on every product page the vendor sells.',
       },
       {
         heading: 'What to do if the COA does not check out',
-        body: 'If any step above fails — lot mismatch, unverifiable lab, missing method, contradicting chromatogram, recycled report — do not proceed with the order. You can <a href="/peptide-scams?tab=coas">check our public registry of confirmed fake COAs</a>, and if you believe you have found a new one, upload it using our submission form. Independent third-party testing of a received sample is the definitive backstop: send a portion to a separate lab and compare its result with the vendor\'s claim.',
+        body: 'If any step above fails, lot mismatch, unverifiable lab, missing method, contradicting chromatogram, recycled report, do not proceed with the order. You can <a href="/peptide-scams?tab=coas">check our public registry of confirmed fake COAs</a>, and if you believe you have found a new one, upload it using our submission form. Independent third-party testing of a received sample is the definitive backstop: send a portion to a separate lab and compare its result with the vendor\'s claim.',
       },
     ],
   },
@@ -510,7 +510,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'what-is-a-peptide-coa',
     title: 'What Is a Peptide COA and Why You Should Never Skip It',
     excerpt:
-      'COA stands for certificate of analysis, but what that document actually contains — and what it proves — varies dramatically between suppliers. This explainer covers what a COA is, what it should include, and why skipping it is one of the most common research mistakes.',
+      'COA stands for certificate of analysis, but what that document actually contains, and what it proves, varies dramatically between suppliers. This explainer covers what a COA is, what it should include, and why skipping it is one of the most common research mistakes.',
     metaDescription:
       'What is a peptide COA? Learn what a certificate of analysis contains, why it matters for research peptide safety, and what separates a real COA from a fake one.',
     isoDate: '2026-10-08',
@@ -526,19 +526,19 @@ export const blogPosts: BlogPost[] = [
     sections: [
       {
         heading: 'COA stands for certificate of analysis',
-        body: 'A certificate of analysis is a document issued after a product has been tested, usually by a laboratory, that states what the test found. For a research peptide, it should confirm the identity of the compound, the purity level, and ideally whether any contaminants are present. Think of it as an inspection report for the contents of the vial — written by someone who actually measured it, not someone who made it.',
+        body: 'A certificate of analysis is a document issued after a product has been tested, usually by a laboratory, that states what the test found. For a research peptide, it should confirm the identity of the compound, the purity level, and ideally whether any contaminants are present. Think of it as an inspection report for the contents of the vial, written by someone who actually measured it, not someone who made it.',
       },
       {
         heading: 'What a proper COA must include',
-        body: 'A meaningful COA names the product and its lot or batch number, identifies the testing laboratory, states the analytical method used (commonly HPLC for purity), reports the numerical results, includes a date, and is signed or formally issued by the lab. A COA that omits the lab name, the method, or the lot reference is not a COA in any useful sense — it is a formatted document with a number in it. See our full <a href="/blog/peptide-lab-report-checklist">peptide lab report checklist</a> for everything a legitimate report should contain.',
+        body: 'A meaningful COA names the product and its lot or batch number, identifies the testing laboratory, states the analytical method used (commonly HPLC for purity), reports the numerical results, includes a date, and is signed or formally issued by the lab. A COA that omits the lab name, the method, or the lot reference is not a COA in any useful sense, it is a formatted document with a number in it. See our full <a href="/blog/peptide-lab-report-checklist">peptide lab report checklist</a> for everything a legitimate report should contain.',
       },
       {
         heading: 'Why the testing laboratory matters',
-        body: 'Purity numbers are only meaningful if they came from a real, independent analysis. When a vendor produces an in-house COA — meaning the same company that synthesised the compound also tested it — there is no external check on the result. Third-party testing, where an independent laboratory runs the analysis, is the standard that actually provides assurance. Most trusted peptide suppliers in 2026 use recognised analytical labs and name them clearly on every report.',
+        body: 'Purity numbers are only meaningful if they came from a real, independent analysis. When a vendor produces an in-house COA, meaning the same company that synthesised the compound also tested it, there is no external check on the result. Third-party testing, where an independent laboratory runs the analysis, is the standard that actually provides assurance. Most trusted peptide suppliers in 2026 use recognised analytical labs and name them clearly on every report.',
       },
       {
         heading: 'Why you should never skip it',
-        body: 'Peptide synthesis is not perfect and neither is quality control. Products can be underdosed, mislabelled, contaminated with residual solvents, or — in the worst cases — a completely different compound. The COA is the only checkpoint that catches these problems before they reach you. For a full walkthrough of how to check one yourself, read our step-by-step guide on <a href="/blog/how-to-verify-a-peptide-coa">how to verify a peptide COA</a>. You can also <a href="/coa-verifier">run any certificate through our AI verifier</a> for an instant check.',
+        body: 'Peptide synthesis is not perfect and neither is quality control. Products can be underdosed, mislabelled, contaminated with residual solvents, or, in the worst cases, a completely different compound. The COA is the only checkpoint that catches these problems before they reach you. For a full walkthrough of how to check one yourself, read our step-by-step guide on <a href="/blog/how-to-verify-a-peptide-coa">how to verify a peptide COA</a>. You can also <a href="/coa-verifier">run any certificate through our AI verifier</a> for an instant check.',
       },
     ],
   },
@@ -549,7 +549,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       'Fake COAs are more common than most researchers realise. Some are obvious; others are polished enough to pass a quick glance. These seven tells distinguish a real laboratory document from a fabricated one.',
     metaDescription:
-      'Wondering if your peptide COA is fake? These 7 warning signs reveal a fraudulent certificate of analysis — from mismatched lot numbers to unverifiable labs.',
+      'Wondering if your peptide COA is fake? These 7 warning signs reveal a fraudulent certificate of analysis, from mismatched lot numbers to unverifiable labs.',
     isoDate: '2026-10-06',
     category: 'COA Guides',
     author: 'Dr. Sana Whitfield',
@@ -562,31 +562,31 @@ export const blogPosts: BlogPost[] = [
     featured: false,
     sections: [
       {
-        heading: 'Sign 1 — The lot number on the COA does not match your vial',
-        body: 'This is the single most common way a fake certificate is caught. Every legitimate batch has its own report. If the lot number on the document differs from the lot on your vial, the certificate describes a different production run — not yours. It proves nothing about what you received. Before you look at anything else, check this. A deeper guide to lot matching is in our post on <a href="/blog/verify-peptide-coa-batch">verifying a COA against the batch you actually received</a>.',
+        heading: 'Sign 1, The lot number on the COA does not match your vial',
+        body: 'This is the single most common way a fake certificate is caught. Every legitimate batch has its own report. If the lot number on the document differs from the lot on your vial, the certificate describes a different production run, not yours. It proves nothing about what you received. Before you look at anything else, check this. A deeper guide to lot matching is in our post on <a href="/blog/verify-peptide-coa-batch">verifying a COA against the batch you actually received</a>.',
       },
       {
-        heading: 'Sign 2 — No named laboratory, or an unverifiable one',
+        heading: 'Sign 2, No named laboratory, or an unverifiable one',
         body: 'A real COA names the laboratory that ran the analysis. If the report lists no lab, or names a laboratory that returns no results when you search for it, the test may never have happened. Some fraudulent operations invent lab names specifically to pass this check. Search the named lab directly, look for an address, an accreditation number, and evidence it tests for other clients besides the vendor who provided your COA.',
       },
       {
-        heading: 'Sign 3 — No analytical method is stated',
-        body: 'Purity does not appear from nowhere — it is the result of a specific analytical technique, most commonly HPLC. A COA that gives a purity figure but does not name the method cannot be validated. You have no way to assess whether the technique used is appropriate, or whether any technique was used at all.',
+        heading: 'Sign 3, No analytical method is stated',
+        body: 'Purity does not appear from nowhere, it is the result of a specific analytical technique, most commonly HPLC. A COA that gives a purity figure but does not name the method cannot be validated. You have no way to assess whether the technique used is appropriate, or whether any technique was used at all.',
       },
       {
-        heading: 'Sign 4 — The chromatogram contradicts the purity claim',
+        heading: 'Sign 4, The chromatogram contradicts the purity claim',
         body: 'Look at the actual chromatogram attached to the report. A compound with claimed 98% purity should have one dominant peak. If the chromatogram shows multiple large peaks, significant shoulders, or a messy baseline under a stated high-purity figure, the graph and the number tell different stories. Trust the graph. See our full explainer on <a href="/blog/reading-an-hplc-coa-report">reading an HPLC COA</a> for how to interpret every element.',
       },
       {
-        heading: 'Sign 5 — The same PDF is used for every product',
-        body: 'A quick way to spot a recycled COA is to download reports for multiple products from the same vendor and compare them. If the same PDF — possibly with an edited lot number or swapped product name — appears on every listing, the vendor is not running batch-specific tests. Real suppliers generate a new report for each lot, because the test results differ from batch to batch.',
+        heading: 'Sign 5, The same PDF is used for every product',
+        body: 'A quick way to spot a recycled COA is to download reports for multiple products from the same vendor and compare them. If the same PDF, possibly with an edited lot number or swapped product name, appears on every listing, the vendor is not running batch-specific tests. Real suppliers generate a new report for each lot, because the test results differ from batch to batch.',
       },
       {
-        heading: 'Sign 6 — The report has no date, or an implausible one',
+        heading: 'Sign 6, The report has no date, or an implausible one',
         body: 'Dates tell you when the analysis was performed. A COA with no date cannot be linked to any specific production run. A COA dated several years before the product you are ordering cannot describe the current batch. Both are signs that the document is not what it claims to be.',
       },
       {
-        heading: 'Sign 7 — The vendor refuses to provide or discuss the COA',
+        heading: 'Sign 7, The vendor refuses to provide or discuss the COA',
         body: 'A legitimate vendor is proud of their test results and will share them freely. If a vendor is evasive when you ask for a COA, tells you it is proprietary, or provides a document but cannot explain any detail on it, that is its own red flag. You can <a href="/peptide-scams?tab=coas">check our confirmed fake COA registry</a> to see whether the document you have been sent has already been flagged, and <a href="/coa-verifier">run it through our AI verifier</a> for an instant forensic analysis.',
       },
     ],
@@ -596,7 +596,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'fake-coa-pdf-metadata',
     title: 'How to Check a COA\'s PDF Metadata for Signs of Forgery',
     excerpt:
-      'Every PDF carries hidden metadata — creation date, software used, author, and modification history. For a COA, that metadata often contradicts the document\'s stated date and origin. Here is how to read it.',
+      'Every PDF carries hidden metadata, creation date, software used, author, and modification history. For a COA, that metadata often contradicts the document\'s stated date and origin. Here is how to read it.',
     metaDescription:
       'Learn how to check a peptide COA PDF\'s metadata to spot forgery. Hidden fields like creation date, editor software, and author reveal whether a certificate was fabricated.',
     isoDate: '2026-10-04',
@@ -616,14 +616,14 @@ export const blogPosts: BlogPost[] = [
       },
       {
         heading: 'How to read the metadata on any PDF',
-        body: 'In Adobe Acrobat or its free equivalents, open the file and go to File → Properties → Description. In a browser you can right-click the PDF, choose "Document Properties" or similar, and find the same fields. On any operating system you can also right-click the file and check Properties → Details. The key fields are "Created", "Modified", and "Application" or "PDF Producer". A legitimate lab report should show a creation date consistent with the stated test date, and the application should match lab software — not a PDF editor or consumer design tool.',
+        body: 'In Adobe Acrobat or its free equivalents, open the file and go to File → Properties → Description. In a browser you can right-click the PDF, choose "Document Properties" or similar, and find the same fields. On any operating system you can also right-click the file and check Properties → Details. The key fields are "Created", "Modified", and "Application" or "PDF Producer". A legitimate lab report should show a creation date consistent with the stated test date, and the application should match lab software, not a PDF editor or consumer design tool.',
       },
       {
         heading: 'What a suspicious metadata profile looks like',
         body: 'Red flags in metadata include: a creation date that is days or weeks later than the stated test date (suggesting the document was assembled after the fact), a modification date after the stated issue date (suggesting the report was edited), software listed as a consumer PDF editor such as Adobe Acrobat Pro, Canva, or similar (legitimate labs output from LIMS or chromatography software, not design tools), and author fields that belong to a company other than the named laboratory.',
       },
       {
-        heading: 'Metadata alone is not definitive — but it narrows the field fast',
+        heading: 'Metadata alone is not definitive, but it narrows the field fast',
         body: 'Metadata can be deliberately cleared or spoofed by a sophisticated forger. It is not a proof of authenticity on its own, but it costs nothing and takes under a minute. A COA whose metadata passes the check is not necessarily genuine; a COA whose metadata contradicts the document is almost certainly not. Pair it with the other checks in our <a href="/blog/is-my-peptide-coa-fake-7-signs">complete list of fake COA signs</a>, and upload the document to <a href="/coa-verifier">our AI verifier</a> for a deeper forensic review.',
       },
     ],
@@ -633,7 +633,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'coa-without-lab-portal',
     title: 'COA With No Lab Portal or QR Code: What It Means and When to Walk Away',
     excerpt:
-      'Some COAs are verifiable through a lab\'s own portal or a QR code that points to the original record. When neither exists, you have to work harder — and some reports simply cannot be verified at all.',
+      'Some COAs are verifiable through a lab\'s own portal or a QR code that points to the original record. When neither exists, you have to work harder, and some reports simply cannot be verified at all.',
     metaDescription:
       'What does it mean when a peptide COA has no lab portal or QR code? Learn how verifiable COAs work, and when the absence of a lookup link is a red flag.',
     isoDate: '2026-10-02',
@@ -649,15 +649,15 @@ export const blogPosts: BlogPost[] = [
     sections: [
       {
         heading: 'What a lab portal actually is',
-        body: 'Some analytical laboratories — particularly larger ones used by reputable peptide suppliers — maintain a public or client-facing portal where every analysis they complete is stored and retrievable by lot number. When a vendor\'s COA includes a link or QR code pointing to the issuing lab\'s own record, you can verify the document independently by looking up the exact same analysis on the lab\'s own system. The vendor cannot alter what the lab hosts.',
+        body: 'Some analytical laboratories, particularly larger ones used by reputable peptide suppliers, maintain a public or client-facing portal where every analysis they complete is stored and retrievable by lot number. When a vendor\'s COA includes a link or QR code pointing to the issuing lab\'s own record, you can verify the document independently by looking up the exact same analysis on the lab\'s own system. The vendor cannot alter what the lab hosts.',
       },
       {
         heading: 'QR codes on COAs and what they verify',
-        body: 'A QR code on a COA typically points to a record in the lab\'s system or to a static URL that the lab controls. Scanning it should take you directly to the matching analysis — not to the vendor\'s own website, and not to a file the vendor hosts. If the QR code resolves to the vendor\'s domain, or if scanning it brings up a page that the vendor maintains, the verification is circular and proves nothing about the lab\'s own records.',
+        body: 'A QR code on a COA typically points to a record in the lab\'s system or to a static URL that the lab controls. Scanning it should take you directly to the matching analysis, not to the vendor\'s own website, and not to a file the vendor hosts. If the QR code resolves to the vendor\'s domain, or if scanning it brings up a page that the vendor maintains, the verification is circular and proves nothing about the lab\'s own records.',
       },
       {
         heading: 'When a COA has no portal and no QR code',
-        body: 'Most COAs in the peptide industry are stand-alone PDFs with no external verification path. That does not automatically make them fake — many legitimate labs do not run portals. But it means you are relying entirely on the document itself rather than any independent record. In that case, the other checks become more important: verifying the lab\'s real-world existence, checking lot number consistency, reading the chromatogram, and examining <a href="/blog/fake-coa-pdf-metadata">the PDF\'s metadata</a>. See our full guide on <a href="/blog/how-to-verify-a-peptide-coa">how to verify a peptide COA</a> for the complete process.',
+        body: 'Most COAs in the peptide industry are stand-alone PDFs with no external verification path. That does not automatically make them fake, many legitimate labs do not run portals. But it means you are relying entirely on the document itself rather than any independent record. In that case, the other checks become more important: verifying the lab\'s real-world existence, checking lot number consistency, reading the chromatogram, and examining <a href="/blog/fake-coa-pdf-metadata">the PDF\'s metadata</a>. See our full guide on <a href="/blog/how-to-verify-a-peptide-coa">how to verify a peptide COA</a> for the complete process.',
       },
       {
         heading: 'When to walk away',
@@ -686,15 +686,15 @@ export const blogPosts: BlogPost[] = [
     sections: [
       {
         heading: 'What HPLC measures',
-        body: 'High-performance liquid chromatography separates the components of a sample and measures the size of each peak relative to the total. For a peptide, the largest peak is the target compound, and the ratio of its area to all peaks combined is the purity percentage. HPLC is fast, reproducible, and well-suited to purity measurement. What it cannot tell you is what each peak actually is — just how large it is relative to the others.',
+        body: 'High-performance liquid chromatography separates the components of a sample and measures the size of each peak relative to the total. For a peptide, the largest peak is the target compound, and the ratio of its area to all peaks combined is the purity percentage. HPLC is fast, reproducible, and well-suited to purity measurement. What it cannot tell you is what each peak actually is, just how large it is relative to the others.',
       },
       {
         heading: 'What LC-MS adds',
-        body: 'Liquid chromatography with mass spectrometry uses the same separation step as HPLC but adds a mass spectrometer that measures the molecular weight and fragmentation pattern of each detected compound. Because peptides have highly specific masses, LC-MS can confirm molecular identity — whether the main peak is really the compound it is supposed to be, or a structurally similar compound with similar chromatographic behaviour but a different mass. This matters most in fraud detection: a sophisticated substitution might fool HPLC but would not survive mass spectrometry.',
+        body: 'Liquid chromatography with mass spectrometry uses the same separation step as HPLC but adds a mass spectrometer that measures the molecular weight and fragmentation pattern of each detected compound. Because peptides have highly specific masses, LC-MS can confirm molecular identity, whether the main peak is really the compound it is supposed to be, or a structurally similar compound with similar chromatographic behaviour but a different mass. This matters most in fraud detection: a sophisticated substitution might fool HPLC but would not survive mass spectrometry.',
       },
       {
         heading: 'Which to trust more, and when',
-        body: 'For routine purity confirmation, HPLC from a reputable independent lab is the minimum standard and entirely appropriate. For identity confirmation — particularly for compounds like semaglutide, tirzepatide, or any peptide where substitution fraud is a known risk — LC-MS is meaningfully stronger. A COA that includes both a purity figure from HPLC and an identity confirmation from LC-MS is the most complete documentation available. Our <a href="/blog/how-to-verify-a-peptide-coa">step-by-step COA verification guide</a> covers how to read both types of result.',
+        body: 'For routine purity confirmation, HPLC from a reputable independent lab is the minimum standard and entirely appropriate. For identity confirmation, particularly for compounds like semaglutide, tirzepatide, or any peptide where substitution fraud is a known risk, LC-MS is meaningfully stronger. A COA that includes both a purity figure from HPLC and an identity confirmation from LC-MS is the most complete documentation available. Our <a href="/blog/how-to-verify-a-peptide-coa">step-by-step COA verification guide</a> covers how to read both types of result.',
       },
       {
         heading: 'Red flags in the method section',
@@ -709,7 +709,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       'Not all certificates of analysis are equal. Some contain everything needed to verify the product; others are well-formatted documents that prove nothing. This checklist separates one from the other.',
     metaDescription:
-      'A 10-point checklist for evaluating a peptide COA. Every legitimate certificate of analysis should include these fields — check them before you trust the report.',
+      'A 10-point checklist for evaluating a peptide COA. Every legitimate certificate of analysis should include these fields, check them before you trust the report.',
     isoDate: '2026-09-25',
     category: 'COA Guides',
     author: 'Dr. Sana Whitfield',
@@ -731,7 +731,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         heading: 'What to do when a field is missing',
-        body: 'Missing a field does not automatically mean fraud — sometimes labs provide minimal documentation by default. But it does mean you cannot verify that aspect of the product from the COA alone. If the lot number is missing, ask the vendor for a version with the lot. If the chromatogram is absent, ask for the raw data. If the lab cannot be verified at all, treat the document as unverified and either request better documentation or use <a href="/coa-verifier">our COA verifier</a> to flag what is wrong before proceeding.',
+        body: 'Missing a field does not automatically mean fraud, sometimes labs provide minimal documentation by default. But it does mean you cannot verify that aspect of the product from the COA alone. If the lot number is missing, ask the vendor for a version with the lot. If the chromatogram is absent, ask for the raw data. If the lab cannot be verified at all, treat the document as unverified and either request better documentation or use <a href="/coa-verifier">our COA verifier</a> to flag what is wrong before proceeding.',
       },
     ],
   },
@@ -755,23 +755,23 @@ export const blogPosts: BlogPost[] = [
     featured: false,
     sections: [
       {
-        heading: 'Type 1 — The ghost store',
+        heading: 'Type 1, The ghost store',
         body: 'The ghost store is the simplest and most common fraud: a website goes live, collects orders, takes payment, and then stops responding. The domain is typically registered for one year, the support email bounces within weeks, and the site may be replaced by a new template under a different name before complaints accumulate. Check domain registration age before ordering from any vendor you have not used before. Our <a href="/blog/how-to-check-if-a-peptide-website-is-legit">10-point peptide website vetting checklist</a> runs through the fastest ways to catch a ghost store.',
       },
       {
-        heading: 'Type 2 — The fake COA operation',
-        body: 'A more sophisticated variant ships something — possibly inert powder, or a different compound — and provides a polished certificate of analysis that describes something you never receive. The COA looks professional but describes a different lot, names an unverifiable lab, or has metadata showing it was created in a PDF editor weeks after the stated test date. You can <a href="/peptide-scams?tab=coas">search our public registry of confirmed fake COAs</a>, or <a href="/coa-verifier">run a certificate through our AI verifier</a> before you trust it.',
+        heading: 'Type 2, The fake COA operation',
+        body: 'A more sophisticated variant ships something, possibly inert powder, or a different compound, and provides a polished certificate of analysis that describes something you never receive. The COA looks professional but describes a different lot, names an unverifiable lab, or has metadata showing it was created in a PDF editor weeks after the stated test date. You can <a href="/peptide-scams?tab=coas">search our public registry of confirmed fake COAs</a>, or <a href="/coa-verifier">run a certificate through our AI verifier</a> before you trust it.',
       },
       {
-        heading: 'Type 3 — The bait-and-switch supplier',
-        body: 'Bait-and-switch suppliers list a premium compound at a competitive price and deliver something different — a cheaper analogue, an underdosed version of the same compound, or an unrelated substance entirely. The fraud only becomes apparent when the product is tested independently or when the expected effect is absent. Read our guide on <a href="/blog/bait-and-switch-peptides">how the bait-and-switch scam works</a> and the testing approach that catches it.',
+        heading: 'Type 3, The bait-and-switch supplier',
+        body: 'Bait-and-switch suppliers list a premium compound at a competitive price and deliver something different, a cheaper analogue, an underdosed version of the same compound, or an unrelated substance entirely. The fraud only becomes apparent when the product is tested independently or when the expected effect is absent. Read our guide on <a href="/blog/bait-and-switch-peptides">how the bait-and-switch scam works</a> and the testing approach that catches it.',
       },
       {
-        heading: 'Type 4 — The underdosed supplier',
+        heading: 'Type 4, The underdosed supplier',
         body: 'Underdosing is the fraud most likely to go undetected. The compound is real, the COA may be accurate for the lot tested, but the actual fill per vial is substantially below the labelled amount. A supplier can pass batch-level testing and still ship vials where the peptide concentration is 40-60% of what is stated. Independent mass-based testing of a received sample catches this; visible inspection and even standard HPLC purity testing do not. See our guide on <a href="/blog/underdosed-peptides-how-to-detect">detecting underdosed peptides</a>.',
       },
       {
-        heading: 'Type 5 — The review-stuffed storefront',
+        heading: 'Type 5, The review-stuffed storefront',
         body: 'Some fraudulent operations invest heavily in fabricated social proof: bought reviews on Trustpilot, generated comments on forum threads, and a curated wall of five-star testimonials with no order references. These stores look credible at a glance. The distinguishing feature is that the reviews cannot be traced to real orders, cluster in date bursts, and often use suspiciously similar phrasing. See our guide on <a href="/blog/spot-a-fake-peptide-review">spotting a fake peptide review</a> for the tells.',
       },
       {
@@ -805,7 +805,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         heading: 'Why HPLC alone does not catch it',
-        body: 'Standard HPLC measures peak size, not what the peak is. A substituted compound of similar mass can produce a clean single-peak chromatogram at a high purity percentage — the test was done correctly, it just did not measure identity. Mass spectrometry is the technique that catches substitution: it measures the molecular weight and fragmentation pattern, which are unique to each compound. A COA that includes only HPLC purity with no identity confirmation by LC-MS cannot rule out substitution.',
+        body: 'Standard HPLC measures peak size, not what the peak is. A substituted compound of similar mass can produce a clean single-peak chromatogram at a high purity percentage, the test was done correctly, it just did not measure identity. Mass spectrometry is the technique that catches substitution: it measures the molecular weight and fragmentation pattern, which are unique to each compound. A COA that includes only HPLC purity with no identity confirmation by LC-MS cannot rule out substitution.',
       },
       {
         heading: 'The signs before delivery',
@@ -813,7 +813,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         heading: 'Testing what you receive',
-        body: 'Independent mass-spectrometric testing of a received sample is the definitive check. Send a portion of the received material to an independent analytical laboratory and request LC-MS identity confirmation alongside HPLC purity. The results either confirm the vendor\'s claim or expose the substitution. Vendors who are genuinely confident in their supply do not resist this — those who discourage independent testing have already answered your question.',
+        body: 'Independent mass-spectrometric testing of a received sample is the definitive check. Send a portion of the received material to an independent analytical laboratory and request LC-MS identity confirmation alongside HPLC purity. The results either confirm the vendor\'s claim or expose the substitution. Vendors who are genuinely confident in their supply do not resist this, those who discourage independent testing have already answered your question.',
       },
     ],
   },
@@ -838,15 +838,15 @@ export const blogPosts: BlogPost[] = [
     sections: [
       {
         heading: 'Purity and concentration are not the same thing',
-        body: 'Purity describes what fraction of the material in the vial is the target compound — if the purity is 98%, then 98% of whatever is in the vial is the right molecule. Concentration describes how much of the compound is in the vial in total. A product can be 99% pure and still contain only 4 mg when the label says 10 mg. Standard HPLC purity testing does not catch this, because it measures the ratio of peaks, not the absolute amount of material. Underdosing exploits this gap.',
+        body: 'Purity describes what fraction of the material in the vial is the target compound, if the purity is 98%, then 98% of whatever is in the vial is the right molecule. Concentration describes how much of the compound is in the vial in total. A product can be 99% pure and still contain only 4 mg when the label says 10 mg. Standard HPLC purity testing does not catch this, because it measures the ratio of peaks, not the absolute amount of material. Underdosing exploits this gap.',
       },
       {
         heading: 'How suppliers underdose without failing COA testing',
-        body: 'A supplier can fill a vial with a smaller amount of genuine, pure compound, and if the COA is run on a properly filled reference batch, the certificate accurately describes the reference lot, not the product in your hand. Alternatively, the vial might be filled with pure compound diluted with an inert excipient — the compound is present and tests as pure, but the total amount per vial is a fraction of the label. Neither scenario triggers a failure on a standard purity COA.',
+        body: 'A supplier can fill a vial with a smaller amount of genuine, pure compound, and if the COA is run on a properly filled reference batch, the certificate accurately describes the reference lot, not the product in your hand. Alternatively, the vial might be filled with pure compound diluted with an inert excipient, the compound is present and tests as pure, but the total amount per vial is a fraction of the label. Neither scenario triggers a failure on a standard purity COA.',
       },
       {
         heading: 'What testing actually catches underdosing',
-        body: 'Quantitative testing — specifically, techniques that measure absolute amount rather than relative purity — is required. Quantitative NMR (qNMR) using an internal standard is one of the most reliable methods for this. Quantitative LC-MS against a known standard is another. Both require more preparation and cost more than standard purity testing, but they are the only methods that tell you the actual amount of compound per vial. When underdosing is the specific risk you are trying to rule out, ask for a quantitative result, not just a purity percentage.',
+        body: 'Quantitative testing, specifically, techniques that measure absolute amount rather than relative purity, is required. Quantitative NMR (qNMR) using an internal standard is one of the most reliable methods for this. Quantitative LC-MS against a known standard is another. Both require more preparation and cost more than standard purity testing, but they are the only methods that tell you the actual amount of compound per vial. When underdosing is the specific risk you are trying to rule out, ask for a quantitative result, not just a purity percentage.',
       },
       {
         heading: 'Who underdoses and how to reduce your risk',
@@ -879,7 +879,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         heading: 'Immediate steps to take',
-        body: 'If you paid by card or through a documented checkout, file a chargeback or dispute immediately through your bank or card issuer. Do not wait to see whether the parcel eventually arrives — ghost vendors count on delays to push you past chargeback windows. Document everything: screenshots of the store, order confirmation emails, tracking numbers, and any correspondence. This documentation supports your dispute and is useful if a complaint is filed with consumer protection authorities.',
+        body: 'If you paid by card or through a documented checkout, file a chargeback or dispute immediately through your bank or card issuer. Do not wait to see whether the parcel eventually arrives, ghost vendors count on delays to push you past chargeback windows. Document everything: screenshots of the store, order confirmation emails, tracking numbers, and any correspondence. This documentation supports your dispute and is useful if a complaint is filed with consumer protection authorities.',
       },
       {
         heading: 'What you cannot recover with crypto or wire',
@@ -912,11 +912,11 @@ export const blogPosts: BlogPost[] = [
     sections: [
       {
         heading: 'Why semaglutide is the most faked peptide in 2026',
-        body: 'Semaglutide commands a significant price premium over most research peptides, and demand in the research market has grown dramatically alongside its clinical profile. That combination — high price, high demand, recognisable name — makes it the primary target for counterfeiters. The fraud ranges from simple mislabelling of cheaper analogues to sophisticated substitution with earlier-generation GLP-1 compounds that would survive basic purity testing. A COA that only shows HPLC purity cannot distinguish between these scenarios.',
+        body: 'Semaglutide commands a significant price premium over most research peptides, and demand in the research market has grown dramatically alongside its clinical profile. That combination, high price, high demand, recognisable name, makes it the primary target for counterfeiters. The fraud ranges from simple mislabelling of cheaper analogues to sophisticated substitution with earlier-generation GLP-1 compounds that would survive basic purity testing. A COA that only shows HPLC purity cannot distinguish between these scenarios.',
       },
       {
         heading: 'Why basic HPLC is not enough for GLP-1 verification',
-        body: 'GLP-1 analogues share structural features and can produce similar HPLC profiles. Standard purity testing confirms that the main peak is large and clean, but does not confirm which compound the peak represents. Mass spectrometric identity confirmation — specifically LC-MS that measures the exact molecular weight of semaglutide (approximately 4113 Da for the free base) — is the only method that definitively distinguishes it from a related analogue. Any COA for semaglutide that lacks an MS identity confirmation should be treated as insufficient for identity verification.',
+        body: 'GLP-1 analogues share structural features and can produce similar HPLC profiles. Standard purity testing confirms that the main peak is large and clean, but does not confirm which compound the peak represents. Mass spectrometric identity confirmation, specifically LC-MS that measures the exact molecular weight of semaglutide (approximately 4113 Da for the free base), is the only method that definitively distinguishes it from a related analogue. Any COA for semaglutide that lacks an MS identity confirmation should be treated as insufficient for identity verification.',
       },
       {
         heading: 'The COA checks specific to semaglutide',
@@ -986,7 +986,7 @@ export const blogPosts: BlogPost[] = [
     sections: [
       {
         heading: 'The conflict of interest in in-house testing',
-        body: 'When a vendor tests their own products, they control the result. There is no structural barrier preventing a vendor from choosing what to test, how often, and whether to report unflattering results. In-house quality control is not worthless — it is a reasonable part of a manufacturing process — but a COA that comes from the same organisation that made the product does not provide independent assurance. The entire value of a COA rests on the independence of the person who signed it.',
+        body: 'When a vendor tests their own products, they control the result. There is no structural barrier preventing a vendor from choosing what to test, how often, and whether to report unflattering results. In-house quality control is not worthless, it is a reasonable part of a manufacturing process, but a COA that comes from the same organisation that made the product does not provide independent assurance. The entire value of a COA rests on the independence of the person who signed it.',
       },
       {
         heading: 'What makes a lab genuinely independent',
@@ -1005,7 +1005,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       'The answers to these questions separate a vendor who knows their supply chain from one running a façade. Ask them before payment, watch the responses, and treat evasiveness as data.',
     metaDescription:
-      '14 essential questions to ask a peptide vendor before ordering. How they answer reveals whether the supplier is legitimate — covering COAs, lot numbers, shipping, and payment.',
+      '14 essential questions to ask a peptide vendor before ordering. How they answer reveals whether the supplier is legitimate, covering COAs, lot numbers, shipping, and payment.',
     isoDate: '2026-09-15',
     category: 'Vetting Vendors',
     author: 'Marcus Bell',
@@ -1056,7 +1056,7 @@ export const blogPosts: BlogPost[] = [
     sections: [
       {
         heading: 'What BPC-157 is and why its COA matters',
-        body: 'BPC-157 (Body Protection Compound 157) is a synthetic pentadecapeptide — a 15-amino-acid sequence — with a well-established research profile and a relatively affordable synthesis cost. Its prevalence in the research market makes it a common target for underdosing and substitution, as buyers familiar with the name may not examine the supporting documentation closely. A proper COA for BPC-157 should confirm both purity and identity, since the compound is long enough that partial truncations can affect activity while still producing a superficially similar HPLC trace.',
+        body: 'BPC-157 (Body Protection Compound 157) is a synthetic pentadecapeptide, a 15-amino-acid sequence, with a well-established research profile and a relatively affordable synthesis cost. Its prevalence in the research market makes it a common target for underdosing and substitution, as buyers familiar with the name may not examine the supporting documentation closely. A proper COA for BPC-157 should confirm both purity and identity, since the compound is long enough that partial truncations can affect activity while still producing a superficially similar HPLC trace.',
       },
       {
         heading: 'The reference values on a legitimate COA',
@@ -1064,7 +1064,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         heading: 'Fraud patterns specific to BPC-157',
-        body: 'The most common issues with BPC-157 are underdosing and recycled COAs. Because the compound is relatively inexpensive to synthesise, the economic incentive is less for outright substitution and more for under-filling vials — delivering 2-3 mg where the label states 5 mg. Recycled COAs — where a single test report is used across every product page and every batch — are also common among lower-tier suppliers. Check whether the lot number on the report has ever changed across multiple orders from the same vendor, and run any suspicious document through <a href="/coa-verifier">our AI verifier</a>.',
+        body: 'The most common issues with BPC-157 are underdosing and recycled COAs. Because the compound is relatively inexpensive to synthesise, the economic incentive is less for outright substitution and more for under-filling vials, delivering 2-3 mg where the label states 5 mg. Recycled COAs, where a single test report is used across every product page and every batch, are also common among lower-tier suppliers. Check whether the lot number on the report has ever changed across multiple orders from the same vendor, and run any suspicious document through <a href="/coa-verifier">our AI verifier</a>.',
       },
       {
         heading: 'How to vet a BPC-157 supplier',
@@ -1130,7 +1130,7 @@ export const blogPosts: BlogPost[] = [
     sections: [
       {
         heading: 'What Reddit does well',
-        body: 'Peptide communities on Reddit aggregate the experiences of many buyers across a long timeline. They surface reputational patterns — vendors who consistently ship promptly, vendors whose products have been independently tested by community members, and vendors who have disappeared or changed behaviour. For a first pass at unfamiliar vendor names, a community thread is a reasonable starting point.',
+        body: 'Peptide communities on Reddit aggregate the experiences of many buyers across a long timeline. They surface reputational patterns, vendors who consistently ship promptly, vendors whose products have been independently tested by community members, and vendors who have disappeared or changed behaviour. For a first pass at unfamiliar vendor names, a community thread is a reasonable starting point.',
       },
       {
         heading: 'What Reddit cannot tell you',
@@ -1138,7 +1138,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         heading: 'The manipulation problem',
-        body: 'There is documented evidence of vendors — and competitors — seeding peptide forums with recommendations, counter-recommendations, and complaints. The economics strongly favour this: a single paid account spending a few hours a week can shift community perception of a vendor meaningfully. Distinguishing organic community experience from coordinated reputation management is not straightforward, and Reddit provides no tooling to help.',
+        body: 'There is documented evidence of vendors, and competitors, seeding peptide forums with recommendations, counter-recommendations, and complaints. The economics strongly favour this: a single paid account spending a few hours a week can shift community perception of a vendor meaningfully. Distinguishing organic community experience from coordinated reputation management is not straightforward, and Reddit provides no tooling to help.',
       },
       {
         heading: 'What to use alongside Reddit',
