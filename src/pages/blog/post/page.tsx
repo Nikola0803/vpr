@@ -1,4 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import Navbar from '@/components/feature/Navbar';
 import Footer from '@/components/feature/Footer';
 import PostCard from '@/pages/blog/components/PostCard';
@@ -38,8 +39,20 @@ export default function BlogPost() {
   const fallback = blogPosts.filter((p) => p.slug !== post.slug).slice(0, 3);
   const relatedPosts = related.length > 0 ? related : fallback;
 
+  const metaDesc = post.metaDescription ?? post.excerpt;
+
   return (
     <div className="min-h-screen bg-white text-slate-800 font-sans">
+      <Helmet>
+        <title>{post.title} | Verified Peptide Reviews</title>
+        <meta name="description" content={metaDesc} />
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={metaDesc} />
+        <meta property="og:type" content="article" />
+        <meta property="og:image" content={post.cover} />
+        <meta property="article:published_time" content={post.isoDate ?? post.date} />
+        <link rel="canonical" href={`https://www.verifiedpeptidereviews.com/blog/${post.slug}`} />
+      </Helmet>
       <Navbar />
 
       <article>
@@ -93,7 +106,7 @@ export default function BlogPost() {
             {post.sections.map((s) => (
               <div key={s.heading}>
                 <h2 className="font-display font-bold text-slate-900 text-xl md:text-2xl tracking-tight">{s.heading}</h2>
-                <p className="mt-3 text-slate-700 leading-relaxed">{s.body}</p>
+                <p className="mt-3 text-slate-700 leading-relaxed prose-links" dangerouslySetInnerHTML={{ __html: s.body }} />
               </div>
             ))}
           </div>
