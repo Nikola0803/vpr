@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import Logo from '@/components/feature/Logo';
 import CertificationSeal from '@/components/feature/CertificationSeal';
+import NewsletterSignup from '@/components/feature/NewsletterSignup';
 
 export default function Footer() {
   const cols = [
@@ -83,7 +84,20 @@ export default function Footer() {
             </div>
           ))}
         </div>
-        <div className="mt-14 pt-8 border-t border-teal-100 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        {/* Newsletter */}
+        <div className="mt-12 pt-10 border-t border-teal-100">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-5">
+            <div>
+              <div className="text-sm font-bold text-slate-800">Weekly Digest</div>
+              <div className="text-xs text-slate-500 mt-0.5 max-w-xs">Fake COA alerts, new confirmed scam vendors, and vetted vendor updates. Every Friday.</div>
+            </div>
+            <div className="w-full sm:w-72 relative">
+              <NewsletterSignup source="footer" />
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-8 pt-8 border-t border-teal-100 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="text-xs text-slate-500">
             © 2026 Verified Peptide Reviews. All reviews are cryptographically hashed & permanently archived.
           </div>

@@ -57,19 +57,31 @@ export default function Navbar() {
         </Link>
 
         <nav className="hidden lg:flex items-center gap-1">
-          {links.map((l) => (
-            <Link
-              key={l.to}
-              to={l.to}
-              className={`px-3.5 py-2 text-sm font-medium rounded-full transition-all whitespace-nowrap ${
-                pathname === l.to
-                  ? 'text-teal-700 bg-teal-50'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
-              }`}
-            >
-              {l.label}
-            </Link>
-          ))}
+          {links.map((l) => {
+            const isCoa = l.to === '/coa-verifier';
+            return (
+              <Link
+                key={l.to}
+                to={l.to}
+                className={`px-3.5 py-2 text-sm rounded-full transition-all whitespace-nowrap ${
+                  isCoa
+                    ? `font-semibold flex items-center gap-1.5 border ${
+                        pathname === l.to
+                          ? 'border-teal-400 bg-teal-50 text-teal-700'
+                          : 'border-teal-200 bg-teal-50/60 text-teal-600 hover:border-teal-400 hover:bg-teal-50'
+                      }`
+                    : `font-medium ${
+                        pathname === l.to
+                          ? 'text-teal-700 bg-teal-50'
+                          : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+                      }`
+                }`}
+              >
+                {isCoa && <i className="ri-shield-check-line text-xs"></i>}
+                {l.label}
+              </Link>
+            );
+          })}
           {SCAM_LINKS.map(s => {
             const isActive = pathname === '/peptide-scams' && (
               s.to.includes('coas') ? currentTab === 'coas' : currentTab === 'vendors' || !currentTab
