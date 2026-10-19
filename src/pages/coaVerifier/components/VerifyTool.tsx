@@ -4,6 +4,19 @@ import { verifierPromises } from '@/mocks/coaVerifier';
 import ReportView from '@/pages/coaVerifier/components/ReportView';
 import { supabase } from '@/lib/supabase';
 
+function getSessionId(): string {
+  try {
+    let id = localStorage.getItem('vpr_session_id');
+    if (!id) {
+      id = crypto.randomUUID();
+      localStorage.setItem('vpr_session_id', id);
+    }
+    return id;
+  } catch {
+    return 'anonymous';
+  }
+}
+
 const ACCEPTED = ['application/pdf', 'image/jpeg', 'image/png', 'image/webp'];
 const MAX_BYTES = 12 * 1024 * 1024;
 
@@ -120,6 +133,18 @@ export default function VerifyTool() {
       });
       setReport(result);
       setStatus('done');
+      // Save to scan library - fire-and-forget
+      supabase.from('coa_scans').insert({
+        session_id: getSessionId(),
+        file_name: file.name,
+        verdict: result.verdict,
+        confidence: result.confidence ?? null,
+        headline: result.headline ?? null,
+        company: result.company ?? null,
+        product: result.product ?? null,
+      }).then(() => {
+        window.dispatchEvent(new CustomEvent('vpr:scan-saved'));
+      }).catch(() => {});
     } catch (e) {
       setStatus('error');
       setError(e instanceof Error ? e.message : 'Something went wrong. Please try again.');
