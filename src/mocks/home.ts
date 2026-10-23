@@ -47,7 +47,7 @@ export const featuredVendors: {
     slug: 'evlv-peptides',
     country: 'USA · Domestic',
     score: 4.9,
-    reviews: 712,
+    reviews: 748,
     tags: ['Tirzepatide', 'BPC-157', 'GHK-Cu'],
     verified: true,
     coa: true,

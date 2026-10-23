@@ -150,7 +150,7 @@ const seeds: VendorSeed[] = [
     country: 'United States',
     region: 'USA Domestic',
     score: 4.9,
-    reviews: 721,
+    reviews: 748,
     ship: 2.4,
     compounds: ['Tirzepatide', 'BPC-157', 'GHK-Cu', 'Retatrutide'],
     registered: 'Feb 2024',
