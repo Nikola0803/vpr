@@ -33,9 +33,9 @@ export const tiers: Tier[] = [
     id: 'starter',
     name: 'Starter',
     popular: false,
-    monthly: 149,
-    yearly: 99,
-    desc: 'A low-commitment way to start collecting and displaying compliant reviews for one store.',
+    monthly: 49,
+    yearly: 34,
+    desc: 'Get listed, collect reviews, and start building trust. No contracts, no setup fee.',
     features: [
       '1 connected storefront',
       'Up to 2,500 review invites/mo, to your own past customers',
@@ -51,11 +51,11 @@ export const tiers: Tier[] = [
   },
   {
     id: 'growth',
-    name: 'Growth',
+    name: 'Verified',
     popular: true,
-    monthly: 299,
-    yearly: 199,
-    desc: 'Everything you need to collect, verify, and display compliant reviews for one store.',
+    monthly: 149,
+    yearly: 99,
+    desc: 'Full certification, COA integration and the trust signals that convert hesitant buyers.',
     features: [
       '1 connected storefront',
       'Up to 5,000 review invites/mo, to your own past customers',
@@ -75,8 +75,8 @@ export const tiers: Tier[] = [
     id: 'professional',
     name: 'Professional',
     popular: false,
-    monthly: 499,
-    yearly: 299,
+    monthly: 299,
+    yearly: 199,
     desc: 'For vendors running multiple stores who want white-label branding and priority support.',
     features: [
       'Up to 3 connected storefronts',
@@ -164,7 +164,7 @@ export const pricingFaqs = [
   },
   {
     q: 'How much do I save on the yearly plan?',
-    a: 'Yearly billing saves up to 40% versus monthly, and the exact saving is shown on every plan when you flip the toggle. Billing is charged once per year as a single payment.',
+    a: 'Yearly billing saves up to 33% versus monthly, and the exact saving is shown on every plan when you flip the toggle. Billing is charged once per year as a single payment.',
   },
   {
     q: 'Can I switch plans at any time?',

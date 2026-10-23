@@ -132,7 +132,7 @@ export default function Pricing() {
             <i className="ri-shield-star-line text-emerald-600"></i>
             <span>{moneyBack}</span>
             <span className="hidden sm:inline text-slate-300">·</span>
-            <span>Yearly billing saves up to 40%</span>
+            <span>Yearly billing saves up to 33%</span>
           </div>
         </div>
       </section>
