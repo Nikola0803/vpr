@@ -1199,4 +1199,57 @@ export const blogPosts: BlogPost[] = [
       },
     ],
   },
+
+  {
+    slug: 'is-ion-peptide-legit',
+    title: 'Is Ion Peptide Legit? A VPR Vendor Review',
+    excerpt:
+      'Ion Peptide (ionpeptide.com) is one of the most searched US peptide suppliers right now. We ran them through our standard evaluation: COA documentation, lab independence, scam registry, shipping, and buyer history. Here is the full picture.',
+    metaDescription:
+      'Is Ion Peptide legit? VPR reviews ionpeptide.com across COA documentation, third-party testing, scam registry status, shipping times, and 406 verified buyer reviews.',
+    isoDate: '2026-10-25',
+    category: 'Vendor Reviews',
+    author: 'Marcus Bell',
+    authorRole: 'Trust & Safety Lead',
+    date: 'Oct 25, 2026',
+    readTime: '6 min read',
+    cover:
+      'https://readdy.ai/api/search-image?query=peptide%20vials%20arranged%20on%20a%20laboratory%20bench%20with%20soft%20teal%20accent%20lighting%2C%20clean%20scientific%20editorial%20photography%2C%20vendor%20review%20context%2C%20high%20detail&width=1200&height=800&seq=blog-ion-review-2026-vr2&orientation=landscape',
+    tags: ['Ion Peptide', 'Vendor Review', 'ionpeptide.com', 'US Domestic', 'COA'],
+    featured: false,
+    sections: [
+      {
+        heading: 'Disclosure and methodology',
+        body: 'Ion Peptide is listed in the VPR vendor directory but has not completed our full audited verification process. That means they appear in search and have collected buyer reviews on this platform, but they have not been through the documentation deep-dive that earns a verified badge. We are flagging this upfront because it is a meaningful distinction: a listed vendor and a verified vendor are not the same thing. The evaluation below reflects what we can confirm from public documentation and verified buyer data. Our full evaluation criteria are explained in the <a href="/blog/questions-to-ask-peptide-vendor">pre-order vendor checklist</a>.',
+      },
+      {
+        heading: 'Who is Ion Peptide',
+        body: 'Ion Peptide operates at ionpeptide.com and has been active since October 2023, making them a mid-tenure name in the US domestic market. Their catalogue covers Tirzepatide, Semaglutide, BPC-157, Ipamorelin, and CJC-1295. They ship domestically across the United States and have built a reasonable review volume over their two years of operation. They are not a new or pop-up operation, which already removes one common risk category.',
+      },
+      {
+        heading: 'COA and testing documentation',
+        body: 'Ion Peptide publishes certificates of analysis for their product range. From what we can verify through buyer submissions and public documentation, the COAs name a third-party laboratory and include HPLC purity data. What we cannot confirm, because they have not completed our audit, is whether lot-specific documentation is available on demand for every SKU or whether the same certificates cover multiple batches. This is the gap that the full verification process closes. If you are ordering from Ion Peptide, ask for a COA specific to the lot number on your vial before you commit. You can also run any certificate they provide through our <a href="/coa-verifier">AI-powered COA verifier</a> to check for the most common fraud signals. For guidance on what to look for, read our <a href="/blog/how-to-verify-a-peptide-coa">complete COA verification guide</a>.',
+      },
+      {
+        heading: 'Scam registry check',
+        body: 'Ion Peptide does not appear in our <a href="/peptide-scams?tab=vendors">confirmed scam vendor registry</a>. We checked against the standard categories: fake or recycled COAs, non-delivery, bait-and-switch substitution, and cold-outreach fraud operations. None of these patterns were associated with Ion Peptide in our dataset. Community sentiment across peptide forums is broadly positive and consistent with a functioning operation. There are no credible fraud reports in our monitoring window.',
+      },
+      {
+        heading: 'Shipping and response rate',
+        body: 'Ion Peptide averages 2.3 days to delivery on US domestic orders based on verified buyer data collected through this platform, which puts them at the faster end of the segment. Their response rate is 95%, meaning nearly every buyer enquiry receives a reply. Packaging feedback is generally positive with no recurring complaints about cold-chain or condition on arrival. Occasional processing delays have been noted during busy periods, which appears to be an industry-wide pattern rather than specific to this vendor.',
+      },
+      {
+        heading: 'What buyers say',
+        body: 'Ion Peptide has 406 verified reviews on this platform with an average score of 4.8 out of 5. The consistent positives: reliable domestic delivery times, product that matches the listed compounds, and responsive support. The minority of lower scores mostly reference communication gaps during delays rather than product quality issues. The overall volume and consistency of the review record is a reasonable signal for a vendor of their tenure.',
+      },
+      {
+        heading: 'What is missing',
+        body: 'Being honest here: Ion Peptide\'s documentation transparency has room to grow. There are no QR codes on individual vials linking to batch-specific reports, which is a feature that removes ambiguity for the buyer at the point of receipt. They have not completed VPR\'s audit process, so we cannot independently confirm lot-level documentation depth. Sterility and endotoxin data is not publicly surfaced on their product pages. None of these are disqualifying, but they represent the gap between a vendor who is probably fine and a vendor you can independently verify with confidence. See our breakdown of <a href="/blog/peptide-lab-report-checklist">what a complete lab report should include</a>.',
+      },
+      {
+        heading: 'Verdict',
+        body: 'Ion Peptide is a legitimate operation. They are not on our scam registry, they have a consistent two-year track record, and their buyer scores hold up at scale. If you are buying from them, do the basics: request a lot-specific COA, run it through our <a href="/coa-verifier">verifier</a>, and check it against the <a href="/blog/is-my-peptide-coa-fake-7-signs">seven signs of a fake COA</a> before you order. They pass the floor for a legitimate US peptide supplier. For vendors who have gone further on documentation transparency and independent verification, see our <a href="/vendors">full verified vendor directory</a>.',
+      },
+    ],
+  },
 ];
