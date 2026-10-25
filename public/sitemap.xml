@@ -253,6 +253,14 @@
     <priority>0.7</priority>
   </url>
 
+  <!-- Blog posts — Vendor Reviews -->
+  <url>
+    <loc>https://www.verifiedpeptidereviews.com/blog/is-evlv-peptides-legit</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Vendor profiles -->
   <url>
     <loc>https://www.verifiedpeptidereviews.com/vendors/evlv-peptides</loc>
