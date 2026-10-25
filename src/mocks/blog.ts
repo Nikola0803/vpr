@@ -1167,7 +1167,7 @@ export const blogPosts: BlogPost[] = [
     sections: [
       {
         heading: 'Disclosure and methodology',
-        body: 'EVLV Peptides is an audited, verified merchant on this platform. That means they have gone through our documentation and COA review process and met the bar for listing. We are stating that upfront because it matters: a review site that does not disclose relationships with the vendors it reviews is the exact pattern that makes platform trust worthless. Our evaluation criteria are the same regardless of listing status. Where EVLV falls short of a standard, we say so. You can read the full methodology we apply to every vendor in our <a href="/blog/questions-to-ask-peptide-vendor">pre-order vendor checklist</a>.',
+        body: 'EVLV Peptides is operated under TDS Studios, the same company that owns this platform. We are stating that upfront because it matters: a review site that does not disclose relationships with the vendors it covers is the exact pattern that makes platform trust worthless. VPR is editorially independent and the evaluation criteria applied here are the same regardless of corporate relationship. Where EVLV falls short of a standard, we say so. You can read the full methodology we apply to every vendor in our <a href="/blog/questions-to-ask-peptide-vendor">pre-order vendor checklist</a>.',
       },
       {
         heading: 'Who is EVLV Peptides',
@@ -1273,7 +1273,7 @@ export const blogPosts: BlogPost[] = [
     sections: [
       {
         heading: 'Disclosure and methodology',
-        body: 'Warrior Distributions has a corporate relationship with the current ownership of this platform. We are stating that plainly because it is a material fact: any review site that covers related companies without disclosing the connection is doing exactly what makes review platforms untrustworthy. The evaluation criteria applied here are identical to what we use for every other vendor. Where Warrior falls short, we say so. VPR\'s value as a trust resource depends on that standard being consistent, and this review is no exception. Full evaluation methodology is available in our <a href="/blog/questions-to-ask-peptide-vendor">pre-order vendor checklist</a>.',
+        body: 'Warrior Distributions is operated under TDS Studios, the same company that owns this platform. We are stating that plainly because it is a material fact: any review site that covers related companies without disclosing the connection is doing exactly what makes review platforms untrustworthy. VPR is editorially independent and the evaluation criteria applied here are identical to what we use for every other vendor. Where Warrior falls short, we say so. Full evaluation methodology is available in our <a href="/blog/questions-to-ask-peptide-vendor">pre-order vendor checklist</a>.',
       },
       {
         heading: 'Who is Warrior Distributions',
