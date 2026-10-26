@@ -8,14 +8,20 @@ import FilterPanel, { defaultFilters, type Filters } from '@/pages/vendors/compo
 import CompareDrawer from '@/pages/vendors/components/CompareDrawer';
 import FeaturedVendorBanner from '@/pages/vendors/components/FeaturedVendorBanner';
 
+const PAGE_SIZE = 24;
+
 export default function Vendors() {
   const [filters, setFilters] = useState<Filters>(defaultFilters);
   const [compare, setCompare] = useState<string[]>([]);
   const [sort, setSort] = useState<'score' | 'reviews' | 'ship'>('score');
+  const [page, setPage] = useState(1);
   const { certifications } = useCertifications();
   const certMap = useMemo(() => activeCertMap(certifications), [certifications]);
 
   const sponsored = useMemo(() => publicVendors.find((v) => v.sponsored), []);
+
+  const handleFiltersChange = (f: Filters) => { setFilters(f); setPage(1); };
+  const handleSortChange = (s: typeof sort) => { setSort(s); setPage(1); };
 
   const results = useMemo(() => {
     const list = publicVendors.filter((v) => {
@@ -80,12 +86,12 @@ export default function Vendors() {
       {/* BODY */}
       <section className="relative pb-20">
         <div className="max-w-[1400px] mx-auto px-6 md:px-10 grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-8">
-          <FilterPanel filters={filters} onChange={setFilters} resultCount={results.length} />
+          <FilterPanel filters={filters} onChange={handleFiltersChange} resultCount={results.length} />
 
           <div>
             <div className="glass rounded-xl px-5 py-3.5 mb-5 flex flex-wrap items-center justify-between gap-3">
               <div className="text-sm text-slate-600">
-                Showing <span className="text-slate-900 font-semibold">{results.length}</span> of {publicVendors.length} vendors
+                Showing <span className="text-slate-900 font-semibold">{Math.min(page * PAGE_SIZE, results.length)}</span> of <span className="text-slate-900 font-semibold">{results.length}</span> vendors
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-xs text-slate-500">Sort by</span>
@@ -97,7 +103,7 @@ export default function Vendors() {
                   ].map((o) => (
                     <button
                       key={o.k}
-                      onClick={() => setSort(o.k as typeof sort)}
+                      onClick={() => handleSortChange(o.k as typeof sort)}
                       className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
                         sort === o.k ? 'bg-cyan-500/20 text-cyan-700' : 'text-slate-600 hover:text-slate-900'
                       }`}
@@ -124,11 +130,23 @@ export default function Vendors() {
                 </button>
               </div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
-                {results.map((v) => (
-                  <VendorCard key={v.slug} vendor={v} selected={compare.includes(v.slug)} onToggle={toggleCompare} cert={certMap[v.slug]} />
-                ))}
-              </div>
+              <>
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+                  {results.slice(0, page * PAGE_SIZE).map((v) => (
+                    <VendorCard key={v.slug} vendor={v} selected={compare.includes(v.slug)} onToggle={toggleCompare} cert={certMap[v.slug]} />
+                  ))}
+                </div>
+                {page * PAGE_SIZE < results.length && (
+                  <div className="mt-8 flex justify-center">
+                    <button
+                      onClick={() => setPage((p) => p + 1)}
+                      className="px-8 py-3 rounded-full text-sm font-semibold text-cyan-700 border border-cyan-500/30 hover:bg-cyan-500/10 transition-all"
+                    >
+                      Load more vendors ({results.length - page * PAGE_SIZE} remaining)
+                    </button>
+                  </div>
+                )}
+              </>
             )}
           </div>
         </div>

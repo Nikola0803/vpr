@@ -45,6 +45,8 @@ function strengthSentences(vendor: Vendor): string[] {
 }
 
 export function getVendorAiSummary(vendor: Vendor): string {
+  if (vendor.reviews === 0) return '';
+
   // Curated summaries may embed a {count} token so the quoted number always tracks
   // the vendor's live review total on this platform instead of a stale figure.
   if (vendor.aiSummary) {

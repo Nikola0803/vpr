@@ -100,12 +100,16 @@ export default function VendorProfile() {
               <div>
                 <div className="flex items-center gap-2 flex-wrap">
                   <h1 className="font-display font-extrabold text-slate-900 text-2xl md:text-3xl tracking-tight">{vendor.name}</h1>
-                  {vendor.verified && (
+                  {vendor.reviews === 0 ? (
+                    <span className="text-[10px] font-mono px-2 py-1 rounded-full bg-amber-50 text-amber-700 border border-amber-200 flex items-center gap-1">
+                      <i className="ri-store-2-line"></i>Unclaimed
+                    </span>
+                  ) : vendor.verified && (
                     <span className="text-[10px] font-mono px-2 py-1 rounded-full bg-emerald-500/10 text-emerald-600 border border-emerald-500/25 flex items-center gap-1">
                       <i className="ri-shield-check-fill"></i>Verified Merchant
                     </span>
                   )}
-                  {vendor.planTier === 'free' && (
+                  {vendor.reviews > 0 && vendor.planTier === 'free' && (
                     <span className="text-[10px] font-mono px-2 py-1 rounded-full bg-slate-100 text-slate-600 border border-slate-200 flex items-center gap-1">
                       <i className="ri-price-tag-3-line"></i>Free listing
                     </span>
@@ -134,8 +138,17 @@ export default function VendorProfile() {
             </div>
             <div className="flex items-center gap-3">
               <div className="text-right">
-                <div className="font-display font-extrabold text-slate-900 text-4xl">{vendor.score.toFixed(1)}</div>
-                <div className="text-xs text-slate-500 font-mono">{vendor.reviews.toLocaleString()} reviews</div>
+                {vendor.reviews === 0 ? (
+                  <>
+                    <div className="font-display font-extrabold text-slate-400 text-2xl">Not Rated</div>
+                    <div className="text-xs text-slate-400 font-mono mt-1">No reviews yet</div>
+                  </>
+                ) : (
+                  <>
+                    <div className="font-display font-extrabold text-slate-900 text-4xl">{vendor.score.toFixed(1)}</div>
+                    <div className="text-xs text-slate-500 font-mono">{vendor.reviews.toLocaleString()} reviews</div>
+                  </>
+                )}
               </div>
               <a
                 href={`https://${vendor.domain}`}
@@ -163,22 +176,29 @@ export default function VendorProfile() {
             <div className="text-sm font-semibold text-slate-900 mb-5 flex items-center gap-2">
               <i className="ri-bar-chart-grouped-line text-cyan-600"></i>Aggregate Score Breakdown
             </div>
-            <div className="space-y-5">
-              {breakdown.map((b) => {
-                const val = vendor[b.key];
-                return (
-                  <div key={b.key}>
-                    <div className="flex items-center justify-between text-sm mb-2">
-                      <span className="text-slate-700">{b.label}</span>
-                      <span className="font-mono text-slate-900">{val.toFixed(2)}</span>
+            {vendor.reviews === 0 ? (
+              <div className="py-6 text-center text-sm text-slate-400">
+                <i className="ri-bar-chart-2-line text-2xl block mb-2"></i>
+                No review data yet. Scores will appear once this vendor collects verified reviews.
+              </div>
+            ) : (
+              <div className="space-y-5">
+                {breakdown.map((b) => {
+                  const val = vendor[b.key];
+                  return (
+                    <div key={b.key}>
+                      <div className="flex items-center justify-between text-sm mb-2">
+                        <span className="text-slate-700">{b.label}</span>
+                        <span className="font-mono text-slate-900">{val.toFixed(2)}</span>
+                      </div>
+                      <div className="h-2 rounded-full bg-slate-100 overflow-hidden">
+                        <div className="h-full rounded-full bg-gradient-to-r from-cyan-500 to-teal-500" style={{ width: `${(val / 5) * 100}%` }}></div>
+                      </div>
                     </div>
-                    <div className="h-2 rounded-full bg-slate-100 overflow-hidden">
-                      <div className="h-full rounded-full bg-gradient-to-r from-cyan-500 to-teal-500" style={{ width: `${(val / 5) * 100}%` }}></div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+                  );
+                })}
+              </div>
+            )}
           </div>
 
           <div className="glass rounded-2xl p-6">
@@ -232,7 +252,7 @@ export default function VendorProfile() {
       </section>
 
       {/* AI REVIEW SUMMARY */}
-      <ReviewSummary vendor={vendor} />
+      {vendor.reviews > 0 && <ReviewSummary vendor={vendor} />}
 
       {/* TABS */}
       <section className="relative pb-24">
@@ -344,18 +364,18 @@ export default function VendorProfile() {
                 </div>
                 <div className="glass rounded-2xl p-5">
                   <div className="text-[11px] font-mono uppercase tracking-wider text-slate-500 mb-3">Rating Distribution</div>
-                  {ratingDistribution(vendor.score).map(({ star: s, pct }) => {
-                    return (
-                      <div key={s} className="flex items-center gap-2 mb-2">
-                        <span className="text-[11px] font-mono text-slate-500 w-3">{s}</span>
-                        <i className="ri-star-fill text-emerald-600 text-[10px]"></i>
-                        <div className="flex-1 h-1.5 rounded-full bg-slate-100 overflow-hidden">
-                          <div className="h-full rounded-full bg-emerald-500/70" style={{ width: `${pct}%` }}></div>
-                        </div>
-                        <span className="text-[10px] font-mono text-slate-500 w-8 text-right">{pct}%</span>
+                  {vendor.reviews === 0 ? (
+                    <p className="text-[11px] text-slate-400 text-center py-2">No ratings yet</p>
+                  ) : ratingDistribution(vendor.score).map(({ star: s, pct }) => (
+                    <div key={s} className="flex items-center gap-2 mb-2">
+                      <span className="text-[11px] font-mono text-slate-500 w-3">{s}</span>
+                      <i className="ri-star-fill text-emerald-600 text-[10px]"></i>
+                      <div className="flex-1 h-1.5 rounded-full bg-slate-100 overflow-hidden">
+                        <div className="h-full rounded-full bg-emerald-500/70" style={{ width: `${pct}%` }}></div>
                       </div>
-                    );
-                  })}
+                      <span className="text-[10px] font-mono text-slate-500 w-8 text-right">{pct}%</span>
+                    </div>
+                  ))}
                 </div>
                 <div className="glass rounded-2xl p-5">
                   <div className="text-[11px] font-mono uppercase tracking-wider text-slate-500 mb-2">Vendor Response Rate</div>

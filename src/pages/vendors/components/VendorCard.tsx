@@ -89,33 +89,46 @@ export default function VendorCard({ vendor: v, selected, onToggle, cert }: Prop
 
       {/* Clean review line */}
       <div className="mt-4 flex items-center justify-between">
-        <Stars value={v.score} size="text-sm" />
-        <div className="text-sm">
-          <span className="font-mono font-semibold text-slate-900">{v.score.toFixed(1)}</span>
-          <span className="text-slate-400 text-xs ml-1">/ 5.0</span>
-        </div>
+        {v.reviews === 0 ? (
+          <span className="text-xs font-mono text-slate-400 italic">Not Rated</span>
+        ) : (
+          <>
+            <Stars value={v.score} size="text-sm" />
+            <div className="text-sm">
+              <span className="font-mono font-semibold text-slate-900">{v.score.toFixed(1)}</span>
+              <span className="text-slate-400 text-xs ml-1">/ 5.0</span>
+            </div>
+          </>
+        )}
       </div>
       <div className="mt-1.5 text-[11px] text-slate-400 font-mono">
-        {v.reviews.toLocaleString()} verified reviews
+        {v.reviews === 0 ? 'No reviews yet' : `${v.reviews.toLocaleString()} verified reviews`}
       </div>
 
-      {/* Outcome story - mirrors the homepage: more buyers / conversions / trust */}
-      <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-slate-500">
-        <span className="flex items-center gap-1">
-          <i className="ri-user-add-line text-teal-600"></i>
-          More buyers
-        </span>
-        <span className="text-slate-200">|</span>
-        <span className="flex items-center gap-1">
-          <i className="ri-shopping-bag-3-line text-teal-600"></i>
-          More conversions
-        </span>
-        <span className="text-slate-200">|</span>
-        <span className="flex items-center gap-1">
-          <i className="ri-shield-star-line text-teal-600"></i>
-          More trust
-        </span>
-      </div>
+      {/* Outcome story or unclaimed prompt */}
+      {v.reviews === 0 ? (
+        <div className="mt-3 text-[11px] text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 flex items-center gap-1.5">
+          <i className="ri-store-2-line shrink-0"></i>
+          This listing is unclaimed. Own this store? Claim it free.
+        </div>
+      ) : (
+        <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-slate-500">
+          <span className="flex items-center gap-1">
+            <i className="ri-user-add-line text-teal-600"></i>
+            More buyers
+          </span>
+          <span className="text-slate-200">|</span>
+          <span className="flex items-center gap-1">
+            <i className="ri-shopping-bag-3-line text-teal-600"></i>
+            More conversions
+          </span>
+          <span className="text-slate-200">|</span>
+          <span className="flex items-center gap-1">
+            <i className="ri-shield-star-line text-teal-600"></i>
+            More trust
+          </span>
+        </div>
+      )}
 
       {/* Trust chips */}
       <div className="mt-4 flex flex-wrap gap-1.5">
@@ -127,7 +140,11 @@ export default function VendorCard({ vendor: v, selected, onToggle, cert }: Prop
             <i className="ri-shield-check-fill"></i>True COA Verified
           </span>
         )}
-        {v.planTier === 'free' && (
+        {v.reviews === 0 ? (
+          <span className="text-[10px] font-mono px-2 py-1 rounded-md bg-amber-50 border border-amber-200 text-amber-700 flex items-center gap-1">
+            <i className="ri-store-2-line"></i>Unclaimed
+          </span>
+        ) : v.planTier === 'free' && (
           <span className="text-[10px] font-mono px-2 py-1 rounded-md bg-slate-100 border border-slate-200 text-slate-600 flex items-center gap-1">
             <i className="ri-price-tag-3-line"></i>Free · Basic data
           </span>
@@ -154,12 +171,22 @@ export default function VendorCard({ vendor: v, selected, onToggle, cert }: Prop
 
       {/* Footer actions */}
       <div className="mt-4 pt-4 border-t border-slate-100 flex items-center gap-2">
-        <Link
-          to={`/vendors/${v.slug}`}
-          className="flex-1 whitespace-nowrap text-center px-3 py-2 rounded-lg text-xs font-semibold text-white bg-teal-600 hover:bg-teal-700 transition-colors flex items-center justify-center gap-1.5"
-        >
-          <i className="ri-chat-3-line"></i>Read reviews
-        </Link>
+        {v.reviews === 0 ? (
+          <Link
+            to="/claim"
+            onClick={(e) => e.stopPropagation()}
+            className="flex-1 whitespace-nowrap text-center px-3 py-2 rounded-lg text-xs font-semibold text-amber-800 bg-amber-50 border border-amber-200 hover:bg-amber-100 transition-colors flex items-center justify-center gap-1.5"
+          >
+            <i className="ri-store-2-line"></i>Claim listing
+          </Link>
+        ) : (
+          <Link
+            to={`/vendors/${v.slug}`}
+            className="flex-1 whitespace-nowrap text-center px-3 py-2 rounded-lg text-xs font-semibold text-white bg-teal-600 hover:bg-teal-700 transition-colors flex items-center justify-center gap-1.5"
+          >
+            <i className="ri-chat-3-line"></i>Read reviews
+          </Link>
+        )}
         <a
           href={`https://${v.domain}`}
           target="_blank"
