@@ -20,6 +20,7 @@ import RateReview from "@/pages/rate/page";
 import ReviewModeration from "@/pages/admin/page";
 import CoaVerifier from "@/pages/coaVerifier/page";
 import ScamAlerts from "@/pages/scamAlerts/page";
+import Sponsorship from "@/pages/sponsorship/page";
 
 const routes: RouteObject[] = [
   {
@@ -105,6 +106,10 @@ const routes: RouteObject[] = [
   {
     path: "/admin/reviews",
     element: <ReviewModeration />,
+  },
+  {
+    path: "/sponsorship",
+    element: <Sponsorship />,
   },
   {
     path: "*",

@@ -33,6 +33,14 @@ export default function Footer() {
         { label: 'Write a Review', to: '/write-review' },
       ],
     },
+    {
+      title: 'Sponsor',
+      links: [
+        { label: 'How Sponsorship Works', to: '/sponsorship' },
+        { label: 'Ownership Disclosure', to: '/sponsorship#ownership' },
+        { label: 'Claim Vendor Portal', to: '/claim' },
+      ],
+    },
   ];
 
   return (

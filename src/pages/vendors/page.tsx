@@ -6,6 +6,7 @@ import { useCertifications, activeCertMap } from '@/hooks/useCertifications';
 import VendorCard from '@/pages/vendors/components/VendorCard';
 import FilterPanel, { defaultFilters, type Filters } from '@/pages/vendors/components/FilterPanel';
 import CompareDrawer from '@/pages/vendors/components/CompareDrawer';
+import FeaturedVendorBanner from '@/pages/vendors/components/FeaturedVendorBanner';
 
 export default function Vendors() {
   const [filters, setFilters] = useState<Filters>(defaultFilters);
@@ -13,6 +14,8 @@ export default function Vendors() {
   const [sort, setSort] = useState<'score' | 'reviews' | 'ship'>('score');
   const { certifications } = useCertifications();
   const certMap = useMemo(() => activeCertMap(certifications), [certifications]);
+
+  const sponsored = useMemo(() => publicVendors.find((v) => v.sponsored), []);
 
   const results = useMemo(() => {
     const list = publicVendors.filter((v) => {
@@ -105,6 +108,8 @@ export default function Vendors() {
                 </div>
               </div>
             </div>
+
+            {sponsored && <FeaturedVendorBanner vendor={sponsored} />}
 
             {results.length === 0 ? (
               <div className="glass rounded-2xl p-16 text-center">

@@ -50,6 +50,8 @@ export interface Vendor {
   /** Curated default-directory placement (1 = top). Optional - only set for hand-picked leaders. */
   rank?: number;
   hidden?: boolean;
+  /** Paid featured placement. Vendor appears in the sponsored banner above the grid. */
+  sponsored?: boolean;
 }
 
 type Flag = 'coa' | 'lab' | 'qr';
@@ -78,6 +80,7 @@ interface VendorSeed {
   logoBg?: string;
   rank?: number;
   hidden?: boolean;
+  sponsored?: boolean;
 }
 
 // Distinct monogram tile palette so a wall of placeholder logos still reads like
@@ -136,6 +139,7 @@ function build(seed: VendorSeed, index: number): Vendor {
     planTier: seed.plan,
     rank: seed.rank,
     hidden: seed.hidden,
+    sponsored: seed.sponsored,
   };
 }
 
@@ -145,6 +149,7 @@ const seeds: VendorSeed[] = [
     slug: 'evlv-peptides',
     name: 'EVLV Peptides',
     rank: 1,
+    sponsored: true,
     init: 'EV',
     domain: 'evlvpeptides.com',
     country: 'United States',
