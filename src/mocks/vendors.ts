@@ -440,6 +440,24 @@ const seeds: VendorSeed[] = [
     about:
       'Zoonetics is a US-based supplier of research-grade peptides for veterinary science and canine research. The catalogue is built around compounds most cited in peer-reviewed K9 studies: BPC-157, TB-500, GHK-Cu and Thymosin Alpha-1. Every production lot is tested by an independent third-party laboratory with certificates of analysis published openly. Products are labelled strictly for research use only and ship domestically.',
   },
+  {
+    slug: 'lotus-peptide',
+    name: 'Lotus Peptide',
+    init: 'LP',
+    domain: 'lotuspeptide.com',
+    country: 'United States',
+    region: 'USA Domestic',
+    score: 4.7,
+    reviews: 0,
+    ship: 1.0,
+    compounds: ['BPC-157', 'TB-500', 'Tirzepatide', 'Semaglutide'],
+    registered: 'Oct 2026',
+    flags: ['coa', 'lab'],
+    response: 90,
+    logoDark: false,
+    about:
+      'Lotus Peptide is a US-based wholesale supplier of research-grade peptides, offering single vials, 5-packs and 10-packs. Third-party lab testing is conducted by Kovera Labs and Freedom Diagnostics, with certificates of analysis published openly at lotuspeptide.com/coa. One-day US domestic shipping. All products are for research use only.',
+  },
 ];
 
 export const vendors: Vendor[] = seeds.map(build);

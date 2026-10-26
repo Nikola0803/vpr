@@ -1,6 +1,6 @@
 ﻿import { useState, type FormEvent } from 'react';
+import { supabase } from '@/lib/supabase';
 
-const SUBMIT_ADDR = 'https://readdy.ai/api/form/dap6gm0d8872q3cdc37g';
 const FORM_ID = 'vendor-store-submission';
 
 const inputClass =
@@ -29,49 +29,31 @@ export default function SubmitStoreForm() {
       return;
     }
 
-    const payload = new URLSearchParams();
-    formData.forEach((value, key) => {
-      if (key === 'company_alt') return;
-      const val = String(value).trim();
-      if (val) payload.append(key, val);
-    });
-
     setStatus('submitting');
     setError('');
 
     try {
-      const response = await fetch(SUBMIT_ADDR, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: payload.toString(),
+      const { error: dbError } = await supabase.from('vendor_claims').insert({
+        store_name:   String(formData.get('store_name')   ?? '').trim(),
+        store_domain: String(formData.get('store_domain') ?? '').trim(),
+        country:      String(formData.get('country')      ?? '').trim() || null,
+        compounds:    String(formData.get('compounds')    ?? '').trim() || null,
+        contact_name: String(formData.get('contact_name') ?? '').trim(),
+        role:         String(formData.get('role')         ?? '').trim() || null,
+        email:        String(formData.get('email')        ?? '').trim(),
+        phone:        String(formData.get('phone')        ?? '').trim() || null,
+        plan:         String(formData.get('plan')         ?? 'Free').trim(),
+        notes:        String(formData.get('notes')        ?? '').trim() || null,
       });
 
-      const responseText = await response.text();
-      let parsed: { code?: string; meta?: { message?: string; detail?: string }; message?: string } | null = null;
-      if (responseText) {
-        try {
-          parsed = JSON.parse(responseText);
-        } catch {
-          parsed = null;
-        }
-      }
+      if (dbError) throw new Error(dbError.message);
 
-      const rawMessage =
-        parsed?.meta?.message || parsed?.message || parsed?.meta?.detail || responseText || '';
-      const serverMessage = typeof rawMessage === 'string' ? rawMessage : '';
-      const looksLikeSpam = serverMessage.toLowerCase().includes('spam');
-
-      if (response.ok && parsed?.code === 'OK' && !looksLikeSpam) {
-        setStatus('success');
-        setError('');
-        form.reset();
-      } else {
-        setStatus('error');
-        setError(serverMessage || 'We could not submit your store right now. Please try again.');
-      }
-    } catch {
+      setStatus('success');
+      setError('');
+      form.reset();
+    } catch (e) {
       setStatus('error');
-      setError('Network error. Please check your connection and try again.');
+      setError(e instanceof Error ? e.message : 'We could not submit your store right now. Please try again.');
     }
   };
 
@@ -106,7 +88,6 @@ export default function SubmitStoreForm() {
 
       <form
         id={FORM_ID}
-        data-readdy-form
         onSubmit={handleSubmit}
         className="mt-6 space-y-6"
       >
