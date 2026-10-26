@@ -48,6 +48,23 @@ export default function SubmitStoreForm() {
 
       if (dbError) throw new Error(dbError.message);
 
+      // Fire-and-forget: notify office@verifiedpeptidereviews.com via edge function.
+      // Non-critical: a failure here does not block the success state for the vendor.
+      supabase.functions.invoke('notify-vendor-claim', {
+        body: {
+          store_name:   String(formData.get('store_name')   ?? '').trim(),
+          store_domain: String(formData.get('store_domain') ?? '').trim(),
+          country:      String(formData.get('country')      ?? '').trim(),
+          compounds:    String(formData.get('compounds')    ?? '').trim(),
+          contact_name: String(formData.get('contact_name') ?? '').trim(),
+          role:         String(formData.get('role')         ?? '').trim(),
+          email:        String(formData.get('email')        ?? '').trim(),
+          phone:        String(formData.get('phone')        ?? '').trim(),
+          plan:         String(formData.get('plan')         ?? 'Free').trim(),
+          notes:        String(formData.get('notes')        ?? '').trim(),
+        },
+      }).catch(() => {});
+
       setStatus('success');
       setError('');
       form.reset();
