@@ -77,7 +77,7 @@ export const tiers: Tier[] = [
     popular: false,
     monthly: 299,
     yearly: 199,
-    desc: 'For vendors running multiple stores who want white-label branding and priority support.',
+    desc: 'For serious vendors who want maximum exposure: multi-store, newsletter features, Telegram community access, and priority support.',
     features: [
       'Up to 3 connected storefronts',
       'Up to 10,000 review invites/mo, to your own past customers',
@@ -91,6 +91,8 @@ export const tiers: Tier[] = [
       'Onboarding call',
       'Review analytics',
       'Full audit trail',
+      'Occasional newsletter features (20k+ subscribers)',
+      'VPR Telegram community access',
     ],
     cta: 'Request this plan',
   },
@@ -100,6 +102,7 @@ export const overagePacks = [
   { name: 'Review Invite Pack', qty: '+5,000 review invites', price: '$99', note: 'One-time top-up' },
   { name: 'Extra Storefront', qty: '+1 connected store', price: '$149/mo', note: 'Add another store' },
   { name: 'Priority Support', qty: '4-hour response SLA', price: '$199/mo', note: 'Upgrade your SLA' },
+  { name: 'Dedicated Email Promo', qty: 'One solo email to 20k+ subscribers', price: '$999', note: 'One-time send, with proof of delivery' },
 ];
 
 export const comparisonGroups = [
@@ -139,6 +142,14 @@ export const comparisonGroups = [
       { feature: 'REST API access', free: false, starter: true, growth: true, professional: true },
       { feature: 'Priority support', free: false, starter: false, growth: false, professional: true },
       { feature: 'Support response SLA', free: false, starter: '48h', growth: '24h', professional: '4h' },
+    ],
+  },
+  {
+    group: 'Reach & Community',
+    rows: [
+      { feature: 'Occasional newsletter features (20k+ subscribers)', free: false, starter: false, growth: false, professional: true },
+      { feature: 'VPR Telegram community access', free: false, starter: false, growth: false, professional: true },
+      { feature: 'Dedicated email promo (add-on)', free: false, starter: false, growth: false, professional: '$999 one-time' },
     ],
   },
 ];
