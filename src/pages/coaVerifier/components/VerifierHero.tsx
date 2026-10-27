@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom';
 import { verifierHero, verifierStats } from '@/mocks/coaVerifier';
+import SafeImage from '@/components/feature/SafeImage';
 
 export default function VerifierHero() {
   return (
     <section className="relative pt-36 pb-20 overflow-hidden">
       <div className="absolute inset-0">
-        <img
-          src="https://readdy.ai/api/search-image?query=Abstract%20forensic%20document%20scan%20visual%2C%20soft%20teal%20and%20emerald%20gradient%20light%20background%2C%20translucent%20data%20grid%20and%20magnifier%20geometry%2C%20minimal%20editorial%20style%2C%20very%20light%20and%20airy%2C%20clean%20negative%20space%2C%20no%20text&width=1920&height=1080&seq=coa-verifier-hero-01&orientation=landscape"
+        <SafeImage
+          src="/blog-cover.svg"
           alt="Abstract forensic document verification background with teal and emerald tones"
           title="COA Verifier - AI Certificate of Analysis verification"
           className="w-full h-full object-cover object-top opacity-[0.14]"

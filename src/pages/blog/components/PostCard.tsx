@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom';
 import type { BlogPost } from '@/mocks/blog';
+import SafeImage from '@/components/feature/SafeImage';
 
 export default function PostCard({ post }: { post: BlogPost }) {
   return (
     <article className="group bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col transition-all duration-300 ease-out hover:-translate-y-1 hover:border-teal-300">
       <Link to={`/blog/${post.slug}`} className="block">
         <div className="w-full h-[190px] overflow-hidden bg-slate-100">
-          <img
+          <SafeImage
             src={post.cover}
             alt={post.title}
             title={`${post.title}: peptide review guide`}

@@ -1,4 +1,4 @@
-﻿export interface BlogSection {
+export interface BlogSection {
   heading: string;
   body: string;
 }
@@ -33,8 +33,7 @@ export const blogPosts: BlogPost[] = [
     authorRole: 'Head of Trust Strategy',
     date: 'Sep 18, 2026',
     readTime: '6 min read',
-    cover:
-      'https://readdy.ai/api/search-image?query=abstract%20teal%20and%20emerald%20medical%20data%20visualization%20showing%20review%20cards%20dissolving%20into%20digital%20particles%20on%20a%20clean%20white%20background%2C%20minimal%20editorial%20tech%20illustration%2C%20soft%20shadows%2C%20high%20detail&width=1200&height=800&seq=blog-ban-2026-a1&orientation=landscape',
+    cover: '/blog-cover.svg',
     tags: ['Trustpilot', 'Platform risk', 'Migration'],
     featured: false,
     isoDate: '2026-09-18',
@@ -67,8 +66,7 @@ export const blogPosts: BlogPost[] = [
     authorRole: 'Trust & Safety Lead',
     date: 'Sep 12, 2026',
     readTime: '4 min read',
-    cover:
-      'https://readdy.ai/api/search-image?query=close%20up%20of%20a%20magnifying%20glass%20over%20a%20minimal%20review%20card%20with%20five%20gold%20stars%20on%20a%20bright%20white%20desk%2C%20clean%20editorial%20product%20photography%2C%20teal%20accent%20shadows%2C%20high%20detail&width=1200&height=800&seq=blog-fake-review-2026-a2&orientation=landscape',
+    cover: '/blog-cover.svg',
     tags: ['Fake reviews', 'Verification'],
     featured: false,
     sections: [
@@ -96,8 +94,7 @@ export const blogPosts: BlogPost[] = [
     authorRole: 'Analytical Chemist',
     date: 'Sep 06, 2026',
     readTime: '7 min read',
-    cover:
-      'https://readdy.ai/api/search-image?query=clean%20laboratory%20bench%20with%20a%20printed%20chromatogram%20chart%20and%20a%20glass%20vial%20beside%20it%2C%20bright%20neutral%20lighting%2C%20minimal%20scientific%20editorial%20photography%2C%20teal%20accents%2C%20high%20detail&width=1200&height=800&seq=blog-hplc-coa-2026-a3&orientation=landscape',
+    cover: '/blog-cover.svg',
     tags: ['HPLC', 'COA', 'Purity'],
     featured: false,
     sections: [
@@ -125,8 +122,7 @@ export const blogPosts: BlogPost[] = [
     authorRole: 'Head of Trust Strategy',
     date: 'Aug 29, 2026',
     readTime: '5 min read',
-    cover:
-      'https://readdy.ai/api/search-image?query=abstract%20minimal%20bar%20chart%20made%20of%20glass%20panels%20dropping%20sharply%20on%20a%20bright%20white%20background%2C%20teal%20and%20emerald%20gradients%2C%20clean%20editorial%20business%20illustration%2C%20high%20detail&width=1200&height=800&seq=blog-cost-history-2026-a4&orientation=landscape',
+    cover: '/blog-cover.svg',
     tags: ['SEO', 'Revenue', 'Risk'],
     featured: false,
     sections: [
@@ -154,8 +150,7 @@ export const blogPosts: BlogPost[] = [
     authorRole: 'Trust & Safety Lead',
     date: 'Aug 21, 2026',
     readTime: '5 min read',
-    cover:
-      'https://readdy.ai/api/search-image?query=minimal%20flat%20illustration%20of%20a%20shield%20with%20a%20checkmark%20next%20to%20a%20five%20star%20rating%20on%20a%20clean%20white%20background%2C%20teal%20and%20emerald%20palette%2C%20editorial%20tech%20style%2C%20high%20detail&width=1200&height=800&seq=blog-verified-2026-a5&orientation=landscape',
+    cover: '/blog-cover.svg',
     tags: ['Verified purchase', 'Buyer trust'],
     featured: false,
     sections: [
@@ -183,8 +178,7 @@ export const blogPosts: BlogPost[] = [
     authorRole: 'Lifecycle Marketing Lead',
     date: 'Aug 14, 2026',
     readTime: '4 min read',
-    cover:
-      'https://readdy.ai/api/search-image?query=minimal%20illustration%20of%20a%20paper%20plane%20email%20icon%20traveling%20between%20an%20order%20box%20and%20a%20star%20rating%20on%20a%20bright%20white%20background%2C%20teal%20and%20emerald%20accents%2C%20clean%20editorial%20tech%20style&width=1200&height=800&seq=blog-automation-2026-a6&orientation=landscape',
+    cover: '/blog-cover.svg',
     tags: ['Automation', 'Email', 'Retention'],
     featured: false,
     sections: [
@@ -212,8 +206,7 @@ export const blogPosts: BlogPost[] = [
     authorRole: 'Lifecycle Marketing Lead',
     date: 'Aug 07, 2026',
     readTime: '6 min read',
-    cover:
-      'https://readdy.ai/api/search-image?query=minimal%20search%20engine%20result%20card%20with%20five%20gold%20stars%20floating%20on%20a%20clean%20white%20background%2C%20teal%20accent%20glow%2C%20editorial%20seo%20illustration%2C%20high%20detail&width=1200&height=800&seq=blog-schema-seo-2026-a7&orientation=landscape',
+    cover: '/blog-cover.svg',
     tags: ['Schema', 'Rich results', 'SEO'],
     featured: false,
     sections: [
@@ -241,8 +234,7 @@ export const blogPosts: BlogPost[] = [
     authorRole: 'Trust & Safety Lead',
     date: 'Jul 30, 2026',
     readTime: '5 min read',
-    cover:
-      'https://readdy.ai/api/search-image?query=minimal%20illustration%20of%20a%20checklist%20card%20with%20trust%20badges%20including%20a%20shield%2C%20a%20flask%20and%20a%20star%20rating%20on%20a%20bright%20white%20background%2C%20teal%20and%20emerald%20palette%2C%20editorial%20style&width=1200&height=800&seq=blog-trust-signals-2026-a8&orientation=landscape',
+    cover: '/blog-cover.svg',
     tags: ['Buyer behaviour', 'Conversion'],
     featured: false,
     sections: [
@@ -270,8 +262,7 @@ export const blogPosts: BlogPost[] = [
     authorRole: 'Trust & Safety Lead',
     date: 'Sep 20, 2026',
     readTime: '7 min read',
-    cover:
-      'https://readdy.ai/api/search-image?query=minimal%20flat%20illustration%20of%20a%20laptop%20showing%20a%20peptide%20store%20page%20with%20a%20green%20verified%20shield%20badge%20on%20a%20bright%20white%20background%2C%20teal%20and%20emerald%20palette%2C%20clean%20editorial%20tech%20style%2C%20high%20detail&width=1200&height=800&seq=blog-vet-legit-2026-b1&orientation=landscape',
+    cover: '/blog-cover.svg',
     tags: ['Vetting', 'Due diligence', 'Scam check'],
     featured: false,
     sections: [
@@ -303,8 +294,7 @@ export const blogPosts: BlogPost[] = [
     authorRole: 'Analytical Chemist',
     date: 'Sep 16, 2026',
     readTime: '6 min read',
-    cover:
-      'https://readdy.ai/api/search-image?query=clean%20laboratory%20bench%20with%20two%20glass%20vials%2C%20one%20with%20a%20crisp%20printed%20label%20and%20a%20printed%20certificate%20of%20analysis%20beside%20it%2C%20bright%20neutral%20lighting%2C%20minimal%20scientific%20editorial%20photography%2C%20teal%20accents%2C%20high%20detail&width=1200&height=800&seq=blog-relabel-2026-b2&orientation=landscape',
+    cover: '/blog-cover.svg',
     tags: ['Quality', 'COA', 'Purity'],
     featured: false,
     sections: [
@@ -336,8 +326,7 @@ export const blogPosts: BlogPost[] = [
     authorRole: 'Trust & Safety Lead',
     date: 'Sep 11, 2026',
     readTime: '7 min read',
-    cover:
-      'https://readdy.ai/api/search-image?query=minimal%20flat%20illustration%20of%20a%20shipping%20box%20and%20a%20glass%20vial%20connected%20by%20a%20dashed%20route%20line%20on%20a%20bright%20white%20background%2C%20teal%20and%20amber%20accents%2C%20clean%20editorial%20logistics%20style%2C%20high%20detail&width=1200&height=800&seq=blog-cheap-sourcing-2026-b3&orientation=landscape',
+    cover: '/blog-cover.svg',
     tags: ['Sourcing', 'Purity', 'Sterility'],
     featured: false,
     sections: [
@@ -369,8 +358,7 @@ export const blogPosts: BlogPost[] = [
     authorRole: 'Trust & Safety Lead',
     date: 'Sep 05, 2026',
     readTime: '5 min read',
-    cover:
-      'https://readdy.ai/api/search-image?query=minimal%20flat%20illustration%20of%20a%20large%20red%20warning%20triangle%20with%20an%20exclamation%20mark%20beside%20a%20clean%20online%20store%20card%20on%20a%20bright%20white%20background%2C%20teal%20neutral%20accents%2C%20editorial%20tech%20style%2C%20high%20detail&width=1200&height=800&seq=blog-redflags-2026-b4&orientation=landscape',
+    cover: '/blog-cover.svg',
     tags: ['Red flags', 'Scam', 'Payments'],
     featured: false,
     sections: [
@@ -398,8 +386,7 @@ export const blogPosts: BlogPost[] = [
     authorRole: 'Lifecycle Marketing Lead',
     date: 'Aug 28, 2026',
     readTime: '5 min read',
-    cover:
-      'https://readdy.ai/api/search-image?query=minimal%20flat%20illustration%20of%20a%20credit%20card%20beside%20a%20broken%20chain%20link%20and%20a%20padlock%20on%20a%20bright%20white%20background%2C%20teal%20and%20slate%20palette%2C%20clean%20editorial%20fintech%20style%2C%20high%20detail&width=1200&height=800&seq=blog-payment-trap-2026-b5&orientation=landscape',
+    cover: '/blog-cover.svg',
     tags: ['Payments', 'Fraud', 'Chargebacks'],
     featured: false,
     sections: [
@@ -427,8 +414,7 @@ export const blogPosts: BlogPost[] = [
     authorRole: 'Analytical Chemist',
     date: 'Aug 22, 2026',
     readTime: '6 min read',
-    cover:
-      'https://readdy.ai/api/search-image?query=close%20up%20of%20a%20glass%20vial%20with%20a%20lot%20number%20label%20next%20to%20a%20printed%20certificate%20of%20analysis%20document%20on%20a%20bright%20white%20laboratory%20surface%2C%20minimal%20scientific%20editorial%20photography%2C%20teal%20accents%2C%20high%20detail&width=1200&height=800&seq=blog-verify-coa-2026-b6&orientation=landscape',
+    cover: '/blog-cover.svg',
     tags: ['COA', 'Batch', 'Verification'],
     featured: false,
     sections: [
@@ -466,8 +452,7 @@ export const blogPosts: BlogPost[] = [
     authorRole: 'Analytical Chemist',
     date: 'Oct 10, 2026',
     readTime: '10 min read',
-    cover:
-      'https://readdy.ai/api/search-image?query=detailed%20laboratory%20document%20certificate%20of%20analysis%20with%20chromatogram%20graphs%20on%20a%20clean%20white%20desk%2C%20teal%20accent%20lighting%2C%20scientific%20editorial%20photography%2C%20high%20detail&width=1200&height=800&seq=blog-coa-pillar-2026-c1&orientation=landscape',
+    cover: '/blog-cover.svg',
     tags: ['COA', 'Verification', 'HPLC', 'Batch', 'Step by step'],
     featured: true,
     sections: [
@@ -519,8 +504,7 @@ export const blogPosts: BlogPost[] = [
     authorRole: 'Analytical Chemist',
     date: 'Oct 08, 2026',
     readTime: '6 min read',
-    cover:
-      'https://readdy.ai/api/search-image?query=clean%20scientific%20document%20with%20a%20certificate%20header%20and%20analytical%20data%20table%20on%20a%20white%20desk%20with%20a%20glass%20vial%20next%20to%20it%2C%20teal%20accent%20highlights%2C%20editorial%20photography%2C%20high%20detail&width=1200&height=800&seq=blog-what-is-coa-2026-c2&orientation=landscape',
+    cover: '/blog-cover.svg',
     tags: ['COA', 'Certificate of analysis', 'Basics'],
     featured: false,
     sections: [
@@ -556,8 +540,7 @@ export const blogPosts: BlogPost[] = [
     authorRole: 'Analytical Chemist',
     date: 'Oct 06, 2026',
     readTime: '7 min read',
-    cover:
-      'https://readdy.ai/api/search-image?query=red%20warning%20overlay%20on%20a%20document%20with%20a%20magnifying%20glass%20exposing%20inconsistencies%20on%20a%20white%20background%2C%20teal%20and%20red%20editorial%20illustration%2C%20high%20detail&width=1200&height=800&seq=blog-fake-coa-signs-2026-c3&orientation=landscape',
+    cover: '/blog-cover.svg',
     tags: ['Fake COA', 'Fraud', 'Red flags', 'COA verification'],
     featured: false,
     sections: [
@@ -605,8 +588,7 @@ export const blogPosts: BlogPost[] = [
     authorRole: 'Analytical Chemist',
     date: 'Oct 04, 2026',
     readTime: '6 min read',
-    cover:
-      'https://readdy.ai/api/search-image?query=digital%20PDF%20file%20icon%20with%20metadata%20properties%20panel%20floating%20beside%20it%20on%20a%20clean%20white%20background%2C%20teal%20and%20slate%20editorial%20tech%20illustration%2C%20high%20detail&width=1200&height=800&seq=blog-pdf-metadata-2026-c4&orientation=landscape',
+    cover: '/blog-cover.svg',
     tags: ['Fake COA', 'PDF metadata', 'Forgery detection'],
     featured: false,
     sections: [
@@ -642,8 +624,7 @@ export const blogPosts: BlogPost[] = [
     authorRole: 'Analytical Chemist',
     date: 'Oct 02, 2026',
     readTime: '5 min read',
-    cover:
-      'https://readdy.ai/api/search-image?query=QR%20code%20printed%20on%20a%20laboratory%20document%20beside%20a%20verified%20checkmark%20icon%20on%20a%20white%20clean%20background%2C%20teal%20accents%2C%20minimal%20editorial%20tech%20illustration%2C%20high%20detail&width=1200&height=800&seq=blog-qr-coa-2026-c5&orientation=landscape',
+    cover: '/blog-cover.svg',
     tags: ['COA', 'Lab portal', 'QR code', 'Verification'],
     featured: false,
     sections: [
@@ -679,8 +660,7 @@ export const blogPosts: BlogPost[] = [
     authorRole: 'Analytical Chemist',
     date: 'Sep 28, 2026',
     readTime: '7 min read',
-    cover:
-      'https://readdy.ai/api/search-image?query=two%20side%20by%20side%20analytical%20chemistry%20instruments%20one%20HPLC%20and%20one%20mass%20spectrometer%20on%20a%20clean%20bright%20laboratory%20bench%2C%20teal%20accent%20lighting%2C%20scientific%20editorial%20photography%2C%20high%20detail&width=1200&height=800&seq=blog-hplc-lcms-2026-c6&orientation=landscape',
+    cover: '/blog-cover.svg',
     tags: ['HPLC', 'LC-MS', 'Mass spectrometry', 'COA methods'],
     featured: false,
     sections: [
@@ -716,8 +696,7 @@ export const blogPosts: BlogPost[] = [
     authorRole: 'Analytical Chemist',
     date: 'Sep 25, 2026',
     readTime: '5 min read',
-    cover:
-      'https://readdy.ai/api/search-image?query=clean%20white%20checklist%20clipboard%20with%20tick%20marks%20beside%20a%20laboratory%20document%20on%20a%20minimal%20white%20desk%2C%20teal%20and%20emerald%20accents%2C%20editorial%20illustration%2C%20high%20detail&width=1200&height=800&seq=blog-checklist-2026-c7&orientation=landscape',
+    cover: '/blog-cover.svg',
     tags: ['COA checklist', 'Lab report', 'Verification'],
     featured: false,
     sections: [
@@ -749,8 +728,7 @@ export const blogPosts: BlogPost[] = [
     authorRole: 'Trust & Safety Lead',
     date: 'Oct 09, 2026',
     readTime: '12 min read',
-    cover:
-      'https://readdy.ai/api/search-image?query=warning%20shield%20icon%20over%20a%20map%20of%20online%20vendor%20cards%20showing%20red%20danger%20flags%20on%20a%20clean%20white%20background%2C%20teal%20and%20red%20editorial%20illustration%2C%20high%20detail&width=1200&height=800&seq=blog-scam-vendors-pillar-2026-d1&orientation=landscape',
+    cover: '/blog-cover.svg',
     tags: ['Scam vendors', 'Fraud', 'Red flags', 'Vetting'],
     featured: false,
     sections: [
@@ -794,8 +772,7 @@ export const blogPosts: BlogPost[] = [
     authorRole: 'Trust & Safety Lead',
     date: 'Sep 30, 2026',
     readTime: '6 min read',
-    cover:
-      'https://readdy.ai/api/search-image?query=two%20similar-looking%20glass%20vials%20side%20by%20side%20with%20one%20real%20and%20one%20counterfeit%20label%20on%20a%20white%20minimal%20background%2C%20red%20and%20teal%20editorial%20illustration%2C%20high%20detail&width=1200&height=800&seq=blog-bait-switch-2026-d2&orientation=landscape',
+    cover: '/blog-cover.svg',
     tags: ['Bait and switch', 'Substitution', 'Counterfeit', 'LC-MS'],
     featured: false,
     sections: [
@@ -831,8 +808,7 @@ export const blogPosts: BlogPost[] = [
     authorRole: 'Analytical Chemist',
     date: 'Sep 26, 2026',
     readTime: '6 min read',
-    cover:
-      'https://readdy.ai/api/search-image?query=two%20glass%20vials%20one%20full%20and%20one%20half-empty%20on%20a%20clean%20white%20laboratory%20surface%20with%20measurement%20markings%20highlighted%20in%20red%2C%20teal%20accent%2C%20editorial%20scientific%20photography%2C%20high%20detail&width=1200&height=800&seq=blog-underdosed-2026-d3&orientation=landscape',
+    cover: '/blog-cover.svg',
     tags: ['Underdosing', 'Concentration', 'Testing', 'Fraud'],
     featured: false,
     sections: [
@@ -868,8 +844,7 @@ export const blogPosts: BlogPost[] = [
     authorRole: 'Trust & Safety Lead',
     date: 'Sep 22, 2026',
     readTime: '6 min read',
-    cover:
-      'https://readdy.ai/api/search-image?query=ghost%20silhouette%20of%20an%20online%20store%20fading%20into%20digital%20particles%20on%20a%20clean%20white%20background%2C%20teal%20and%20slate%20editorial%20illustration%2C%20high%20detail&width=1200&height=800&seq=blog-ghost-vendor-2026-d4&orientation=landscape',
+    cover: '/blog-cover.svg',
     tags: ['Ghost vendor', 'Fraud', 'Recovery', 'Chargeback'],
     featured: false,
     sections: [
@@ -905,8 +880,7 @@ export const blogPosts: BlogPost[] = [
     authorRole: 'Trust & Safety Lead',
     date: 'Sep 24, 2026',
     readTime: '8 min read',
-    cover:
-      'https://readdy.ai/api/search-image?query=syringe%20and%20glass%20vial%20on%20a%20clinical%20white%20surface%20with%20a%20red%20counterfeit%20warning%20watermark%2C%20teal%20and%20red%20editorial%20photography%2C%20high%20detail&width=1200&height=800&seq=blog-sema-fake-2026-d5&orientation=landscape',
+    cover: '/blog-cover.svg',
     tags: ['Semaglutide', 'GLP-1', 'Counterfeit', 'COA verification'],
     featured: false,
     sections: [
@@ -942,8 +916,7 @@ export const blogPosts: BlogPost[] = [
     authorRole: 'Trust & Safety Lead',
     date: 'Sep 20, 2026',
     readTime: '6 min read',
-    cover:
-      'https://readdy.ai/api/search-image?query=close%20up%20of%20a%20research%20vial%20with%20a%20warning%20red%20flag%20icon%20on%20a%20minimal%20white%20laboratory%20surface%2C%20teal%20and%20amber%20editorial%20photography%2C%20high%20detail&width=1200&height=800&seq=blog-tirze-flags-2026-d6&orientation=landscape',
+    cover: '/blog-cover.svg',
     tags: ['Tirzepatide', 'GLP-1', 'Vendor red flags', 'COA'],
     featured: false,
     sections: [
@@ -979,8 +952,7 @@ export const blogPosts: BlogPost[] = [
     authorRole: 'Analytical Chemist',
     date: 'Sep 18, 2026',
     readTime: '5 min read',
-    cover:
-      'https://readdy.ai/api/search-image?query=independent%20laboratory%20technician%20reviewing%20a%20chromatogram%20printout%20at%20a%20white%20bench%2C%20teal%20accent%20equipment%2C%20clean%20editorial%20scientific%20photography%2C%20high%20detail&width=1200&height=800&seq=blog-third-party-2026-c8&orientation=landscape',
+    cover: '/blog-cover.svg',
     tags: ['Third-party testing', 'Independent lab', 'COA'],
     featured: false,
     sections: [
@@ -1012,8 +984,7 @@ export const blogPosts: BlogPost[] = [
     authorRole: 'Trust & Safety Lead',
     date: 'Sep 15, 2026',
     readTime: '7 min read',
-    cover:
-      'https://readdy.ai/api/search-image?query=person%20typing%20questions%20on%20a%20laptop%20with%20a%20chat%20bubble%20graphic%20on%20a%20clean%20white%20minimal%20background%2C%20teal%20and%20emerald%20accents%2C%20editorial%20illustration%2C%20high%20detail&width=1200&height=800&seq=blog-questions-vendor-2026-e1&orientation=landscape',
+    cover: '/blog-cover.svg',
     tags: ['Vetting', 'Due diligence', 'Pre-order'],
     featured: false,
     sections: [
@@ -1049,8 +1020,7 @@ export const blogPosts: BlogPost[] = [
     authorRole: 'Analytical Chemist',
     date: 'Oct 01, 2026',
     readTime: '6 min read',
-    cover:
-      'https://readdy.ai/api/search-image?query=peptide%20vial%20with%20BPC-157%20label%20next%20to%20a%20chromatogram%20printout%20on%20a%20clean%20white%20laboratory%20bench%2C%20teal%20and%20emerald%20accents%2C%20scientific%20editorial%20photography%2C%20high%20detail&width=1200&height=800&seq=blog-bpc157-coa-2026-c9&orientation=landscape',
+    cover: '/blog-cover.svg',
     tags: ['BPC-157', 'COA', 'Peptide verification'],
     featured: false,
     sections: [
@@ -1086,8 +1056,7 @@ export const blogPosts: BlogPost[] = [
     authorRole: 'Trust & Safety Lead',
     date: 'Sep 29, 2026',
     readTime: '5 min read',
-    cover:
-      'https://readdy.ai/api/search-image?query=a%20stopwatch%20timer%20beside%20a%20checklist%20with%20ticked%20items%20and%20a%20glass%20vial%20on%20a%20white%20minimal%20background%2C%20teal%20and%20emerald%20editorial%20illustration%2C%20high%20detail&width=1200&height=800&seq=blog-tb500-vet-2026-e2&orientation=landscape',
+    cover: '/blog-cover.svg',
     tags: ['TB-500', 'BPC-157', 'Vendor vetting', 'Checklist'],
     featured: false,
     sections: [
@@ -1123,8 +1092,7 @@ export const blogPosts: BlogPost[] = [
     authorRole: 'Trust & Safety Lead',
     date: 'Sep 14, 2026',
     readTime: '5 min read',
-    cover:
-      'https://readdy.ai/api/search-image?query=social%20media%20forum%20upvote%20icon%20beside%20a%20question%20mark%20and%20a%20magnifying%20glass%20on%20a%20minimal%20white%20background%2C%20teal%20and%20slate%20editorial%20illustration%2C%20high%20detail&width=1200&height=800&seq=blog-reddit-research-2026-e3&orientation=landscape',
+    cover: '/blog-cover.svg',
     tags: ['Reddit', 'Community research', 'Vendor vetting'],
     featured: false,
     sections: [
@@ -1160,8 +1128,7 @@ export const blogPosts: BlogPost[] = [
     authorRole: 'Trust & Safety Lead',
     date: 'Oct 25, 2026',
     readTime: '7 min read',
-    cover:
-      'https://readdy.ai/api/search-image?query=professional%20peptide%20laboratory%20vials%20with%20certificate%20documents%20on%20a%20clean%20white%20desk%2C%20teal%20accent%20lighting%2C%20scientific%20vendor%20review%20editorial%20photography%2C%20high%20detail&width=1200&height=800&seq=blog-evlv-review-2026-vr1&orientation=landscape',
+    cover: '/blog-cover.svg',
     tags: ['EVLV Peptides', 'Vendor Review', 'COA', 'US Domestic', 'Verified'],
     featured: false,
     sections: [
@@ -1213,8 +1180,7 @@ export const blogPosts: BlogPost[] = [
     authorRole: 'Trust & Safety Lead',
     date: 'Oct 25, 2026',
     readTime: '6 min read',
-    cover:
-      'https://readdy.ai/api/search-image?query=peptide%20vials%20arranged%20on%20a%20laboratory%20bench%20with%20soft%20teal%20accent%20lighting%2C%20clean%20scientific%20editorial%20photography%2C%20vendor%20review%20context%2C%20high%20detail&width=1200&height=800&seq=blog-ion-review-2026-vr2&orientation=landscape',
+    cover: '/blog-cover.svg',
     tags: ['Ion Peptide', 'Vendor Review', 'ionpeptide.com', 'US Domestic', 'COA'],
     featured: false,
     sections: [
@@ -1266,8 +1232,7 @@ export const blogPosts: BlogPost[] = [
     authorRole: 'Trust & Safety Lead',
     date: 'Oct 25, 2026',
     readTime: '6 min read',
-    cover:
-      'https://readdy.ai/api/search-image?query=research%20peptide%20vials%20with%20lab%20documents%20on%20a%20white%20bench%2C%20clean%20teal%20scientific%20editorial%20photography%2C%20vendor%20legitimacy%20review%20context%2C%20high%20detail&width=1200&height=800&seq=blog-warrior-review-2026-vr3&orientation=landscape',
+    cover: '/blog-cover.svg',
     tags: ['Warrior Distributions', 'Vendor Review', 'warriordistributions.com', 'US Domestic', 'COA'],
     featured: false,
     sections: [

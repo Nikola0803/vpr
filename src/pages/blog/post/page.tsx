@@ -4,6 +4,7 @@ import Navbar from '@/components/feature/Navbar';
 import Footer from '@/components/feature/Footer';
 import PostCard from '@/pages/blog/components/PostCard';
 import { blogPosts } from '@/mocks/blog';
+import SafeImage from '@/components/feature/SafeImage';
 
 export default function BlogPost() {
   const { slug } = useParams();
@@ -49,7 +50,7 @@ export default function BlogPost() {
         <meta property="og:title" content={post.title} />
         <meta property="og:description" content={metaDesc} />
         <meta property="og:type" content="article" />
-        <meta property="og:image" content={post.cover} />
+        <meta property="og:image" content="https://www.verifiedpeptidereviews.com/blog-cover.svg" />
         <meta property="article:published_time" content={post.isoDate ?? post.date} />
         <link rel="canonical" href={`https://www.verifiedpeptidereviews.com/blog/${post.slug}`} />
       </Helmet>
@@ -91,7 +92,7 @@ export default function BlogPost() {
         {/* COVER */}
         <div className="max-w-[1000px] mx-auto px-6">
           <div className="w-full h-[260px] md:h-[420px] rounded-2xl overflow-hidden bg-slate-100 border border-slate-200">
-            <img
+            <SafeImage
               src={post.cover}
               alt={post.title}
               title={`${post.title}: peptide review guide`}
