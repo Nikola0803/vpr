@@ -6,7 +6,9 @@ const FORM_ID = 'vendor-store-submission';
 const inputClass =
   'w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 outline-none focus:border-teal-400 transition-colors';
 
-const planOptions = ['Free', 'Starter', 'Growth', 'Professional', 'Not sure yet'];
+const planOptions = ['Basic ($49/mo)', 'Starter ($99/mo)', 'Verified ($149/mo)', 'Professional ($299/mo)', 'Not sure yet'];
+
+const paymentMethods = ['Venmo', 'Zelle', 'CashApp', 'Bank Transfer', 'Card'];
 
 type Status = 'idle' | 'submitting' | 'success' | 'error';
 
@@ -82,8 +84,7 @@ export default function SubmitStoreForm() {
         </div>
         <h2 className="mt-6 font-display font-extrabold text-slate-900 text-2xl">Store submitted</h2>
         <p className="mt-3 text-sm text-slate-500 max-w-md mx-auto leading-relaxed">
-          Thanks - our curation team will review your store and, if it clears, publish your listing. Basic listings are
-          free and include up to 10 verified reviews.
+          Thanks. Our curation team will review your store. If it clears, we will send you a payment link and publish your listing within one business day.
         </p>
         <button
           type="button"
@@ -100,7 +101,7 @@ export default function SubmitStoreForm() {
     <div>
       <h2 className="font-display font-bold text-slate-900 text-xl">Submit a new store</h2>
       <p className="mt-1 text-sm text-slate-500">
-        Not in the directory yet? Send us your store details and our team will review it for a listing. No card required.
+        Not in the directory yet? Send us your store details and our team will review it. If it clears, we send you a payment link.
       </p>
 
       <form
@@ -213,8 +214,25 @@ export default function SubmitStoreForm() {
               <option key={p} value={p}>{p}</option>
             ))}
           </select>
+            <p className="mt-2 text-xs text-slate-400">
+            Basic listing starts at $49/mo. We send a payment link once your store clears review.
+          </p>
+        </div>
+
+        <div>
+          <label className="block text-xs font-medium text-slate-500 mb-2">
+            Preferred payment method
+          </label>
+          <div className="flex flex-wrap gap-2">
+            {paymentMethods.map((m) => (
+              <label key={m} className="flex items-center gap-2 cursor-pointer">
+                <input type="radio" name="payment_method" value={m} className="accent-teal-600" />
+                <span className="text-sm text-slate-700">{m}</span>
+              </label>
+            ))}
+          </div>
           <p className="mt-2 text-xs text-slate-400">
-            The Free listing includes basic profile data and up to 10 verified reviews.
+            All methods are accepted. We will confirm details with you after review.
           </p>
         </div>
 
@@ -253,7 +271,7 @@ export default function SubmitStoreForm() {
 
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-slate-400">
-            Basic listings are free. We review every submission by hand.
+            Every submission is reviewed by hand. Payment link sent after approval.
           </p>
           <button
             type="submit"

@@ -109,7 +109,7 @@ export default function VendorCard({ vendor: v, selected, onToggle, cert }: Prop
       {v.reviews === 0 ? (
         <div className="mt-3 text-[11px] text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 flex items-center gap-1.5">
           <i className="ri-store-2-line shrink-0"></i>
-          This listing is unclaimed. Own this store? Claim it free.
+          This listing is unclaimed. Own this store? Claim it.
         </div>
       ) : (
         <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-slate-500">
@@ -190,7 +190,7 @@ export default function VendorCard({ vendor: v, selected, onToggle, cert }: Prop
         <a
           href={`https://${v.domain}`}
           target="_blank"
-          rel="noopener noreferrer nofollow"
+          rel={v.planTier === 'paid' ? 'noopener noreferrer' : 'noopener noreferrer nofollow'}
           onClick={(e) => e.stopPropagation()}
           className="whitespace-nowrap px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 border border-slate-200 hover:border-teal-400 hover:text-teal-700 transition-colors flex items-center gap-1.5"
         >

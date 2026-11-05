@@ -14,28 +14,29 @@ export const moneyBack = '30-day money back guarantee';
 export const tiers: Tier[] = [
   {
     id: 'free',
-    name: 'Free',
+    name: 'Basic',
     popular: false,
-    monthly: 0,
-    yearly: 0,
-    desc: 'A basic, no-cost directory listing to get your research store discovered and collect your first reviews.',
+    monthly: 49,
+    yearly: 34,
+    desc: 'Get listed, build credibility, and start collecting verified reviews. One-time setup reviewed by hand.',
     features: [
       'Public vendor listing',
-      'Up to 10 verified reviews',
+      'Up to 50 verified reviews',
       'Basic profile data',
       '1 certificate of analysis',
       'Directory inclusion',
       'Compliance screening',
+      'Dofollow backlink from your listing',
     ],
-    cta: 'List your store',
+    cta: 'Get listed',
   },
   {
     id: 'starter',
     name: 'Starter',
     popular: false,
-    monthly: 49,
-    yearly: 34,
-    desc: 'Get listed, collect reviews, and start building trust. No contracts, no setup fee.',
+    monthly: 99,
+    yearly: 69,
+    desc: 'Full review collection, storefronts, widgets, and invite automation. No contracts.',
     features: [
       '1 connected storefront',
       'Up to 2,500 review invites/mo, to your own past customers',
@@ -103,6 +104,8 @@ export const overagePacks = [
   { name: 'Extra Storefront', qty: '+1 connected store', price: '$149/mo', note: 'Add another store' },
   { name: 'Priority Support', qty: '4-hour response SLA', price: '$199/mo', note: 'Upgrade your SLA' },
   { name: 'Dedicated Email Promo', qty: 'One solo email to 20k+ subscribers', price: '$999', note: 'One-time send, with proof of delivery' },
+  { name: 'News Article Placement', qty: 'Dedicated article on a VPR-network site (DA 40+)', price: '$349', note: 'Dofollow backlink, permanent placement' },
+  { name: 'Guest Post Bundle', qty: '3 articles across our peptide network', price: '$899', note: 'Mix of sites, all dofollow, permanent' },
 ];
 
 export const comparisonGroups = [
@@ -114,7 +117,7 @@ export const comparisonGroups = [
       { feature: 'AI compliance screening', free: true, starter: true, growth: true, professional: true },
       { feature: 'Custom compliance rules', free: false, starter: true, growth: true, professional: true },
       { feature: 'Verified purchase badges', free: true, starter: true, growth: true, professional: true },
-      { feature: 'Review cap per listing', free: '10 reviews', starter: 'Unlimited', growth: 'Unlimited', professional: 'Unlimited' },
+      { feature: 'Review cap per listing', free: '50 reviews', starter: 'Unlimited', growth: 'Unlimited', professional: 'Unlimited' },
     ],
   },
   {
@@ -131,6 +134,7 @@ export const comparisonGroups = [
     group: 'Trust & Certification',
     rows: [
       { feature: 'RUO / True COA certification seal', free: false, starter: false, growth: true, professional: true },
+      { feature: 'Dofollow backlink from listing', free: true, starter: true, growth: true, professional: true },
       { feature: 'Seal kit + storefront backlink', free: false, starter: false, growth: false, professional: true },
       { feature: 'Public certificate ID lookup', free: true, starter: true, growth: true, professional: true },
     ],
@@ -162,8 +166,8 @@ export const roiStats = [
 
 export const pricingFaqs = [
   {
-    q: 'Is there really a free plan?',
-    a: 'Yes. The Free listing gives you a public, compliance-screened profile with basic company data and up to 10 verified reviews. It costs nothing and needs no card. You can upgrade to a paid tier any time to lift the 10-review cap and unlock widgets, embeds and analytics.',
+    q: 'What is the Basic listing and how do I pay?',
+    a: 'The Basic plan ($49/mo) gives you a public, compliance-screened profile with up to 50 verified reviews and a dofollow backlink from your listing. Payment is accepted via Venmo, Zelle, CashApp, bank transfer, or card. No auto-charge: we send a secure payment link once your listing clears review.',
   },
   {
     q: 'What happens if I exceed my monthly review-invite limit?',

@@ -1,5 +1,4 @@
 import { useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
 import Navbar from '@/components/feature/Navbar';
 import Footer from '@/components/feature/Footer';
 import BillingToggle, { type BillingCycle } from '@/components/base/BillingToggle';
@@ -56,9 +55,8 @@ export default function Pricing() {
         <div className="max-w-[1400px] mx-auto px-6 md:px-10">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 items-stretch">
             {tiers.map((t) => {
-              const isFree = t.monthly === 0;
               const price = billing === 'monthly' ? t.monthly : t.yearly;
-              const save = isFree ? 0 : Math.round((1 - t.yearly / t.monthly) * 100);
+              const save = Math.round((1 - t.yearly / t.monthly) * 100);
               return (
                 <div
                   key={t.id}
@@ -76,17 +74,15 @@ export default function Pricing() {
                   <div className="font-display font-extrabold text-slate-900 text-2xl">{t.name}</div>
 
                   <div className="mt-5 flex items-end gap-1">
-                    <span className="font-display font-extrabold text-slate-900 text-4xl">{isFree ? 'Free' : `$${price}`}</span>
-                    <span className="text-slate-500 text-sm mb-1.5">{isFree ? 'forever' : '/mo'}</span>
+                    <span className="font-display font-extrabold text-slate-900 text-4xl">${price}</span>
+                    <span className="text-slate-500 text-sm mb-1.5">/mo</span>
                   </div>
                   <div className="mt-2 text-xs text-slate-500">
-                    {isFree
-                      ? 'No card required · basic listing'
-                      : billing === 'monthly'
-                        ? 'Billed monthly, cancel anytime'
-                        : `Billed $${(t.yearly * 12).toLocaleString()} once per year`}
+                    {billing === 'monthly'
+                      ? 'Billed monthly, cancel anytime'
+                      : `Billed $${(t.yearly * 12).toLocaleString()} once per year`}
                   </div>
-                  {billing === 'yearly' && !isFree && (
+                  {billing === 'yearly' && (
                     <div className="mt-2 inline-flex w-fit items-center gap-1 text-xs font-mono text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-full px-2.5 py-1">
                       <i className="ri-arrow-down-line"></i>Save {save}% vs monthly
                     </div>
@@ -94,26 +90,17 @@ export default function Pricing() {
 
                   <p className="mt-5 text-sm text-slate-600 leading-relaxed min-h-[60px]">{t.desc}</p>
 
-                  {isFree ? (
-                    <Link
-                      to="/claim"
-                      className="mt-6 whitespace-nowrap w-full text-center px-5 py-3 rounded-md text-sm font-semibold transition-all border text-slate-800 border-slate-200 hover:border-teal-400 hover:bg-teal-50"
-                    >
-                      {t.cta}
-                    </Link>
-                  ) : (
-                    <button
-                      type="button"
-                      onClick={() => scrollToRequest(t.name)}
-                      className={`mt-6 whitespace-nowrap w-full text-center px-5 py-3 rounded-md text-sm font-semibold transition-all border ${
-                        t.popular
-                          ? 'bg-teal-600 text-white border-teal-600 hover:bg-teal-700'
-                          : 'text-slate-800 border-slate-200 hover:border-teal-400 hover:bg-teal-50'
-                      }`}
-                    >
-                      {t.cta}
-                    </button>
-                  )}
+                  <button
+                    type="button"
+                    onClick={() => scrollToRequest(t.name)}
+                    className={`mt-6 whitespace-nowrap w-full text-center px-5 py-3 rounded-md text-sm font-semibold transition-all border ${
+                      t.popular
+                        ? 'bg-teal-600 text-white border-teal-600 hover:bg-teal-700'
+                        : 'text-slate-800 border-slate-200 hover:border-teal-400 hover:bg-teal-50'
+                    }`}
+                  >
+                    {t.cta}
+                  </button>
 
                   <div className="mt-7 pt-5 border-t border-slate-200 space-y-3 flex-1">
                     {t.features.map((f) => (
@@ -177,6 +164,59 @@ export default function Pricing() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PRESS & BACKLINKS */}
+      <section className="relative py-20 border-t border-slate-200 bg-slate-900">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+            <div>
+              <div className="text-[11px] font-mono uppercase tracking-[0.22em] text-teal-400 mb-3">
+                Editorial exposure
+              </div>
+              <h2 className="font-display font-extrabold text-white text-3xl md:text-4xl tracking-tight">
+                News articles and guest posts
+                <span className="block text-teal-400 mt-1">across our peptide network.</span>
+              </h2>
+              <p className="mt-5 text-slate-400 leading-relaxed">
+                We operate several peptide and research compound sites with established domain authority. A dedicated article or guest post places your brand in front of active researchers, with a permanent dofollow backlink to your store.
+              </p>
+              <ul className="mt-6 space-y-3">
+                {[
+                  { icon: 'ri-article-line', text: 'Dedicated news article on a DA 40+ site' },
+                  { icon: 'ri-links-line', text: 'Permanent dofollow backlinks, indexed within days' },
+                  { icon: 'ri-search-eye-line', text: 'Keyword-targeted copy written around your compounds' },
+                  { icon: 'ri-stack-line', text: 'Bundle 3 articles across different sites for maximum coverage' },
+                ].map((item) => (
+                  <li key={item.text} className="flex items-start gap-3 text-sm text-slate-300">
+                    <i className={`${item.icon} text-teal-400 mt-0.5 shrink-0`}></i>
+                    {item.text}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {[
+                { name: 'Single Article', price: '$349', desc: 'One dedicated piece on a DA 40+ site with a dofollow backlink. Permanent placement, no recurring fee.' },
+                { name: 'Guest Post Bundle', price: '$899', desc: '3 articles spread across our network of peptide sites. Different domains, all dofollow, all permanent.' },
+                { name: 'Newsletter Feature', price: '$999', desc: 'Solo email to 20k+ subscribers covering your brand, compounds, and a direct link to your store.' },
+                { name: 'Full Press Package', price: '$1,499', desc: 'Article + newsletter feature + directory placement. Best value for a new launch or rebrand.' },
+              ].map((pack) => (
+                <div key={pack.name} className="bg-slate-800 rounded-2xl border border-slate-700 p-5 flex flex-col">
+                  <div className="font-display font-bold text-white text-base">{pack.name}</div>
+                  <div className="mt-1 font-display font-extrabold text-teal-400 text-2xl">{pack.price}</div>
+                  <p className="mt-3 text-xs text-slate-400 leading-relaxed flex-1">{pack.desc}</p>
+                  <a
+                    href="mailto:hello@verifiedpeptidereviews.com?subject=Press%20Package%20Enquiry"
+                    className="mt-4 whitespace-nowrap text-center px-4 py-2 rounded-lg text-xs font-semibold text-teal-300 border border-teal-700 hover:border-teal-400 hover:text-teal-200 transition-colors"
+                  >
+                    Enquire
+                  </a>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
