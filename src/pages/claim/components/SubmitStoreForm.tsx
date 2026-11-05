@@ -6,7 +6,7 @@ const FORM_ID = 'vendor-store-submission';
 const inputClass =
   'w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 outline-none focus:border-teal-400 transition-colors';
 
-const planOptions = ['Basic ($99/mo)', 'Starter ($49/mo)', 'Verified ($149/mo)', 'Professional ($299/mo)', 'Not sure yet'];
+const planOptions = ['Basic ($49/mo)', 'Starter ($99/mo)', 'Verified ($149/mo)', 'Professional ($299/mo)', 'Not sure yet'];
 
 const paymentMethods = ['Venmo', 'Zelle', 'CashApp', 'Bank Transfer', 'Card'];
 
@@ -215,7 +215,7 @@ export default function SubmitStoreForm() {
             ))}
           </select>
             <p className="mt-2 text-xs text-slate-400">
-            Basic listing starts at $99/mo. We send a payment link once your store clears review.
+            Basic listing starts at $49/mo. We send a payment link once your store clears review.
           </p>
         </div>
 

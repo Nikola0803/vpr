@@ -16,8 +16,8 @@ export const tiers: Tier[] = [
     id: 'free',
     name: 'Basic',
     popular: false,
-    monthly: 99,
-    yearly: 69,
+    monthly: 49,
+    yearly: 34,
     desc: 'Get listed, build credibility, and start collecting verified reviews. One-time setup reviewed by hand.',
     features: [
       'Public vendor listing',
@@ -34,9 +34,9 @@ export const tiers: Tier[] = [
     id: 'starter',
     name: 'Starter',
     popular: false,
-    monthly: 49,
-    yearly: 34,
-    desc: 'Get listed, collect reviews, and start building trust. No contracts, no setup fee.',
+    monthly: 99,
+    yearly: 69,
+    desc: 'Full review collection, storefronts, widgets, and invite automation. No contracts.',
     features: [
       '1 connected storefront',
       'Up to 2,500 review invites/mo, to your own past customers',
@@ -167,7 +167,7 @@ export const roiStats = [
 export const pricingFaqs = [
   {
     q: 'What is the Basic listing and how do I pay?',
-    a: 'The Basic plan ($99/mo) gives you a public, compliance-screened profile with up to 50 verified reviews and a dofollow backlink from your listing. Payment is accepted via Venmo, Zelle, CashApp, bank transfer, or card. No auto-charge: we send a secure payment link once your listing clears review.',
+    a: 'The Basic plan ($49/mo) gives you a public, compliance-screened profile with up to 50 verified reviews and a dofollow backlink from your listing. Payment is accepted via Venmo, Zelle, CashApp, bank transfer, or card. No auto-charge: we send a secure payment link once your listing clears review.',
   },
   {
     q: 'What happens if I exceed my monthly review-invite limit?',
