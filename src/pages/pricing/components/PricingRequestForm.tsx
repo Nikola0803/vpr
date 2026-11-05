@@ -216,17 +216,33 @@ export default function PricingRequestForm({ sectionRef, selectedPlan, onSelectP
                     </label>
                   </div>
 
-                  <label className="block">
-                    <span className="text-xs font-semibold text-slate-700">Billing preference</span>
-                    <select
-                      name="billing_preference"
-                      defaultValue={billing === 'yearly' ? 'Yearly' : 'Monthly'}
-                      className="mt-1.5 w-full rounded-md border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-900 outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20"
-                    >
-                      <option value="Monthly">Monthly</option>
-                      <option value="Yearly">Yearly (save up to 60%)</option>
-                    </select>
-                  </label>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <label className="block">
+                      <span className="text-xs font-semibold text-slate-700">Billing preference</span>
+                      <select
+                        name="billing_preference"
+                        defaultValue={billing === 'yearly' ? 'Yearly' : 'Monthly'}
+                        className="mt-1.5 w-full rounded-md border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-900 outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20"
+                      >
+                        <option value="Monthly">Monthly</option>
+                        <option value="Yearly">Yearly (save up to 30%)</option>
+                      </select>
+                    </label>
+                    <label className="block">
+                      <span className="text-xs font-semibold text-slate-700">Preferred payment method</span>
+                      <select
+                        name="payment_method"
+                        className="mt-1.5 w-full rounded-md border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-900 outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20"
+                      >
+                        <option value="">Select method</option>
+                        <option value="Venmo">Venmo</option>
+                        <option value="Zelle">Zelle</option>
+                        <option value="CashApp">CashApp</option>
+                        <option value="Bank Transfer">Bank Transfer (ACH/Wire)</option>
+                        <option value="Card">Card</option>
+                      </select>
+                    </label>
+                  </div>
 
                   <label className="block">
                     <span className="text-xs font-semibold text-slate-700">Anything we should know?</span>
